@@ -120,3 +120,17 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debu
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb

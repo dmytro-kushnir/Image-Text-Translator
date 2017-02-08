@@ -103,7 +103,51 @@ namespace ComputerVisionSample.Droid
                 // Get translated text
                 if (File.Exists(outputFile))
                 {
-
+                    if(sourceLanguage == "en")
+                        sourceLanguage = "English";
+                    else if(sourceLanguage == "ru")
+                        sourceLanguage = "Russian";
+                    else if (sourceLanguage == "fr")
+                        sourceLanguage = "French";
+                    else if (sourceLanguage == "gr")
+                        sourceLanguage = "German";
+                    else if (sourceLanguage == "it")
+                    sourceLanguage = "Italian";
+                    else if (sourceLanguage == "es")
+                        sourceLanguage = "Spanish";
+                    else if (sourceLanguage == "ar")
+                        sourceLanguage = "Arabic";
+                    else if (sourceLanguage == "zh-CN")
+                        sourceLanguage = "Chinese";
+                    else if (sourceLanguage == "ch")
+                        sourceLanguage = "Chinese";
+                    else if (sourceLanguage == "pl")
+                        sourceLanguage = "Polish";
+                    else if (sourceLanguage == "tr")
+                        sourceLanguage = "Turkish";
+                    else if (sourceLanguage == "pt")
+                        sourceLanguage = "Portuguese";
+                    else if (sourceLanguage == "el")
+                        sourceLanguage = "Greek";
+                    else if (sourceLanguage == "ja")
+                        sourceLanguage = "Japanese";
+                    else if (sourceLanguage == "hu")
+                        sourceLanguage = "Hungarian";
+                    else if (sourceLanguage == "fi")
+                        sourceLanguage = "Finnish";
+                    else if (sourceLanguage == "sv")
+                        sourceLanguage = "Swedish";
+                    else if (sourceLanguage == "no")
+                        sourceLanguage = "Norwegian";
+                    else if (sourceLanguage == "ko")
+                        sourceLanguage = "Korean";
+                    else if (sourceLanguage == "cs")
+                        sourceLanguage = "Czech";
+                    else if (sourceLanguage == "da")
+                        sourceLanguage = "Danish";
+                    else if (sourceLanguage == "nl")
+                        sourceLanguage = "Dutch";
+                  
                     // Get phrase collection
                     string text = File.ReadAllText(outputFile);
                     int index = text.IndexOf(string.Format(",,\"{0}\"", Android_Translator.LanguageEnumToIdentifier(sourceLanguage)));

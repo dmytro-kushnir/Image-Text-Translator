@@ -48,7 +48,7 @@ namespace ComputerVisionSample
 
         private async void TakePictureButton_Clicked(object sender, EventArgs e)
         {
-        
+            Image1.IsVisible = true;
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -59,7 +59,7 @@ namespace ComputerVisionSample
 
             var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
             {
-                SaveToAlbum = true,
+                SaveToAlbum = false,
                 Name = "test.jpg"
             });
 
@@ -151,8 +151,8 @@ namespace ComputerVisionSample
             this.Indicator1.IsVisible = false;
 
             DestinationLangPicker.SelectedIndex = 0;
-            DestinationLangPicker.Title = "Destination language"; 
-            
+            DestinationLangPicker.Title = "Destination language";
+
             Image1.IsVisible = true;
             this.translatedText.Text = "";
             DestinationLangPicker.IsVisible = true;
