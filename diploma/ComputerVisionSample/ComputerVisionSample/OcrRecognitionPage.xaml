@@ -1,27 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComputerVisionSample.OcrRecognitionPage">
+  <RelativeLayout>
+    <Image x:Name="backgroundImage" Source="Jupiter.png" Opacity="0.3"
+               RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+    <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+ <StackLayout Orientation="Vertical" 
+              VerticalOptions="Center"
+               HorizontalOptions="Center">
+    <Button x:Name="TakePictureButton" 
+            Clicked="TakePictureButton_Clicked" 
+            BackgroundColor="#5C91C7" 
+             Text="Take from camera"
+            Margin="40, 10"/>
+    <Button x:Name="UploadPictureButton" 
+            Clicked="UploadPictureButton_Clicked" 
+            BackgroundColor="#5C91C7" 
+            Text="Pick a photo"
+             Margin="40, 10"/>
+    <ActivityIndicator 
+      x:Name="Indicator1" 
+   IsVisible="False" 
+   IsRunning="False" />
+    <Image 
+      x:Name="Image1" 
+      />
 
-  <StackLayout Orientation="Vertical" >
-    
-    <Button x:Name="TakePictureButton" Clicked="TakePictureButton_Clicked"
-          Text="Take from camera"/>
-    <Button x:Name="UploadPictureButton" Clicked="UploadPictureButton_Clicked"
-        Text="Pick a photo"/>
-    <ActivityIndicator x:Name="Indicator1" IsVisible="False" IsRunning="False" />
-    <Image x:Name="Image1" HeightRequest="240" />
-
-    <StackLayout Orientation="Horizontal" x:Name="GettedLanguage">
-      <Label Font="17" Text="Language(detected automatically): "/>
-      <Label Font="17" Text="{Binding Language}"/>
+    <StackLayout
+      Orientation="Horizontal" 
+      x:Name="GettedLanguage"
+      HorizontalOptions="CenterAndExpand">
+      <Label Font="17" Text="Language: "/>
+      <Label Font="17"  TextColor="Black" Text="{Binding Language}"/>
     </StackLayout>
 
-    <ScrollView HeightRequest="125" >
-      <StackLayout x:Name="DetectedText"/>
+    <ScrollView 
+      HeightRequest="125" >
+      <StackLayout 
+        x:Name="DetectedText"
+         HorizontalOptions="CenterAndExpand"
+         />
     </ScrollView>
       <StackLayout>
-        <Picker x:Name="DestinationLangPicker" Title="Destination language"
+        <Picker x:Name="DestinationLangPicker" 
+                Title="Destination language"
                SelectedIndexChanged="picker_language_choose"
                 HorizontalOptions="CenterAndExpand" >
           <Picker.Items HorizontalOptions="CenterAndExpand" >
@@ -38,12 +68,18 @@
         </Picker>
         <ScrollView >
           <StackLayout Orientation="Horizontal" >
-            <Label  x:Name="translatedText"  Text="" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" Font="17" LineBreakMode="WordWrap"/>
+            <Label  x:Name="translatedText" 
+                    Text="" 
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="Center" Font="17"
+                    LineBreakMode="WordWrap"
+                    Margin="20, 10"
+                    TextColor="Black"/>
           </StackLayout>
         </ScrollView>
       </StackLayout>
 
-
-
     </StackLayout>
+    </Grid>
+      </RelativeLayout>
 </ContentPage>

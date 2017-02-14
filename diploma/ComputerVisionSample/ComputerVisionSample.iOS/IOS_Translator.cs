@@ -118,6 +118,8 @@ namespace ComputerVisionSample.IOS
                         sourceLanguage = "Chinese";
                     else if (sourceLanguage == "pl")
                         sourceLanguage = "Polish";
+                    else if (sourceLanguage == "sr-Cyrl")
+                        sourceLanguage = "Russian";
                     else if (sourceLanguage == "tr")
                         sourceLanguage = "Turkish";
                     else if (sourceLanguage == "pt")

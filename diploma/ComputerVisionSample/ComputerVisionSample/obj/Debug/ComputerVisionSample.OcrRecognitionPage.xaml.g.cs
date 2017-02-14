@@ -17,6 +17,9 @@ namespace ComputerVisionSample {
     public partial class OcrRecognitionPage : global::Xamarin.Forms.ContentPage {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Image backgroundImage;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Button TakePictureButton;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -43,6 +46,7 @@ namespace ComputerVisionSample {
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(OcrRecognitionPage));
+            backgroundImage = this.FindByName<global::Xamarin.Forms.Image>("backgroundImage");
             TakePictureButton = this.FindByName<global::Xamarin.Forms.Button>("TakePictureButton");
             UploadPictureButton = this.FindByName<global::Xamarin.Forms.Button>("UploadPictureButton");
             Indicator1 = this.FindByName<global::Xamarin.Forms.ActivityIndicator>("Indicator1");

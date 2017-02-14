@@ -157,6 +157,7 @@ namespace ComputerVisionSample
             this.translatedText.Text = "";
             DestinationLangPicker.IsVisible = true;
             GettedLanguage.IsVisible = true;
+            
         }
         /// <summary>
         /// //////////////// TRANSLATION///////////////////////
@@ -166,24 +167,31 @@ namespace ComputerVisionSample
        
         void picker_language_choose(object sender, EventArgs e)
         {
-        
             Image1.IsVisible = false;
+            if (DestinationLangPicker.SelectedIndex != 0)  //  запобігаємо зміни бекграунду при ініціалізції 
+            {
+                backgroundImage.Source = Image1.Source;
+                backgroundImage.Opacity = 0.2;
+                backgroundImage.WidthRequest = Image1.WidthRequest;
+            }
+    
+            
             DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             //if (Device.OS == TargetPlatform.Android)
           //  {
                 if (sourceLanguage != "unk")
                 {
-                    if(DestinationLangPicker.SelectedIndex == 0)
-                    {
-                    this.translatedText.Text = "";
-                 //   DestinationLangPicker.WidthRequest = 200;
-                }
-                else {
+                //    if(DestinationLangPicker.SelectedIndex == 0)
+                //    {
+                //    this.translatedText.Text = "";
+                // //   DestinationLangPicker.WidthRequest = 200;
+                //}
+             //   else {
                    
                     var translationResult =
                 DependencyService.Get<PCL_Translator>().Translate(sourceText, sourceLanguage, DestinationLangPicker.Title);
                     this.translatedText.Text = translationResult;
-                }
+             //   }
                    
                 //int tempSource = DestinationLangPicker.SelectedIndex;
                 //int tempDest = DestinationLangPicker.SelectedIndex + 1;

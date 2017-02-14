@@ -207,6 +207,7 @@ C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSa
 C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ocrTranslator.dll.mdb
 C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\ocrTranslator.dll.mdb
 C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\ocrTranslator.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ocrTranslator.dll.config
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ocrTranslator.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ocrTranslator.pdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ocrTranslator.ocrTranslator.apk
@@ -220,11 +221,14 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bi
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Media.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Permissions.Abstractions.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Permissions.dll
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Android.Support.Animated.Vector.Drawable.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Android.Support.Design.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Android.Support.v4.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Android.Support.v7.CardView.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Android.Support.v7.RecyclerView.dll
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Android.Support.Vector.Drawable.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Core.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Platform.Android.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Platform.dll
@@ -232,6 +236,8 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bi
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Microsoft.ProjectOxford.Vision.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ComputerVisionSample.pdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\FormsViewGroup.pdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\FormsViewGroup.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Connectivity.pdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Connectivity.xml
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Connectivity.dll.mdb
@@ -251,8 +257,14 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bi
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Permissions.Abstractions.pdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Permissions.Abstractions.xml
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Plugin.Permissions.Abstractions.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Core.pdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Core.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Platform.Android.pdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Xaml.pdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Xamarin.Forms.Xaml.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\ImageTextRecognition.Droid.csprojResolveAssemblyReference.cache
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\ocrTranslator.dll
@@ -265,6 +277,7 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\ob
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\layout\tabbar.xml
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\layout\toolbar.xml
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\values\styles.xml
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\jupiter.png
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\R.cs.flag
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\uploadflags.txt
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ocrTranslator.dll.mdb
@@ -285,6 +298,7 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bi
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\System.Xml.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\System.Xml.Linq.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\FormsViewGroup.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Java.Interop.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Microsoft.CSharp.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Mono.Android.dll.mdb
@@ -307,5 +321,8 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\ob
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Web.Services.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\ocrTranslator.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ocrTranslator.dll.mdb

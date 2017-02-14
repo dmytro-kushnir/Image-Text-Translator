@@ -108,11 +108,14 @@ class MonoPackageManager_Resources {
 		"Plugin.Media.dll",
 		"Plugin.Permissions.Abstractions.dll",
 		"Plugin.Permissions.dll",
+		"Xamarin.Android.Support.Animated.Vector.Drawable.dll",
 		"Xamarin.Android.Support.Design.dll",
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
 		"Xamarin.Android.Support.v7.CardView.dll",
 		"Xamarin.Android.Support.v7.MediaRouter.dll",
+		"Xamarin.Android.Support.v7.RecyclerView.dll",
+		"Xamarin.Android.Support.Vector.Drawable.dll",
 		"Xamarin.Forms.Core.dll",
 		"Xamarin.Forms.Platform.Android.dll",
 		"Xamarin.Forms.Platform.dll",
@@ -135,10 +138,10 @@ class MonoPackageManager_Resources {
 		"System.Runtime.Extensions.dll",
 		"System.ObjectModel.dll",
 		"System.Globalization.dll",
-		"System.Linq.Expressions.dll",
 		"System.ComponentModel.dll",
 		"System.Xml.ReaderWriter.dll",
 		"System.Reflection.dll",
+		"System.Linq.Expressions.dll",
 		"System.Reflection.Extensions.dll",
 		"System.Text.RegularExpressions.dll",
 		"System.Collections.Concurrent.dll",
@@ -146,5 +149,5 @@ class MonoPackageManager_Resources {
 	};
 	public static final String[] Dependencies = new String[]{
 	};
-	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_24";
+	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_23";
 }

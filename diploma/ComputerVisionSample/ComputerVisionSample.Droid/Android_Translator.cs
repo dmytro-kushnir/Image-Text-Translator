@@ -103,16 +103,18 @@ namespace ComputerVisionSample.Droid
                 // Get translated text
                 if (File.Exists(outputFile))
                 {
-                    if(sourceLanguage == "en")
+                    if (sourceLanguage == "en")
                         sourceLanguage = "English";
-                    else if(sourceLanguage == "ru")
+                    else if (sourceLanguage == "ru")
                         sourceLanguage = "Russian";
                     else if (sourceLanguage == "fr")
                         sourceLanguage = "French";
                     else if (sourceLanguage == "gr")
                         sourceLanguage = "German";
                     else if (sourceLanguage == "it")
-                    sourceLanguage = "Italian";
+                        sourceLanguage = "Italian";
+                    else if (sourceLanguage == "sr-Cyrl")
+                        sourceLanguage = "Russian";
                     else if (sourceLanguage == "es")
                         sourceLanguage = "Spanish";
                     else if (sourceLanguage == "ar")
