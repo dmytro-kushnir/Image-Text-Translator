@@ -23,9 +23,9 @@
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>zccUITests</string>
+	<string>zcc</string>
 	<key>CFBundleIdentifier</key>
-	<string>cvx.zccUITests</string>
+	<string>cvx.zcc</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>

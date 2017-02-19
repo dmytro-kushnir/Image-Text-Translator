@@ -3,6 +3,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComputerVisionSample.OcrRecognitionPage">
+  
   <RelativeLayout>
     <Image x:Name="backgroundImage" Source="Jupiter.png" Opacity="0.3"
                RelativeLayout.WidthConstraint=
@@ -15,26 +16,31 @@
               "{ConstraintExpression Type=RelativeToParent, Property=Height}">
  <StackLayout Orientation="Vertical" 
               VerticalOptions="Center"
-               HorizontalOptions="Center">
+               HorizontalOptions="Center"
+              Margin="40, 5">
     <Button x:Name="TakePictureButton" 
             Clicked="TakePictureButton_Clicked" 
             BackgroundColor="#5C91C7" 
+            TextColor="Black"
              Text="Take from camera"
             Margin="40, 10"/>
     <Button x:Name="UploadPictureButton" 
             Clicked="UploadPictureButton_Clicked" 
             BackgroundColor="#5C91C7" 
             Text="Pick a photo"
+            TextColor="Black"
              Margin="40, 10"/>
-    <ActivityIndicator 
+   <ActivityIndicator 
       x:Name="Indicator1" 
    IsVisible="False" 
    IsRunning="False" />
     <Image 
-      x:Name="Image1" 
+      x:Name="Image1"
+      HeightRequest="240"
       />
 
     <StackLayout
+      
       Orientation="Horizontal" 
       x:Name="GettedLanguage"
       HorizontalOptions="CenterAndExpand">
@@ -53,8 +59,8 @@
         <Picker x:Name="DestinationLangPicker" 
                 Title="Destination language"
                SelectedIndexChanged="picker_language_choose"
-                HorizontalOptions="CenterAndExpand" >
-          <Picker.Items HorizontalOptions="CenterAndExpand" >
+                HorizontalOptions="CenterAndExpand">
+          <Picker.Items  >
             <x:String >Destination language</x:String>
             <x:String >English</x:String>
             <x:String >Russian</x:String>
@@ -66,15 +72,17 @@
             <x:String>Italian</x:String>
           </Picker.Items>
         </Picker>
-        <ScrollView >
-          <StackLayout Orientation="Horizontal" >
-            <Label  x:Name="translatedText" 
-                    Text="" 
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="Center" Font="17"
-                    LineBreakMode="WordWrap"
-                    Margin="20, 10"
-                    TextColor="Black"/>
+        <ScrollView>
+          <StackLayout Orientation="Horizontal"
+                       HorizontalOptions="CenterAndExpand"
+                        Margin="20,10">
+           <ScrollView 
+            HeightRequest="125"
+            WidthRequest="300">
+           <StackLayout 
+             x:Name="TranslatedText"
+           HorizontalOptions="CenterAndExpand"/>
+          </ScrollView>
           </StackLayout>
         </ScrollView>
       </StackLayout>

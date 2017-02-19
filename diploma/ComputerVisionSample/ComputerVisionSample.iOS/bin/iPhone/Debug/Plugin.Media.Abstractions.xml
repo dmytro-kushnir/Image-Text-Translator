@@ -40,7 +40,7 @@
             Gets if the ability to pick a video is supported on the device
             </summary>
         </member>
-        <member name="M:Plugin.Media.Abstractions.IMedia.PickPhotoAsync">
+        <member name="M:Plugin.Media.Abstractions.IMedia.PickPhotoAsync(Plugin.Media.Abstractions.PickMediaOptions)">
             <summary>
             Picks a photo from the default gallery
             </summary>
@@ -174,17 +174,109 @@
             Front facing of device
             </summary>
         </member>
+        <member name="T:Plugin.Media.Abstractions.PickMediaOptions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Plugin.Media.Abstractions.PickMediaOptions.PhotoSize">
+            <summary>
+            Gets or sets the size of the photo.
+            </summary>
+            <value>The size of the photo.</value>
+        </member>
+        <member name="P:Plugin.Media.Abstractions.PickMediaOptions.CustomPhotoSize">
+            <summary>
+            The custom photo size to use, 100 full size (same as Full),
+            and 1 being smallest size at 1% of original
+            Default is 100
+            </summary>
+        </member>
+        <member name="P:Plugin.Media.Abstractions.PickMediaOptions.CompressionQuality">
+            <summary>
+            The compression quality to use, 0 is the maximum compression (worse quality),
+            and 100 minimum compression (best quality)
+            Default is 100
+            </summary>
+        </member>
         <member name="T:Plugin.Media.Abstractions.StoreCameraMediaOptions">
             <summary>
             
             </summary>
         </member>
+        <member name="P:Plugin.Media.Abstractions.StoreCameraMediaOptions.AllowCropping">
+            <summary>
+            Allow cropping on photos and trimming on videos
+            If null will use default
+            Photo: UWP cropping can only be disabled on full size
+            Video: UWP trimming when disabled won't allow time limit to be set
+            </summary>
+        </member>
         <member name="P:Plugin.Media.Abstractions.StoreCameraMediaOptions.DefaultCamera">
             <summary>
             Default camera
+            Should work on iOS and Windows, but not guaranteed on Android as not every camera implements it
+            </summary>
+        </member>
+        <member name="P:Plugin.Media.Abstractions.StoreCameraMediaOptions.OverlayViewProvider">
+            <summary>
+            Get or set for an OverlayViewProvider
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "P:Plugin.Media.Abstractions.StoreCameraMediaOptions.SaveToAlbum" -->
+        <member name="P:Plugin.Media.Abstractions.StoreCameraMediaOptions.PhotoSize">
+            <summary>
+            Gets or sets the size of the photo.
+            </summary>
+            <value>The size of the photo.</value>
+        </member>
+        <member name="P:Plugin.Media.Abstractions.StoreCameraMediaOptions.CustomPhotoSize">
+            <summary>
+            The custom photo size to use, 100 full size (same as Full),
+            and 1 being smallest size at 1% of original
+            Default is 100
+            </summary>
+        </member>
+        <member name="P:Plugin.Media.Abstractions.StoreCameraMediaOptions.CompressionQuality">
+            <summary>
+            The compression quality to use, 0 is the maximum compression (worse quality),
+            and 100 minimum compression (best quality)
+            Default is 100
+            </summary>
+        </member>
+        <member name="T:Plugin.Media.Abstractions.PhotoSize">
+            <summary>
+            Photo size enum.
+            </summary>
+        </member>
+        <member name="F:Plugin.Media.Abstractions.PhotoSize.Small">
+            <summary>
+            25% of original
+            </summary>
+        </member>
+        <member name="F:Plugin.Media.Abstractions.PhotoSize.Medium">
+            <summary>
+            50% of the original
+            </summary>
+        </member>
+        <member name="F:Plugin.Media.Abstractions.PhotoSize.Large">
+            <summary>
+            75% of the original
+            </summary>
+        </member>
+        <member name="F:Plugin.Media.Abstractions.PhotoSize.Full">
+            <summary>
+            Untouched
+            </summary>
+        </member>
+        <member name="F:Plugin.Media.Abstractions.PhotoSize.Custom">
+            <summary>
+            Custom size between 1-100
+            Must set the CustomPhotoSize value
+            Only applies to iOS and Android
+            Windows will auto configure back to small, medium, large, and full
+            </summary>
+        </member>
         <member name="T:Plugin.Media.Abstractions.VideoQuality">
             <summary>
             Video quality

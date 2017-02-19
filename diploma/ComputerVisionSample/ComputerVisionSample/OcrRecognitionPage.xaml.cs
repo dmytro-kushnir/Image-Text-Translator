@@ -19,15 +19,16 @@ namespace ComputerVisionSample
 
         private readonly VisionServiceClient visionClient;
         string sourceLanguage = "en"; // english by default
-        string sourceText = ""; 
+        string sourceText = "";
+  
         public OcrRecognitionPage()
         {
             InitializeComponent();
             this.visionClient = new VisionServiceClient("4d8f3dcfe9f346028b5b3d36c082c7d9");
             DestinationLangPicker.IsVisible = false;
             GettedLanguage.IsVisible = false;
-        
-           
+          
+
         }
 
         private async Task<OcrResults> AnalyzePictureAsync(Stream inputFile)
@@ -38,14 +39,10 @@ namespace ComputerVisionSample
                 return null;
             }
 
-     //       OcrResults ocrResult =
-  //await visionClient.RecognizeTextAsync(inputFile,
-  //new RecognizeLanguage() { ShortCode = "it", LongName = "Italian" }
-
             OcrResults ocrResult = await visionClient.RecognizeTextAsync(inputFile);
             return ocrResult;
         }
-
+        
         private async void TakePictureButton_Clicked(object sender, EventArgs e)
         {
             Image1.IsVisible = true;
@@ -62,14 +59,16 @@ namespace ComputerVisionSample
                 SaveToAlbum = false,
                 Name = "test.jpg"
             });
-
+        
             if (file == null)
                 return;
            
             this.Indicator1.IsVisible = true;
             this.Indicator1.IsRunning = true;
+        
 
             Image1.Source = ImageSource.FromStream(() => file.GetStream());
+            
 
             var ocrResult = await AnalyzePictureAsync(file.GetStream());
 
@@ -85,7 +84,7 @@ namespace ComputerVisionSample
             DestinationLangPicker.Title = "Destination language";
 
             Image1.IsVisible = true;
-            this.translatedText.Text = "";
+            this.TranslatedText.Children.Clear();
             DestinationLangPicker.IsVisible = true;
             GettedLanguage.IsVisible = true;
 
@@ -110,7 +109,8 @@ namespace ComputerVisionSample
                     // to the StackLayout
                     foreach (var word in line.Words)
                     {
-                        var textLabel = new Label { Text = word.Text };
+                        var textLabel = new Label { TextColor = Xamarin.Forms.Color.Black,
+                            Text = word.Text };
 
                         sourceText += textLabel.Text + " "; 
 
@@ -154,65 +154,52 @@ namespace ComputerVisionSample
             DestinationLangPicker.Title = "Destination language";
 
             Image1.IsVisible = true;
-            this.translatedText.Text = "";
+            this.TranslatedText.Children.Clear();
             DestinationLangPicker.IsVisible = true;
             GettedLanguage.IsVisible = true;
             
         }
-        /// <summary>
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (DeviceInfo.IsOrientationPortrait() && width > height || !DeviceInfo.IsOrientationPortrait() && width < height)
+            {
+
+                // Orientation got changed! Do your changes here
+              //  Image1.IsVisible = false;
+            }
+        }
+
+
         /// //////////////// TRANSLATION///////////////////////
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-       
         void picker_language_choose(object sender, EventArgs e)
         {
             Image1.IsVisible = false;
             if (DestinationLangPicker.SelectedIndex != 0)  //  запобігаємо зміни бекграунду при ініціалізції 
             {
                 backgroundImage.Source = Image1.Source;
-                backgroundImage.Opacity = 0.2;
-                backgroundImage.WidthRequest = Image1.WidthRequest;
+                backgroundImage.Opacity = 0.1;
+                backgroundImage.HeightRequest = 240;
             }
-    
-            
+            this.TranslatedText.Children.Clear();
             DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
-            //if (Device.OS == TargetPlatform.Android)
-          //  {
-                if (sourceLanguage != "unk")
-                {
-                //    if(DestinationLangPicker.SelectedIndex == 0)
-                //    {
-                //    this.translatedText.Text = "";
-                // //   DestinationLangPicker.WidthRequest = 200;
-                //}
-             //   else {
-                   
-                    var translationResult =
-                DependencyService.Get<PCL_Translator>().Translate(sourceText, sourceLanguage, DestinationLangPicker.Title);
-                    this.translatedText.Text = translationResult;
-             //   }
-                   
-                //int tempSource = DestinationLangPicker.SelectedIndex;
-                //int tempDest = DestinationLangPicker.SelectedIndex + 1;
-
-                //if (tempSource >= DestinationLangPicker.Items.Count-1) { // if choosen is in end of list
-                //     tempDest = DestinationLangPicker.SelectedIndex-1; // swap with previous, not with next
-                //}
-
-                //    string temp = DestinationLangPicker.Items[tempSource];
-                //    DestinationLangPicker.Items[tempSource] = DestinationLangPicker.Items[tempDest];
-                //    DestinationLangPicker.Items[tempDest] = temp;
-
-            }
-                else
-                {
-                    this.translatedText.Text = "unknown language! Please try again";
+                if (sourceLanguage != "unk") {
+                    if(DestinationLangPicker.SelectedIndex == 0) {
+                    this.TranslatedText.Children.Clear();
+                    }
+                    else {
+                    var translatedLabel = new Label {
+                        TextColor = Xamarin.Forms.Color.Black,
+                        Text = DependencyService.Get<PCL_Translator>().Translate(sourceText, sourceLanguage, DestinationLangPicker.Title)};
+                    this.TranslatedText.Children.Add(translatedLabel);
+                    
+                    }
                 }
-                
-           // }
+                else {
+                   var Error = new Label { Text = "unknown language! Please try again" };
+                  this.TranslatedText.Children.Add(Error); 
+                }
+            }
         }
-        
-    }
-
 }
