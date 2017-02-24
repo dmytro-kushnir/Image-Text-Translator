@@ -118,7 +118,6 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debu
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
 C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
 C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
 C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
@@ -161,5 +160,6 @@ C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisio
 C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
 C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb

@@ -17,6 +17,9 @@ namespace ComputerVisionSample {
     public partial class OcrRecognitionPage : global::Xamarin.Forms.ContentPage {
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.RelativeLayout container;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Image backgroundImage;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -35,26 +38,23 @@ namespace ComputerVisionSample {
         private global::Xamarin.Forms.StackLayout GettedLanguage;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.StackLayout DetectedText;
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Picker DestinationLangPicker;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label translatedText;
+        private global::Xamarin.Forms.Label TranslatedText;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             this.LoadFromXaml(typeof(OcrRecognitionPage));
+            container = this.FindByName<global::Xamarin.Forms.RelativeLayout>("container");
             backgroundImage = this.FindByName<global::Xamarin.Forms.Image>("backgroundImage");
             TakePictureButton = this.FindByName<global::Xamarin.Forms.Button>("TakePictureButton");
             UploadPictureButton = this.FindByName<global::Xamarin.Forms.Button>("UploadPictureButton");
             Indicator1 = this.FindByName<global::Xamarin.Forms.ActivityIndicator>("Indicator1");
             Image1 = this.FindByName<global::Xamarin.Forms.Image>("Image1");
             GettedLanguage = this.FindByName<global::Xamarin.Forms.StackLayout>("GettedLanguage");
-            DetectedText = this.FindByName<global::Xamarin.Forms.StackLayout>("DetectedText");
             DestinationLangPicker = this.FindByName<global::Xamarin.Forms.Picker>("DestinationLangPicker");
-            translatedText = this.FindByName<global::Xamarin.Forms.Label>("translatedText");
+            TranslatedText = this.FindByName<global::Xamarin.Forms.Label>("TranslatedText");
         }
     }
 }

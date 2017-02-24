@@ -34,6 +34,8 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\ob
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.ComponentModel.Composition.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Resources.ResourceManager.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Diagnostics.Tools.dll
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Diagnostics.Debug.dll
+C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Collections.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Microsoft.ProjectOxford.Vision.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Net.Primitives.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Threading.Tasks.dll
@@ -42,13 +44,11 @@ C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\ob
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Runtime.Serialization.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.ServiceModel.Internals.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Net.Requests.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Diagnostics.Debug.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Dynamic.Runtime.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Linq.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Text.Encoding.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Microsoft.CSharp.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Mono.CSharp.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Collections.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Threading.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Runtime.Extensions.dll
 C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.ObjectModel.dll

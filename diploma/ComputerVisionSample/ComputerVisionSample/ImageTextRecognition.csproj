@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeviceInfo.cs" />
     <Compile Include="OcrRecognitionPage.xaml.cs">
       <DependentUpon>OcrRecognitionPage.xaml</DependentUpon>
     </Compile>
