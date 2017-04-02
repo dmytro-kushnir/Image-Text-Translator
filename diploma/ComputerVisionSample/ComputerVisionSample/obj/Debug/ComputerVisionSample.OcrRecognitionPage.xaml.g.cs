@@ -23,6 +23,12 @@ namespace ComputerVisionSample {
         private global::Xamarin.Forms.Image backgroundImage;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.StackLayout container2;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Button BackButton;
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Button TakePictureButton;
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -48,6 +54,8 @@ namespace ComputerVisionSample {
             this.LoadFromXaml(typeof(OcrRecognitionPage));
             container = this.FindByName<global::Xamarin.Forms.RelativeLayout>("container");
             backgroundImage = this.FindByName<global::Xamarin.Forms.Image>("backgroundImage");
+            container2 = this.FindByName<global::Xamarin.Forms.StackLayout>("container2");
+            BackButton = this.FindByName<global::Xamarin.Forms.Button>("BackButton");
             TakePictureButton = this.FindByName<global::Xamarin.Forms.Button>("TakePictureButton");
             UploadPictureButton = this.FindByName<global::Xamarin.Forms.Button>("UploadPictureButton");
             Indicator1 = this.FindByName<global::Xamarin.Forms.ActivityIndicator>("Indicator1");

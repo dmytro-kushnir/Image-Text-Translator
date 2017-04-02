@@ -4,6 +4,16 @@
         <name>Plugin.Media</name>
     </assembly>
     <members>
+        <member name="T:Plugin.Media.CrossMedia">
+            <summary>
+            Cross platform Media implemenations
+            </summary>
+        </member>
+        <member name="P:Plugin.Media.CrossMedia.Current">
+            <summary>
+            Current settings to use
+            </summary>
+        </member>
         <member name="T:Plugin.Media.MediaImplementation">
             <summary>
             Implementation for Media
@@ -37,24 +47,11 @@
         <member name="P:Plugin.Media.MediaImplementation.IsPickVideoSupported">
             <inheritdoc/>
         </member>
-        <member name="M:Plugin.Media.MediaImplementation.GetPickPhotoUI">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Plugin.Media.MediaImplementation.PickPhotoAsync">
+        <member name="M:Plugin.Media.MediaImplementation.PickPhotoAsync(Plugin.Media.Abstractions.PickMediaOptions)">
             <summary>
             Picks a photo from the default gallery
             </summary>
             <returns>Media file or null if canceled</returns>
-        </member>
-        <member name="M:Plugin.Media.MediaImplementation.GetTakePhotoUI(Plugin.Media.Abstractions.StoreCameraMediaOptions)">
-            <summary>
-            
-            </summary>
-            <param name="options"></param>
-            <returns></returns>
         </member>
         <member name="M:Plugin.Media.MediaImplementation.TakePhotoAsync(Plugin.Media.Abstractions.StoreCameraMediaOptions)">
             <summary>
@@ -63,24 +60,11 @@
             <param name="options">Camera Media Options</param>
             <returns>Media file of photo or null if canceled</returns>
         </member>
-        <member name="M:Plugin.Media.MediaImplementation.GetPickVideoUI">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:Plugin.Media.MediaImplementation.PickVideoAsync">
             <summary>
             Picks a video from the default gallery
             </summary>
             <returns>Media file of video or null if canceled</returns>
-        </member>
-        <member name="M:Plugin.Media.MediaImplementation.GetTakeVideoUI(Plugin.Media.Abstractions.StoreVideoOptions)">
-            <summary>
-            
-            </summary>
-            <param name="options"></param>
-            <returns></returns>
         </member>
         <member name="M:Plugin.Media.MediaImplementation.TakeVideoAsync(Plugin.Media.Abstractions.StoreVideoOptions)">
             <summary>
@@ -115,15 +99,36 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Plugin.Media.CrossMedia">
+        <member name="T:Plugin.Media.UIImageExtensions">
             <summary>
-            Cross platform Media implemenations
+            Static mathods for UIImage
             </summary>
         </member>
-        <member name="P:Plugin.Media.CrossMedia.Current">
+        <member name="M:Plugin.Media.UIImageExtensions.ResizeImageWithAspectRatio(UIKit.UIImage,System.Single,System.Single)">
             <summary>
-            Current settings to use
+            Resize image to maximum size
+            keeping the aspect ratio
             </summary>
+        </member>
+        <member name="M:Plugin.Media.UIImageExtensions.ResizeImage(UIKit.UIImage,System.Single,System.Single)">
+            <summary>
+            Resize image, but ignore the aspect ratio
+            </summary>
+            <param name="sourceImage"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Plugin.Media.UIImageExtensions.CropImage(UIKit.UIImage,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Crop image to specitic size and at specific coordinates
+            </summary>
+            <param name="sourceImage"></param>
+            <param name="crop_x"></param>
+            <param name="crop_y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

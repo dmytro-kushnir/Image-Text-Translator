@@ -4,11 +4,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComputerVisionSample.OcrRecognitionPage">
     <RelativeLayout x:Name="container">
-        <Image x:Name="backgroundImage" Source="Jupiter.png" Opacity="0.3"
+        <Image x:Name="backgroundImage" Source="NULP.png"   Opacity="0.4"
                RelativeLayout.WidthConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                 RelativeLayout.HeightConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Height}" />
+
+      <StackLayout x:Name="container2"
+                    RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                   />
+    
         <Grid RelativeLayout.WidthConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=
@@ -17,52 +25,57 @@
               VerticalOptions="Center"
                HorizontalOptions="Center"
               Margin="40, 1">
+              <Button x:Name="BackButton"  
+            BackgroundColor="#5C91C7" 
+            TextColor="Black"
+             Text="Back"
+                     
+                Clicked="BackButton_Clicked"
+            Margin="80, 20"/>
                 <Button x:Name="TakePictureButton" 
             Clicked="TakePictureButton_Clicked" 
             BackgroundColor="#5C91C7" 
             TextColor="Black"
              Text="Camera"
-            Margin="40, 2"/>
+            Margin="40, 5"/>
           <Button x:Name="UploadPictureButton" 
             Clicked="UploadPictureButton_Clicked" 
             BackgroundColor="#5C91C7" 
             Text="Gallery"
-            TextColor="Black"
-            
-             Margin="40, 2"/>
+            TextColor="Black"  
+             Margin="40, 5"/>
                 <ActivityIndicator 
       x:Name="Indicator1" 
    IsVisible="False" 
    IsRunning="False" />
-                <Image 
-      x:Name="Image1"
-      HeightRequest="240"
-      />
-
-                <StackLayout
-      
-      Orientation="Horizontal" 
-      x:Name="GettedLanguage"
-      HorizontalOptions="CenterAndExpand">
+                
+               
+      <Image x:Name="Image1" HeightRequest="240"/>
+<StackLayout  Orientation="Horizontal" x:Name="GettedLanguage"  HorizontalOptions="CenterAndExpand">
                     <Label Font="17" Text="Detected Language: "/>
                     <Label Font="17"  TextColor="Black" Text="{Binding Language}"/>
-                </StackLayout>
+</StackLayout>
                 <StackLayout>
-                    <Picker x:Name="DestinationLangPicker" 
-                Title="Update destination language"
-              
-               SelectedIndexChanged="picker_language_choose"
+                    <Picker x:Name="DestinationLangPicker" Title="Destination language"
+               SelectedIndexChanged="picker_language_choose" 
+               
                 HorizontalOptions="CenterAndExpand">
                         <Picker.Items  >
-                            <x:String >Destination language</x:String>
                             <x:String >English</x:String>
                             <x:String >Russian</x:String>
                             <x:String >Ukrainian</x:String>
-                            <x:String >German</x:String>
+                            <x:String >Deutch</x:String>
                             <x:String >French</x:String>
                             <x:String >Polish</x:String>
                             <x:String >Spanish</x:String>
                             <x:String>Italian</x:String>
+                            <x:String>Latvian</x:String>
+                            <x:String>Chinese</x:String>
+                            <x:String>Japanese</x:String>
+                            <x:String>Portuguese</x:String>
+                            <x:String>Arabic</x:String>
+                            <x:String>Hindi</x:String>
+                            <x:String>Irish</x:String>
                         </Picker.Items>
                     </Picker>
                     <ScrollView>
@@ -74,7 +87,15 @@
             WidthRequest="300">
                                 <Label 
              x:Name="TranslatedText"
-           HorizontalOptions="CenterAndExpand"/>
+           HorizontalOptions="CenterAndExpand">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+            Tapped="YourFunctionToHandleMadTaps" 
+            NumberOfTapsRequired="2" 
+                                            
+        />
+                                    </Label.GestureRecognizers>
+                                </Label>
                             </ScrollView>
                         </StackLayout>
                     </ScrollView>
@@ -82,5 +103,7 @@
 
             </StackLayout>
         </Grid>
+   
     </RelativeLayout>
+
 </ContentPage>
