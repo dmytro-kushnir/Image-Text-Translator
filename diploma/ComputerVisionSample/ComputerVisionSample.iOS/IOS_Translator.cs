@@ -1,3 +1,7 @@
+﻿// БКР : модуль "Перекладач" IOS
+// розробник: Кушнір Дмитро (c) 2017
+// Призначення: перклад тексту отриманого з зображення та повернення його у вигляді стрічки
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,19 +11,17 @@ using System.Web;
 using ComputerVisionSample.Translator;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(ComputerVisionSample.IOS.IOS_Translator))]
 
-namespace ComputerVisionSample.IOS
+[assembly: Dependency(typeof(ComputerVisionSample.Droid.IOS_Translator))]
+
+namespace ComputerVisionSample.Droid
 {
-    /// <summary>
-    /// Translates text using Google's online language tools.
-    /// </summary>
-    ///
+
     public class IOS_Translator : PCL_Translator
     {
         #region Properties
         /// <summary>
-        /// Gets the supported languages.
+        /// Отримання доступних мов
         /// </summary>
         public static IEnumerable<string> Languages
         {
@@ -31,26 +33,7 @@ namespace ComputerVisionSample.IOS
         }
 
         /// <summary>
-        /// Gets the time taken to perform the translation.
-        /// </summary>
-        public TimeSpan TranslationTime
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// Gets the url used to speak the translation.
-        /// </summary>
-        /// <value>The url used to speak the translation.</value>
-        public string TranslationSpeechUrl
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// Gets the error.
+        /// Помилки.
         /// </summary>
         public Exception Error
         {
@@ -63,27 +46,25 @@ namespace ComputerVisionSample.IOS
         #region Public methods
 
         /// <summary>
-        /// Translates the specified source text.
+        /// Трансюємо необідний текст
         /// </summary>
-        /// <param name="sourceText">The source text.</param>
-        /// <param name="sourceLanguage">The source language.</param>
-        /// <param name="targetLanguage">The target language.</param>
-        /// <returns>The translation.</returns>
+        /// <param name="sourceText">Вхідний текст.</param>
+        /// <param name="sourceLanguage">Вхідна мова</param>
+        /// <param name="targetLanguage">Мова призначення</param>
+        /// <returns>Переклад</returns>
         public string Translate
             (string sourceText,
              string sourceLanguage,
              string targetLanguage)
         {
-            // Initialize
+            // Ініціалізація
             this.Error = null;
-            this.TranslationSpeechUrl = null;
-            this.TranslationTime = TimeSpan.Zero;
             DateTime tmStart = DateTime.Now;
             string translation = string.Empty;
 
             try
             {
-                // Download translation
+                // Завантажити переклад
                 string url = string.Format("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
                                             sourceLanguage,
                                             IOS_Translator.LanguageEnumToIdentifier(targetLanguage),
@@ -95,7 +76,7 @@ namespace ComputerVisionSample.IOS
                     wc.DownloadFile(url, outputFile);
                 }
 
-                // Get translated text
+                // Отримуємо мову тексту та парсимо її в потрібний формат
                 if (File.Exists(outputFile))
                 {
                     if (sourceLanguage == "en")
@@ -108,6 +89,8 @@ namespace ComputerVisionSample.IOS
                         sourceLanguage = "German";
                     else if (sourceLanguage == "it")
                         sourceLanguage = "Italian";
+                    else if (sourceLanguage == "sr-Cyrl")
+                        sourceLanguage = "Russian";
                     else if (sourceLanguage == "es")
                         sourceLanguage = "Spanish";
                     else if (sourceLanguage == "ar")
@@ -118,8 +101,6 @@ namespace ComputerVisionSample.IOS
                         sourceLanguage = "Chinese";
                     else if (sourceLanguage == "pl")
                         sourceLanguage = "Polish";
-                    else if (sourceLanguage == "sr-Cyrl")
-                        sourceLanguage = "Russian";
                     else if (sourceLanguage == "tr")
                         sourceLanguage = "Turkish";
                     else if (sourceLanguage == "pt")
@@ -145,67 +126,48 @@ namespace ComputerVisionSample.IOS
                     else if (sourceLanguage == "nl")
                         sourceLanguage = "Dutch";
 
-                    // Get phrase collection
+                    // Отримуємо колекцію фраз
                     string text = File.ReadAllText(outputFile);
                     int index = text.IndexOf(string.Format(",,\"{0}\"", IOS_Translator.LanguageEnumToIdentifier(sourceLanguage)));
+
                     if (index == -1)
                     {
-                        // Translation of single word
-                        int startQuote = text.IndexOf('\"');
-                        if (startQuote != -1)
+                        // ділимо отриманйи текст з севреру на стрічки таким чином : непарні - вхідний текст , парні - трансльований текст
+                        string[] phrases = text.Split(new[] { "\"," }, StringSplitOptions.RemoveEmptyEntries);
+                        for (int i = 0; i < phrases.Count(); i += 2)
                         {
-                            int endQuote = text.IndexOf('\"', startQuote + 1);
-                            if (endQuote != -1)
+                            if (i == phrases.Count() - 1) break;
+                            int startQuote2 = phrases[i].IndexOf('\"'); // початок стрічки
+                            if (startQuote2 != -1)
                             {
-                                translation = text.Substring(startQuote + 1, endQuote - startQuote - 1);
+                                int endQuote2 = phrases[i].Length; // кінець стрічки
+                                if (endQuote2 != -1)
+                                {
+                                    // записуємо це в стрічку результату
+                                    translation += phrases[i].Substring(startQuote2 + 1, endQuote2 - startQuote2 - 1);
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        // Translation of phrase
-                        text = text.Substring(0, index);
-                        text = text.Replace("],[", ",");
-                        text = text.Replace("]", string.Empty);
-                        text = text.Replace("[", string.Empty);
-                        text = text.Replace("\",\"", "\"");
 
-                        // Get translated phrases
-                        string[] phrases = text.Split(new[] { '\"' }, StringSplitOptions.RemoveEmptyEntries);
-                        for (int i = 0; (i < phrases.Count()); i += 2)
-                        {
-                            string translatedPhrase = phrases[i];
-                            if (translatedPhrase.StartsWith(",,"))
-                            {
-                                i--;
-                                continue;
-                            }
-                            translation += translatedPhrase + "  ";
-                        }
                     }
 
-                    // Fix up translation
+                    // Корегуємо можливі помилки в відображенні тексту
                     translation = translation.Trim();
                     translation = translation.Replace(" ?", "?");
                     translation = translation.Replace(" !", "!");
                     translation = translation.Replace(" ,", ",");
                     translation = translation.Replace(" .", ".");
                     translation = translation.Replace(" ;", ";");
-
-                    // And translation speech URL
-                    this.TranslationSpeechUrl = string.Format("https://translate.googleapis.com/translate_tts?ie=UTF-8&q={0}&tl={1}&total=1&idx=0&textlen={2}&client=gtx",
-                                                               HttpUtility.UrlEncode(translation), IOS_Translator.LanguageEnumToIdentifier(targetLanguage), translation.Length);
                 }
             }
             catch (Exception ex)
             {
-                translation = "�������, �������� ��� :-(";
+                translation = "Sorry, to much words :-(";
                 this.Error = ex;
                 return translation;
             }
 
-            // Return result
-            this.TranslationTime = DateTime.Now - tmStart;
+            // Повертаємо результат
             return translation;
         }
 
@@ -214,10 +176,10 @@ namespace ComputerVisionSample.IOS
         #region Private methods
 
         /// <summary>
-        /// Converts a language to its identifier.
+        /// Конвертування мова-ідентифікатор (наприклад Ukrainian -> ua)
         /// </summary>
-        /// <param name="language">The language."</param>
-        /// <returns>The identifier or <see cref="string.Empty"/> if none.</returns>
+        /// <param name="language">Иова."</param>
+        /// <returns>TЫдентифыкатор <see cref="string.Empty"/> якщо нема співпадынь</returns>
         private static string LanguageEnumToIdentifier
             (string language)
         {
@@ -228,7 +190,7 @@ namespace ComputerVisionSample.IOS
         }
 
         /// <summary>
-        /// Ensures the IOS_Translator has been initialized.
+        /// Перевірка ініціалізації 
         /// </summary>
         private static void EnsureInitialized()
         {
@@ -306,10 +268,11 @@ namespace ComputerVisionSample.IOS
         #region Fields
 
         /// <summary>
-        /// The language to translation mode map.
+        /// мода для пересування по словнику
         /// </summary>
         private static Dictionary<string, string> _languageModeMap;
 
         #endregion
     }
 }
+

@@ -18,7 +18,14 @@ using SkiaSharp.Views.Forms;
 
 namespace ComputerVisionSample
 {
-      //<x:String >Destination language</x:String>
+     //<x:String>Azerbaijani</x:String>
+     //                       <x:String>Swedish</x:String>
+     //                       <x:String>Danish</x:String>
+     //                       <x:String>Finnish</x:String>
+     //                       <x:String>Greek</x:String>
+     //                       <x:String>Georgian</x:String>
+     //                       <x:String>Turkish</x:String>
+     //                       <x:String>Czech</x:String>
     public partial class OcrRecognitionPage : ContentPage
     {
         public Exception Error
@@ -50,7 +57,13 @@ namespace ComputerVisionSample
         {
             this.Error = null;
             InitializeComponent();
-            this.visionClient = new VisionServiceClient("cf3b45431cc14c799696821dd9668990");
+            Random rand = new Random();
+
+            if (rand.Next(0, 2) == 0)
+                this.visionClient = new VisionServiceClient("cf3b45431cc14c799696821dd9668990");
+            else
+                this.visionClient = new VisionServiceClient("315528c6723843db8b09351422e87f19");
+
             DestinationLangPicker.IsVisible = false;
             GettedLanguage.IsVisible = false;
             BackButton.IsVisible = false;
@@ -88,8 +101,8 @@ namespace ComputerVisionSample
                 {
                     SaveToAlbum = false,
                     Name = "test.jpg",
-                    CompressionQuality = 75
-                   
+                    CompressionQuality = 75,
+                    AllowCropping = true
                 });
                
                 UploadPictureButton.IsVisible = false;
@@ -201,7 +214,7 @@ namespace ComputerVisionSample
                     Top = line.Rectangle.Top;
 
                     // Відправка обробленого тексту на переклад
-                    Incapsulated_Picker(sourceText, destinationLanguage);
+                    Translate_Txt(sourceText, destinationLanguage);
                     sourceText = "";
                 }
                  
@@ -260,13 +273,49 @@ namespace ComputerVisionSample
             DestinationLangPicker.IsVisible = true;
             GettedLanguage.IsVisible = true;
         }
+
+
+
         protected override void OnSizeAllocated(double width, double height)
         {
             if (count == 0)
             {
                 DestinationLangPicker.Focus();
                 count++;
+                if (Device.OS == TargetPlatform.iOS) // 
+                {
+                    DestinationLangPicker.Items.Clear();
+                    DestinationLangPicker.Items.Add("Destination language");  
                
+                DestinationLangPicker.Items.Add("English");
+                DestinationLangPicker.Items.Add("Ukrainian");
+                DestinationLangPicker.Items.Add("French");
+                DestinationLangPicker.Items.Add("Polish");
+                DestinationLangPicker.Items.Add("Spanish");
+                DestinationLangPicker.Items.Add("German");
+                DestinationLangPicker.Items.Add("Italian");
+                DestinationLangPicker.Items.Add("Latvian");
+                DestinationLangPicker.Items.Add("Chninese");
+                DestinationLangPicker.Items.Add("Japanese");
+                DestinationLangPicker.Items.Add("Portugese");
+                DestinationLangPicker.Items.Add("Arabic");
+                DestinationLangPicker.Items.Add("Hindi");
+                DestinationLangPicker.Items.Add("Hebrew");
+                DestinationLangPicker.Items.Add("Swedish");
+                DestinationLangPicker.Items.Add("Danish");
+                DestinationLangPicker.Items.Add("Norwegian");
+                DestinationLangPicker.Items.Add("Finnish");
+                DestinationLangPicker.Items.Add("Georgian");
+                DestinationLangPicker.Items.Add("Turkish");
+                DestinationLangPicker.Items.Add("Russian");
+                DestinationLangPicker.Items.Add("Czech");
+
+                    DestinationLangPicker.SelectedIndexChanged += (sender, e) =>
+                {
+                    if (DestinationLangPicker.SelectedIndex == 0)
+                        DestinationLangPicker.SelectedIndex = 1;
+                };
+               }
             }
             base.OnSizeAllocated(width, height);
 
@@ -283,7 +332,6 @@ namespace ComputerVisionSample
         {
             TakePictureButton.IsVisible = true;
             UploadPictureButton.IsVisible = true;
-            DestinationLangPicker.Focus();
             BackButton.IsVisible = false;
             Image1.IsVisible = false;
             TranslatedText.IsVisible = false;
@@ -300,9 +348,11 @@ namespace ComputerVisionSample
             UploadPictureButton.IsVisible = false;
             TakePictureButton.IsVisible = false;
             flag = false;
+            DestinationLangPicker.Focus();
+            picker_func();
         }
         /// //////////////// TRANSLATION///////////////////////
-        void Incapsulated_Picker(string sourceTxt, string destLang)
+        void Translate_Txt(string sourceTxt, string destLang)
         {
             if (sourceLanguage != "unk")
             {
@@ -328,21 +378,30 @@ namespace ComputerVisionSample
 
         void picker_language_choose(object sender, EventArgs e)
         {
+          //  if (DestinationLangPicker.SelectedIndex == 0)
+         //       DestinationLangPicker.SelectedIndex = 1;   
+            picker_func();
+        }
+        void picker_func()
+        {
             DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
-            DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length*11.2;
+            if (Device.OS == TargetPlatform.Android) // 
+            {
+                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 11.2;
+            }
             TranslatedText.Text = "";
             if (bufferSourceText1.Length > 1)
-                Incapsulated_Picker(bufferSourceText1, DestinationLangPicker.Title);
-            if(bufferSourceText2.Length > 1)
-                Incapsulated_Picker(bufferSourceText2, DestinationLangPicker.Title);
+                Translate_Txt(bufferSourceText1, DestinationLangPicker.Title);
+            if (bufferSourceText2.Length > 1)
+                Translate_Txt(bufferSourceText2, DestinationLangPicker.Title);
             if (bufferSourceText3.Length > 1)
-                Incapsulated_Picker(bufferSourceText3, DestinationLangPicker.Title);
+                Translate_Txt(bufferSourceText3, DestinationLangPicker.Title);
             if (bufferSourceText4.Length > 1)
-                Incapsulated_Picker(bufferSourceText3, DestinationLangPicker.Title);
+                Translate_Txt(bufferSourceText4, DestinationLangPicker.Title);
             if (bufferSourceText5.Length > 1)
-                Incapsulated_Picker(bufferSourceText3, DestinationLangPicker.Title);
+                Translate_Txt(bufferSourceText5, DestinationLangPicker.Title);
             if (bufferSourceText6.Length > 1)
-                Incapsulated_Picker(bufferSourceText3, DestinationLangPicker.Title);
+                Translate_Txt(bufferSourceText6, DestinationLangPicker.Title);
 
             if (flag == false)
             {
@@ -350,6 +409,5 @@ namespace ComputerVisionSample
                 TakePictureButton.IsVisible = true;
             }
         }
-      
     }
 }

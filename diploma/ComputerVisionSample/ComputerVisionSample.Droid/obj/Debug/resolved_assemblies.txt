@@ -52,8 +52,8 @@ C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVision
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Microsoft.CSharp.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Mono.CSharp.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Collections.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Threading.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Runtime.Extensions.dll
+C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Threading.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.ObjectModel.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.Globalization.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\System.ComponentModel.dll

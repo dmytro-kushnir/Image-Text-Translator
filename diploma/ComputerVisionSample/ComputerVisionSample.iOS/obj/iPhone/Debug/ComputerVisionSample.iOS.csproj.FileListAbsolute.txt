@@ -86,5 +86,6 @@ C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVision
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.iOS\bin\iPhone\Debug\SkiaSharp.Views.Forms.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.iOS\bin\iPhone\Debug\SkiaSharp.Views.iOS.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.iOS\obj\iPhone\Debug\optimized\NULP.png
+C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.iOS\bin\iPhone\Debug\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.iOS\obj\iPhone\Debug\ComputerVisionSampleiOS.exe.mdb
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.iOS\bin\iPhone\Debug\ComputerVisionSampleiOS.exe.mdb

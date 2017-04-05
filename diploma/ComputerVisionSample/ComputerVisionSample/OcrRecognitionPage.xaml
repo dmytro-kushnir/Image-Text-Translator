@@ -75,7 +75,7 @@
                             <x:String>Portuguese</x:String>
                             <x:String>Arabic</x:String>
                             <x:String>Hindi</x:String>
-                            <x:String>Irish</x:String>
+                            <x:String>Hebrew</x:String>
                         </Picker.Items>
                     </Picker>
                     <ScrollView>

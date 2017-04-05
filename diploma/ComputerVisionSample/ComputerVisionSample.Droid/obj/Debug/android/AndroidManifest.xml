@@ -10,7 +10,7 @@
   <uses-feature android:name="android.hardware.camera" android:required="false" />
   <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
   <application android:label="Ocr" android:name="md5d8f7660b296bc905238129790d49079b.MainApplication" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
-    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="ComputerVisionSample" android:theme="@style/MainTheme" android:name="md5d8f7660b296bc905238129790d49079b.MainActivity">
+    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="ComputerVisionSample" android:screenOrientation="portrait" android:theme="@style/MainTheme" android:name="md5d8f7660b296bc905238129790d49079b.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
