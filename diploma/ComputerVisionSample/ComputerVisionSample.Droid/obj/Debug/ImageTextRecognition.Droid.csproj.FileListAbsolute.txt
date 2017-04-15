@@ -475,13 +475,9 @@ C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVision
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\R.cs.flag
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\uploadflags.txt
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\ImageTextRecognition.Droid.csprojResolveAssemblyReference.cache
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\SkiaSharp.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\SkiaSharp.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\SkiaSharp.Views.Android.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\SkiaSharp.Views.Forms.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\nulp.png
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ocrTranslator.dll.mdb
+C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Java.Interop.dll.mdb
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Microsoft.CSharp.dll.mdb
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Mono.Android.dll.mdb

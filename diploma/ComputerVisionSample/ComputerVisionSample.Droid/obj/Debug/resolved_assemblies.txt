@@ -8,9 +8,6 @@ C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVision
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Plugin.Media.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Plugin.Permissions.Abstractions.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Plugin.Permissions.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\SkiaSharp.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\SkiaSharp.Views.Android.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\SkiaSharp.Views.Forms.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Xamarin.Android.Support.Animated.Vector.Drawable.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Xamarin.Android.Support.Design.dll
 C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Xamarin.Android.Support.v4.dll

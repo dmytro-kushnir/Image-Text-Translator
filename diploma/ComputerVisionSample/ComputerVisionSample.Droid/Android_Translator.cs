@@ -10,8 +10,6 @@ using System.Net;
 using System.Web;
 using ComputerVisionSample.Translator;
 using Xamarin.Forms;
-
-
 [assembly: Dependency(typeof(ComputerVisionSample.Droid.Android_Translator))]
 
 namespace ComputerVisionSample.Droid
@@ -175,11 +173,11 @@ namespace ComputerVisionSample.Droid
 
         #region Private methods
 
-        /// <summary>
-        /// Конвертування мова-ідентифікатор (наприклад Ukrainian -> ua)
+        /// <summary> 
+        /// Конвертування "мова -> ідентифікатор" (наприклад Ukrainian -> ua)
         /// </summary>
-        /// <param name="language">Иова."</param>
-        /// <returns>TЫдентифыкатор <see cref="string.Empty"/> якщо нема співпадынь</returns>
+        /// <param name="language">Мова."</param>
+        /// <returns>Ідентифікатор <see cref="string.Empty"/> якщо нема співпадынь</returns>
         private static string LanguageEnumToIdentifier
             (string language)
         {
@@ -190,7 +188,7 @@ namespace ComputerVisionSample.Droid
         }
 
         /// <summary>
-        /// Перевірка ініціалізації 
+        /// Перевірка ініціалізації використовуючи порівняння з словником 
         /// </summary>
         private static void EnsureInitialized()
         {
@@ -268,7 +266,7 @@ namespace ComputerVisionSample.Droid
         #region Fields
 
         /// <summary>
-        /// мода для пересування по словнику
+        /// мова для пересування по словнику
         /// </summary>
         private static Dictionary<string, string> _languageModeMap;
 

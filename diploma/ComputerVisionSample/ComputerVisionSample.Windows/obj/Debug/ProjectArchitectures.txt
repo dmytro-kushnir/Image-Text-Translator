@@ -1,0 +1,2 @@
+C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample.Windows\ComputerVisionSample.Windows.csproj;neutral
+C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\ImageTextRecognition.csproj;neutral

@@ -13,19 +13,10 @@ using Xamarin.Forms;
 using ComputerVisionSample.Translator;
 using ComputerVisionSample.ClipBoard;
 using System.Drawing;
-using SkiaSharp;
-using SkiaSharp.Views.Forms;
+
 
 namespace ComputerVisionSample
 {
-     //<x:String>Azerbaijani</x:String>
-     //                       <x:String>Swedish</x:String>
-     //                       <x:String>Danish</x:String>
-     //                       <x:String>Finnish</x:String>
-     //                       <x:String>Greek</x:String>
-     //                       <x:String>Georgian</x:String>
-     //                       <x:String>Turkish</x:String>
-     //                       <x:String>Czech</x:String>
     public partial class OcrRecognitionPage : ContentPage
     {
         public Exception Error
@@ -53,6 +44,7 @@ namespace ComputerVisionSample
         //
         string transaltedText = "";
         bool flag = false; // прапорець для делегування зміною стану кнопок Камери та Галереї
+        bool imageInverseFlag = false; // прапорець для делегування зумування зображенням
         public OcrRecognitionPage()
         {
             this.Error = null;
@@ -67,12 +59,11 @@ namespace ComputerVisionSample
             DestinationLangPicker.IsVisible = false;
             GettedLanguage.IsVisible = false;
             BackButton.IsVisible = false;
-            BackButton.Text = "<- Back";
-            Title = "Simple Circle";
+            BackButton.Text = "<- Back";   
             UploadPictureButton.IsVisible = false;
             TakePictureButton.IsVisible = false;
-            SKCanvasView canvasView = new SKCanvasView();
         }
+
         private async Task<OcrResults> AnalyzePictureAsync(Stream inputFile)
         {
             if (!CrossConnectivity.Current.IsConnected)
@@ -105,6 +96,7 @@ namespace ComputerVisionSample
                     AllowCropping = true
                 });
                
+
                 UploadPictureButton.IsVisible = false;
                 TakePictureButton.IsVisible = false;
                 BackButton.IsVisible = true;
@@ -153,30 +145,25 @@ namespace ComputerVisionSample
         {
           destinationLanguage = 
                 DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
-
-
                 TranslatedText.Text = "";
-         //   if (DestinationLangPicker.Title == "Destination language") destinationLanguage = "Ukrainian";
-
-                //Iterate the regions
+       
+                //Ітерація по регіонах
                 foreach (var region in ocrResult.Regions)
-            {
-                //Iterate lines per region
+                {
+                //Ітерація по лініях в регіоні
                 foreach (var line in region.Lines)
                 {
-                    //    For each line, add a panel to present words horizontally
+                    //   Для кожної лінії згенерувати горизонтальну панель
                     var lineStack = new StackLayout
                     { Orientation = StackOrientation.Horizontal };
 
-                    //Iterate words per line and add the word
-                    //to the StackLayout
+                    //Ітерація по словах в лінії
                     foreach (var word in line.Words)
                     {
                         var textLabel = new Label
                         {
                             TextColor = Xamarin.Forms.Color.Black,
-                            Text = word.Text,
-                            
+                            Text = word.Text,  
                         };
                         sourceText += textLabel.Text + " ";
 
@@ -213,6 +200,8 @@ namespace ComputerVisionSample
                     Left = line.Rectangle.Left;
                     Top = line.Rectangle.Top;
 
+                   Xamarin.Forms.Rectangle rec = new Xamarin.Forms.Rectangle(Top, Left, width, height);
+
                     // Відправка обробленого тексту на переклад
                     Translate_Txt(sourceText, destinationLanguage);
                     sourceText = "";
@@ -220,10 +209,10 @@ namespace ComputerVisionSample
                  
             }
         }
-        void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
-        {
+    //    void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
+    //    {
            
-        }
+      //  }
         private async void UploadPictureButton_Clicked(object sender, EventArgs e)
         {         
             try
@@ -274,8 +263,6 @@ namespace ComputerVisionSample
             GettedLanguage.IsVisible = true;
         }
 
-
-
         protected override void OnSizeAllocated(double width, double height)
         {
             if (count == 0)
@@ -295,9 +282,9 @@ namespace ComputerVisionSample
                 DestinationLangPicker.Items.Add("German");
                 DestinationLangPicker.Items.Add("Italian");
                 DestinationLangPicker.Items.Add("Latvian");
-                DestinationLangPicker.Items.Add("Chninese");
+                DestinationLangPicker.Items.Add("Chinese");
                 DestinationLangPicker.Items.Add("Japanese");
-                DestinationLangPicker.Items.Add("Portugese");
+                DestinationLangPicker.Items.Add("Portuguese");
                 DestinationLangPicker.Items.Add("Arabic");
                 DestinationLangPicker.Items.Add("Hindi");
                 DestinationLangPicker.Items.Add("Hebrew");
@@ -328,31 +315,43 @@ namespace ComputerVisionSample
               // Image1.IsVisible = true;
             }
         }
+
         void BackButton_Clicked(object sender, EventArgs e)
         {
-            TakePictureButton.IsVisible = true;
-            UploadPictureButton.IsVisible = true;
-            BackButton.IsVisible = false;
-            Image1.IsVisible = false;
-            TranslatedText.IsVisible = false;
-            GettedLanguage.IsVisible = false;
-            DestinationLangPicker.IsVisible = false;
-            TranslatedText.IsVisible = false;
-             backgroundImage.Opacity = 0.4;
-             bufferSourceText1 = "";
-             bufferSourceText2 = "";
-             bufferSourceText3 = "";
-             bufferSourceText4 = "";
-             bufferSourceText5 = "";
-             bufferSourceText6 = "";
-            UploadPictureButton.IsVisible = false;
-            TakePictureButton.IsVisible = false;
-            flag = false;
-            DestinationLangPicker.Focus();
-            picker_func();
+            if (imageInverseFlag == false) // якщо кнопка використовується для виходу в голове меню
+            {
+                TakePictureButton.IsVisible = true;
+                UploadPictureButton.IsVisible = true;
+                BackButton.IsVisible = false;
+                Image1.IsVisible = false;
+                TranslatedText.IsVisible = false;
+                GettedLanguage.IsVisible = false;
+                DestinationLangPicker.IsVisible = false;
+                TranslatedText.IsVisible = false;
+                // ImageBackButton.IsVisible = false;
+                backgroundImage.Opacity = 0.4;
+                bufferSourceText1 = "";
+                bufferSourceText2 = "";
+                bufferSourceText3 = "";
+                bufferSourceText4 = "";
+                bufferSourceText5 = "";
+                bufferSourceText6 = "";
+                UploadPictureButton.IsVisible = false;
+                TakePictureButton.IsVisible = false;
+                backgroundImage.IsVisible = true;
+                flag = false;
+                DestinationLangPicker.Focus();
+                picker_func();
+            }
+            else // інакше, для виходу з режиму збільшеного зображення
+            {
+                TapGesture(true);
+            }
         }
-        /// //////////////// TRANSLATION///////////////////////
-        void Translate_Txt(string sourceTxt, string destLang)
+
+ 
+            /// //////////////// TRANSLATION///////////////////////
+            void Translate_Txt(string sourceTxt, string destLang)
         {
             if (sourceLanguage != "unk")
             {
@@ -366,20 +365,55 @@ namespace ComputerVisionSample
                 var Error = "unknown language! Please try again";
                 this.TranslatedText.Text = Error;
             } 
-
         }
-
-        public void YourFunctionToHandleMadTaps(object sender, EventArgs e)
+        /// //////////////// TRANSLATION END///////////////////////
+        public void ClipboardFunc(object sender, EventArgs e)
         {
             DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(transaltedText);
             DisplayAlert("", "Successfully copied to the clipboard", "OK");
             // clipboardText = TranslatedText.Text;
         }
+        void TapGesture(bool move_to_default)
+        {
+            if (move_to_default == true)
+            {
+                BackButton.Text = " < -Back";
+                TranslatedText.IsVisible = true;
+                GettedLanguage.IsVisible = true;
+                DestinationLangPicker.IsVisible = true;
+                Image1.HeightRequest = 240;
+                Image1.WidthRequest = 240;
+                imageInverseFlag = false;
+            }
+            else
+            {
+                BackButton.Text = "Resize";
+                TakePictureButton.IsVisible = false;
+                UploadPictureButton.IsVisible = false;
+                Image1.HeightRequest = 600;
+                Image1.WidthRequest = 600;
+                TranslatedText.IsVisible = false;
+                GettedLanguage.IsVisible = false;
+                DestinationLangPicker.IsVisible = false;
+                imageInverseFlag = true;
+                
+            }
+            
+        }
 
+        void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
+            if (imageInverseFlag == false)
+                TapGesture(false);
+            else
+                TapGesture(true);
+        }
+    
+        void UnfocusedPicker(object sender, EventArgs e)
+        {
+            DestinationLangPicker.SelectedIndex = 0;
+        }
         void picker_language_choose(object sender, EventArgs e)
         {
-          //  if (DestinationLangPicker.SelectedIndex == 0)
-         //       DestinationLangPicker.SelectedIndex = 1;   
             picker_func();
         }
         void picker_func()
