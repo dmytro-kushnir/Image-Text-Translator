@@ -3,6 +3,6 @@
   <PropertyGroup>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
     <SelectedDevice>Google Nexus 7</SelectedDevice>
-    <DefaultDevice>Android_Accelerated_x86</DefaultDevice>
+    <DefaultDevice>ad</DefaultDevice>
   </PropertyGroup>
 </Project>

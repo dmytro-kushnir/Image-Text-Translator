@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using ComputerVisionSample.Translator;
 using ComputerVisionSample.ClipBoard;
-using System.Drawing;
-
 
 namespace ComputerVisionSample
 {
@@ -37,10 +35,14 @@ namespace ComputerVisionSample
         string bufferSourceText5 = "";
         string bufferSourceText6 = "";
         // визначимо координати лінії тексту
-        int Top = 0;
-        int Left = 0;
-        int width = 0;
-        int height = 0;
+        int g_Top = 0;
+        int g_Left = 0;
+        int g_Width = 0;
+        int g_Height = 0;
+        //
+        double g_screen_width = 0.0;
+        double g_screen_height = 0.0;
+
         //
         string transaltedText = "";
         bool flag = false; // прапорець для делегування зміною стану кнопок Камери та Галереї
@@ -95,8 +97,8 @@ namespace ComputerVisionSample
                     CompressionQuality = 75,
                     AllowCropping = true
                 });
-               
 
+                flag = true;
                 UploadPictureButton.IsVisible = false;
                 TakePictureButton.IsVisible = false;
                 BackButton.IsVisible = true;
@@ -127,7 +129,7 @@ namespace ComputerVisionSample
                 this.Indicator1.IsVisible = false;
                 //  DestinationLangPicker.SelectedIndex = 0;
                 //  DestinationLangPicker.Title = "Destination language";
-                flag = true;
+               
                 Image1.IsVisible = true;
                // this.TranslatedText.Children.Clear();
                 DestinationLangPicker.IsVisible = true;
@@ -195,13 +197,12 @@ namespace ComputerVisionSample
                         lineStack.Children.Add(textLabel);
                     }
 
-                    height = line.Rectangle.Height;
-                    width = line.Rectangle.Width;
-                    Left = line.Rectangle.Left;
-                    Top = line.Rectangle.Top;
-
-                   Xamarin.Forms.Rectangle rec = new Xamarin.Forms.Rectangle(Top, Left, width, height);
-
+                    g_Height = line.Rectangle.Height;
+                    g_Width = line.Rectangle.Width;
+                    g_Left = line.Rectangle.Left;
+                    g_Top = line.Rectangle.Top;
+            
+                   //Xamarin.Forms.Rectangle rec = new Xamarin.Forms.Rectangle(Top, Left, width, height);
                     // Відправка обробленого тексту на переклад
                     Translate_Txt(sourceText, destinationLanguage);
                     sourceText = "";
@@ -209,10 +210,61 @@ namespace ComputerVisionSample
                  
             }
         }
-    //    void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
-    //    {
-           
-      //  }
+        private void generateFlag(string destLng)
+        {
+            switch (destLng)
+            {
+                case "French": countryFlag.Source = "fr.png"; break;
+                case "English": countryFlag.Source = "gb.png"; break;
+                case "Russian": countryFlag.Source = "ru.png"; break;
+                case "Ukrainian": countryFlag.Source = "ua.png"; break;
+                case "Latvian": countryFlag.Source = "lv.png"; break;
+                case "German": countryFlag.Source = "gr.png"; break;
+                case "Polish": countryFlag.Source = "pl.png"; break;
+                case "Spanish": countryFlag.Source = "sp.png"; break;
+                case "Italian": countryFlag.Source = "it.png"; break;
+                case "Chinese": countryFlag.Source = "china.png"; break;
+                case "Korean": countryFlag.Source = "korea.png"; break;
+                case "Japanese": countryFlag.Source = "ja.png"; break;
+                case "Portuguese": countryFlag.Source = "po.png"; break;
+                case "Arabic": countryFlag.Source = "arabic.png"; break;
+                case "Hindi": countryFlag.Source = "india.png"; break;
+                case "Hebrew": countryFlag.Source = "isr.png"; break;
+                case "Swedish": countryFlag.Source = "sw.png"; break;
+                case "Norwegian": countryFlag.Source = "norway.png"; break;
+                case "Danish": countryFlag.Source = "denmark.png"; break;
+                case "Finnish": countryFlag.Source = "finland.png"; break;
+                case "Georgian": countryFlag.Source = "ge.png"; break;
+                case "Greek": countryFlag.Source = "gre.png"; break;
+                case "Turkish": countryFlag.Source = "turkey.png"; break;
+                case "Czech": countryFlag.Source = "cz.png"; break;
+                default: countryFlag.Source = "gb.png"; break;
+            }
+        }
+        void countryFlag_Clicked(object sender, EventArgs args)
+        {
+            DestinationLangPicker.Focus();
+        }
+            private void generateBoxes(int height, int width, int left, int top, string text)
+        {
+            Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height};
+            label.FontSize = 10;
+            container.Children.Add(label,
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return left;  // встановлення координати X
+                }),
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return top; // встановлення координати Y
+                }),
+                Constraint.Constant(width), // встановлення ширини
+                Constraint.Constant(height)  // встановлення высоти
+                
+            );
+            label.Text = text;
+            Content = container;
+        }
         private async void UploadPictureButton_Clicked(object sender, EventArgs e)
         {         
             try
@@ -229,6 +281,7 @@ namespace ComputerVisionSample
                 {
                     backgroundImage.Opacity = 0;
                 }
+                flag = true;
                 UploadPictureButton.IsVisible = false;
                 TakePictureButton.IsVisible = false;
                 Image1.IsVisible = true;
@@ -253,12 +306,8 @@ namespace ComputerVisionSample
             BackButton.IsVisible = true;
             this.Indicator1.IsRunning = false;
             this.Indicator1.IsVisible = false;
-            flag = true;
-            //  DestinationLangPicker.SelectedIndex = 0;
-            //    DestinationLangPicker.Title = "Destination language";
-
+         
             Image1.IsVisible = true;
-          //  this.TranslatedText.Children.Clear();
             DestinationLangPicker.IsVisible = true;
             GettedLanguage.IsVisible = true;
         }
@@ -305,6 +354,9 @@ namespace ComputerVisionSample
                }
             }
             base.OnSizeAllocated(width, height);
+            g_screen_height = height;
+            g_screen_width = width;
+
 
             if (DeviceInfo.IsOrientationPortrait() && width < height || !DeviceInfo.IsOrientationPortrait() && width > height)
             {
@@ -348,17 +400,18 @@ namespace ComputerVisionSample
                 TapGesture(true);
             }
         }
-
- 
             /// //////////////// TRANSLATION///////////////////////
             void Translate_Txt(string sourceTxt, string destLang)
         {
             if (sourceLanguage != "unk")
             {
-                    this.TranslatedText.Text += DependencyService.Get<PCL_Translator>().
+                string buffer = DependencyService.Get<PCL_Translator>().
                             Translate(sourceTxt, sourceLanguage, destLang) + " ";
+                this.TranslatedText.Text += buffer;
+                
+                transaltedText = TranslatedText.Text;
 
-                transaltedText = TranslatedText.Text;       
+              //  generateBoxes(g_Height, g_Width, g_Left, g_Top, buffer);
             }
             else
             {
@@ -390,8 +443,8 @@ namespace ComputerVisionSample
                 BackButton.Text = "Resize";
                 TakePictureButton.IsVisible = false;
                 UploadPictureButton.IsVisible = false;
-                Image1.HeightRequest = 600;
-                Image1.WidthRequest = 600;
+                Image1.HeightRequest = g_screen_height - 100;
+                Image1.WidthRequest = g_screen_width - 50;
                 TranslatedText.IsVisible = false;
                 GettedLanguage.IsVisible = false;
                 DestinationLangPicker.IsVisible = false;
@@ -400,7 +453,6 @@ namespace ComputerVisionSample
             }
             
         }
-
         void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
             if (imageInverseFlag == false)
                 TapGesture(false);
@@ -410,6 +462,7 @@ namespace ComputerVisionSample
     
         void UnfocusedPicker(object sender, EventArgs e)
         {
+            if(DestinationLangPicker.SelectedIndex < 0)
             DestinationLangPicker.SelectedIndex = 0;
         }
         void picker_language_choose(object sender, EventArgs e)
@@ -421,7 +474,7 @@ namespace ComputerVisionSample
             DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             if (Device.OS == TargetPlatform.Android) // 
             {
-                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 11.2;
+                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 13;
             }
             TranslatedText.Text = "";
             if (bufferSourceText1.Length > 1)
@@ -436,6 +489,8 @@ namespace ComputerVisionSample
                 Translate_Txt(bufferSourceText5, DestinationLangPicker.Title);
             if (bufferSourceText6.Length > 1)
                 Translate_Txt(bufferSourceText6, DestinationLangPicker.Title);
+
+            generateFlag(DestinationLangPicker.Title);
 
             if (flag == false)
             {

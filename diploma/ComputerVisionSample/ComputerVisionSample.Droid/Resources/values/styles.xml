@@ -28,17 +28,12 @@
     <item name="colorAccent">#FF4081</item>
   </style>
 
-  <string name="ApplicationName">Destination language</string>
-  <string-array name="dropdown_arrays">
-    <item>Choose an item</item>
-    <item>English</item>
-    <item>Russian</item>
-    <item>Ukrainian</item>
-    <item>German</item>
-    <item>French</item>
-    <item>Polish</item>
-    <item>Spanish</item>
-    <item>Italian</item>
-  </string-array>
+  <style name="splashscreen" parent="MainTheme.Base">
+    <item name="android:windowBackground">@drawable/splashscreen</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsTranslucent">false</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">true</item>
+  </style>
   
 </resources>

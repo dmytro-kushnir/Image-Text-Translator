@@ -2,9 +2,21 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ComputerVisionSample.OcrRecognitionPage">
+             x:Class="ComputerVisionSample.OcrRecognitionPage"
+            >
 
     <RelativeLayout x:Name="container">
+
+        <Image x:Name="countryFlag" Source="gb.png"  RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, 
+             Property=Width, Factor=0.85, Constant=0}" RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, 
+             Property=Width, Factor=0.01, Constant=0}"  WidthRequest="50" HeightRequest="50">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="countryFlag_Clicked"
+                NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+
         <Image x:Name="backgroundImage" Source="NULP.png"   Opacity="0.4"
                RelativeLayout.WidthConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
@@ -26,9 +38,7 @@
               VerticalOptions="Center"
                HorizontalOptions="Center"
               Margin="40, 1">
-                
-               
-                
+
                 <Button x:Name="BackButton"  
             BackgroundColor="#5C91C7" 
             TextColor="Black"
@@ -52,15 +62,14 @@
    IsVisible="False" 
    IsRunning="False" />
 
-
-                <Image x:Name="Image1" HeightRequest="240">
+                    <Image x:Name="Image1" HeightRequest="240">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
                 Tapped="OnTapGestureRecognizerTapped"
                 NumberOfTapsRequired="2" />
                     </Image.GestureRecognizers>
                 </Image>
-                
+            
                 <StackLayout  Orientation="Horizontal" x:Name="GettedLanguage"  HorizontalOptions="CenterAndExpand">
                     <Label Font="17" Text="Detected Language: "/>
                     <Label Font="17"  TextColor="Black" Text="{Binding Language}"/>
@@ -81,6 +90,7 @@
                             <x:String>Latvian</x:String>
                             <x:String>Chinese</x:String>
                             <x:String>Japanese</x:String>
+                            <x:String>Korean</x:String>
                             <x:String>Portuguese</x:String>
                             <x:String>Arabic</x:String>
                             <x:String>Hindi</x:String>
@@ -93,6 +103,8 @@
                             <x:String >Turkish</x:String>
                             <x:String >Russian</x:String>
                             <x:String >Czech</x:String>
+                            <x:String >Greek</x:String>
+                            
                         </Picker.Items>
                     </Picker>
                     <ScrollView>
