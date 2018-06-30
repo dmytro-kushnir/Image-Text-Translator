@@ -20,18 +20,15 @@
 	<key>MinimumOSVersion</key>
 	<string>10.2</string>
 	<key>CFBundleDisplayName</key>
-	<string>ocr2</string>
+	<string>ocr</string>
 	<key>CFBundleIdentifier</key>
-	<string>cvx.ocr2</string>
+	<string>cvx.ocr</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon-76@2x.png</string>
-		<string>Icon-76.png</string>
-		<string>Icon-Small.png</string>
 		<string>Icon-Small@2x.png</string>
-		<string>Icon-Small-40.png</string>
+		<string>Icon-Small.png</string>
 		<string>Icon-Small-40@2x.png</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

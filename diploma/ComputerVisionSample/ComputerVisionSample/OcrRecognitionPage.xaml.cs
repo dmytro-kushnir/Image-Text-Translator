@@ -1,4 +1,4 @@
-﻿using Microsoft.ProjectOxford.Vision;
+﻿using Microsoft.ProjectOxford.Vision;   
 using Microsoft.ProjectOxford.Vision.Contract;
 using Plugin.Connectivity;
 using Plugin.Media;
@@ -42,7 +42,7 @@ namespace ComputerVisionSample
         //
         double g_screen_width = 0.0;
         double g_screen_height = 0.0;
-
+        int[] randomArray = new int[3] { 0, 1, 2 };
         //
         string transaltedText = "";
         bool flag = false; // прапорець для делегування зміною стану кнопок Камери та Галереї
@@ -52,11 +52,14 @@ namespace ComputerVisionSample
             this.Error = null;
             InitializeComponent();
             Random rand = new Random();
+            int randomNumber = randomArray[rand.Next(0, randomArray.Length)];
 
-            if (rand.Next(0, 2) == 0)
+            if (randomNumber == 0)
                 this.visionClient = new VisionServiceClient("cf3b45431cc14c799696821dd9668990");
-            else
+            else if (randomNumber == 1)
                 this.visionClient = new VisionServiceClient("315528c6723843db8b09351422e87f19");
+            else if (randomNumber == 2)
+                this.visionClient = new VisionServiceClient("c1b92cd4516f48c1bc23b1207c472fc2");
 
             DestinationLangPicker.IsVisible = false;
             GettedLanguage.IsVisible = false;
@@ -64,6 +67,8 @@ namespace ComputerVisionSample
             BackButton.Text = "<- Back";   
             UploadPictureButton.IsVisible = false;
             TakePictureButton.IsVisible = false;
+
+            this.countryFlag.InputTransparent = true;
         }
 
         private async Task<OcrResults> AnalyzePictureAsync(Stream inputFile)
@@ -115,7 +120,6 @@ namespace ComputerVisionSample
 
                 Image1.Source = ImageSource.FromStream(() => file.GetStream());
 
-
                 var ocrResult = await AnalyzePictureAsync(file.GetStream());
                
                 this.BindingContext = null;
@@ -134,8 +138,6 @@ namespace ComputerVisionSample
                // this.TranslatedText.Children.Clear();
                 DestinationLangPicker.IsVisible = true;
                 GettedLanguage.IsVisible = true;
-
-               
             }
             catch (Exception ex)
             {
@@ -147,10 +149,10 @@ namespace ComputerVisionSample
         {
           destinationLanguage = 
                 DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
-                TranslatedText.Text = "";
-       
-                //Ітерація по регіонах
-                foreach (var region in ocrResult.Regions)
+            TranslatedText.Children.Clear();
+
+            //Ітерація по регіонах
+            foreach (var region in ocrResult.Regions)
                 {
                 //Ітерація по лініях в регіоні
                 foreach (var line in region.Lines)
@@ -168,8 +170,7 @@ namespace ComputerVisionSample
                             Text = word.Text,  
                         };
                         sourceText += textLabel.Text + " ";
-
-                       
+        
                         if(bufferSourceText1.Length < 400)
                         {
                             bufferSourceText1 += textLabel.Text + " ";
@@ -207,9 +208,9 @@ namespace ComputerVisionSample
                     Translate_Txt(sourceText, destinationLanguage);
                     sourceText = "";
                 }
-                 
             }
         }
+
         private void generateFlag(string destLng)
         {
             switch (destLng)
@@ -246,7 +247,7 @@ namespace ComputerVisionSample
             DestinationLangPicker.Focus();
         }
             private void generateBoxes(int height, int width, int left, int top, string text)
-        {
+            {
             Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height};
             label.FontSize = 10;
             container.Children.Add(label,
@@ -333,6 +334,7 @@ namespace ComputerVisionSample
                 DestinationLangPicker.Items.Add("Latvian");
                 DestinationLangPicker.Items.Add("Chinese");
                 DestinationLangPicker.Items.Add("Japanese");
+                DestinationLangPicker.Items.Add("Korean");
                 DestinationLangPicker.Items.Add("Portuguese");
                 DestinationLangPicker.Items.Add("Arabic");
                 DestinationLangPicker.Items.Add("Hindi");
@@ -345,7 +347,7 @@ namespace ComputerVisionSample
                 DestinationLangPicker.Items.Add("Turkish");
                 DestinationLangPicker.Items.Add("Russian");
                 DestinationLangPicker.Items.Add("Czech");
-
+                DestinationLangPicker.Items.Add("Greek");
                     DestinationLangPicker.SelectedIndexChanged += (sender, e) =>
                 {
                     if (DestinationLangPicker.SelectedIndex == 0)
@@ -407,16 +409,26 @@ namespace ComputerVisionSample
             {
                 string buffer = DependencyService.Get<PCL_Translator>().
                             Translate(sourceTxt, sourceLanguage, destLang) + " ";
-                this.TranslatedText.Text += buffer;
-                
-                transaltedText = TranslatedText.Text;
+
+
+                var textLabel = new Label
+                {
+                    TextColor = Xamarin.Forms.Color.Black,
+                    Text = buffer
+                };
+              
+                TranslatedText.Children.Add(textLabel);
+
+                // this.TranslatedText.Text += buffer;
+
+                transaltedText += buffer;
 
               //  generateBoxes(g_Height, g_Width, g_Left, g_Top, buffer);
             }
             else
             {
-                var Error = "unknown language! Please try again";
-                this.TranslatedText.Text = Error;
+                //var Error = "unknown language! Please try again";
+                TranslatedText.Children.Clear();
             } 
         }
         /// //////////////// TRANSLATION END///////////////////////
@@ -453,13 +465,17 @@ namespace ComputerVisionSample
             }
             
         }
-        void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
-            if (imageInverseFlag == false)
-                TapGesture(false);
-            else
-                TapGesture(true);
+        void OnTapGestureRecognizerTapped(object sender, EventArgs args)
+        {
+
+            if (TakePictureButton.IsVisible == false)
+            {
+                if (imageInverseFlag == false)
+                    TapGesture(false);
+                else
+                    TapGesture(true);
+            }
         }
-    
         void UnfocusedPicker(object sender, EventArgs e)
         {
             if(DestinationLangPicker.SelectedIndex < 0)
@@ -474,9 +490,9 @@ namespace ComputerVisionSample
             DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             if (Device.OS == TargetPlatform.Android) // 
             {
-                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 13;
+                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 12;
             }
-            TranslatedText.Text = "";
+            TranslatedText.Children.Clear(); 
             if (bufferSourceText1.Length > 1)
                 Translate_Txt(bufferSourceText1, DestinationLangPicker.Title);
             if (bufferSourceText2.Length > 1)

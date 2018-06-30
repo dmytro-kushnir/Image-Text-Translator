@@ -6,17 +6,19 @@
             >
 
     <RelativeLayout x:Name="container">
-
-        <Image x:Name="countryFlag" Source="gb.png"  RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, 
+   
+      
+           <Image x:Name="countryFlag" Source="gb.png"  RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, 
              Property=Width, Factor=0.85, Constant=0}" RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, 
-             Property=Width, Factor=0.01, Constant=0}"  WidthRequest="50" HeightRequest="50">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer
+             Property=Width, Factor=0.05, Constant=0}"  WidthRequest="50" HeightRequest="50">
+                 <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
                 Tapped="countryFlag_Clicked"
-                NumberOfTapsRequired="1" />
-            </Image.GestureRecognizers>
-        </Image>
-
+                NumberOfTapsRequired="1"
+                            />
+                    </Image.GestureRecognizers>
+                </Image>
+   
         <Image x:Name="backgroundImage" Source="NULP.png"   Opacity="0.4"
                RelativeLayout.WidthConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
@@ -69,7 +71,10 @@
                 NumberOfTapsRequired="2" />
                     </Image.GestureRecognizers>
                 </Image>
-            
+
+             
+
+
                 <StackLayout  Orientation="Horizontal" x:Name="GettedLanguage"  HorizontalOptions="CenterAndExpand">
                     <Label Font="17" Text="Detected Language: "/>
                     <Label Font="17"  TextColor="Black" Text="{Binding Language}"/>
@@ -115,14 +120,14 @@
             
             WidthRequest="300">
 
-        <Label x:Name="TranslatedText"
+                                <StackLayout x:Name="TranslatedText"
            HorizontalOptions="CenterAndExpand">
               <Label.GestureRecognizers>
                 <TapGestureRecognizer
                     Tapped="ClipboardFunc" 
                     NumberOfTapsRequired="2" />
                </Label.GestureRecognizers>
-          </Label>
+          </StackLayout>
                             </ScrollView>
                         </StackLayout>
                     </ScrollView>

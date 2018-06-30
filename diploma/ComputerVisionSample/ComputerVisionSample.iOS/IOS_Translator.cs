@@ -69,6 +69,7 @@ namespace ComputerVisionSample.Droid
                                             sourceLanguage,
                                             IOS_Translator.LanguageEnumToIdentifier(targetLanguage),
                                             HttpUtility.UrlEncode(sourceText));
+            
                 string outputFile = Path.GetTempFileName();
                 using (WebClient wc = new WebClient())
                 {
@@ -134,7 +135,20 @@ namespace ComputerVisionSample.Droid
                     {
                         // ділимо отриманйи текст з севреру на стрічки таким чином : непарні - вхідний текст , парні - трансльований текст
                         string[] phrases = text.Split(new[] { "\"," }, StringSplitOptions.RemoveEmptyEntries);
-                       
+                        for (int i = 0; i < phrases.Count(); i += 2)
+                        {
+                            if (i == phrases.Count() - 1) break;
+                            int startQuote2 = phrases[i].IndexOf('\"'); // початок стрічки
+                            if (startQuote2 != -1)
+                            {
+                                int endQuote2 = phrases[i].Length; // кінець стрічки
+                                if (endQuote2 != -1)
+                                {
+                                    // записуємо це в стрічку результату
+                                    translation += phrases[i].Substring(startQuote2 + 1, endQuote2 - startQuote2 - 1);
+                                }
+                            }
+                        }
 
                     }
 
