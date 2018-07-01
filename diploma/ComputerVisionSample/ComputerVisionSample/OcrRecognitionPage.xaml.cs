@@ -30,12 +30,6 @@ namespace ComputerVisionSample
         string sourceLanguage = "en"; // english by default
         string sourceText = "";
         string destinationLanguage = "";
-        string bufferSourceText1 = "";
-        string bufferSourceText2 = "";
-        string bufferSourceText3 = "";
-        string bufferSourceText4 = "";
-        string bufferSourceText5 = "";
-        string bufferSourceText6 = "";
         // визначимо координати лінії тексту
         int g_Top = 0;
         int g_Left = 0;
@@ -150,7 +144,8 @@ namespace ComputerVisionSample
             destinationLanguage =
                   DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             TranslatedText.Children.Clear();
-
+            string innerChunkOfText = "";
+       
             //Ітерація по регіонах
             foreach (var region in ocrResult.Regions)
             {
@@ -169,32 +164,9 @@ namespace ComputerVisionSample
                             TextColor = Xamarin.Forms.Color.Black,
                             Text = word.Text,
                         };
-                        sourceText += textLabel.Text + " ";
+                        innerChunkOfText += textLabel.Text + " ";
+                        sourceText += textLabel.Text + " "; // save to global var 
 
-                        if (bufferSourceText1.Length < 400)
-                        {
-                            bufferSourceText1 += textLabel.Text + " ";
-                        }
-                        else if (bufferSourceText2.Length < 400)
-                        {
-                            bufferSourceText2 += textLabel.Text + " ";
-                        }
-                        else if (bufferSourceText3.Length < 400)
-                        {
-                            bufferSourceText3 += textLabel.Text + " ";
-                        }
-                        else if (bufferSourceText4.Length < 400)
-                        {
-                            bufferSourceText4 += textLabel.Text + " ";
-                        }
-                        else if (bufferSourceText5.Length < 400)
-                        {
-                            bufferSourceText5 += textLabel.Text + " ";
-                        }
-                        else
-                        {
-                            bufferSourceText6 += textLabel.Text + " ";
-                        }
                         lineStack.Children.Add(textLabel);
                     }
 
@@ -205,11 +177,24 @@ namespace ComputerVisionSample
 
                     //Xamarin.Forms.Rectangle rec = new Xamarin.Forms.Rectangle(Top, Left, width, height);
                     // Відправка обробленого тексту на переклад
-                    Translate_Txt(sourceText, destinationLanguage);
-                    sourceText = "";
+                    Translate_Txt(innerChunkOfText, destinationLanguage);
+                    innerChunkOfText = "";
                 }
             }
         }
+
+        static IEnumerable<string> SplitBy(string str, int chunkLength)
+        {
+            if (String.IsNullOrEmpty(str)) yield return "";
+
+            for (int i = 0; i < str.Length; i += chunkLength)
+            {
+                if (chunkLength + i > str.Length)
+                    chunkLength = str.Length - i;
+
+                yield return str.Substring(i, chunkLength);
+            }
+         }
 
         private void generateFlag(string destLng)
         {
@@ -384,12 +369,7 @@ namespace ComputerVisionSample
                 TranslatedText.IsVisible = false;
                 // ImageBackButton.IsVisible = false;
                 backgroundImage.Opacity = 0.4;
-                bufferSourceText1 = "";
-                bufferSourceText2 = "";
-                bufferSourceText3 = "";
-                bufferSourceText4 = "";
-                bufferSourceText5 = "";
-                bufferSourceText6 = "";
+                sourceText = "";
                 UploadPictureButton.IsVisible = false;
                 TakePictureButton.IsVisible = false;
                 backgroundImage.IsVisible = true;
@@ -488,23 +468,21 @@ namespace ComputerVisionSample
         void picker_func()
         {
             DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
-            if (Device.OS == TargetPlatform.Android) // 
+
+            if (Device.OS == TargetPlatform.Android)
             {
                 DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 12;
             }
+
+            int splitChunkSize = 399;
+
             TranslatedText.Children.Clear();
-            if (bufferSourceText1.Length > 1)
-                Translate_Txt(bufferSourceText1, DestinationLangPicker.Title);
-            if (bufferSourceText2.Length > 1)
-                Translate_Txt(bufferSourceText2, DestinationLangPicker.Title);
-            if (bufferSourceText3.Length > 1)
-                Translate_Txt(bufferSourceText3, DestinationLangPicker.Title);
-            if (bufferSourceText4.Length > 1)
-                Translate_Txt(bufferSourceText4, DestinationLangPicker.Title);
-            if (bufferSourceText5.Length > 1)
-                Translate_Txt(bufferSourceText5, DestinationLangPicker.Title);
-            if (bufferSourceText6.Length > 1)
-                Translate_Txt(bufferSourceText6, DestinationLangPicker.Title);
+            var splittedText = SplitBy(sourceText, splitChunkSize);
+
+            foreach (string item in splittedText)
+            {
+                Translate_Txt(item, DestinationLangPicker.Title);
+            }
 
             generateFlag(DestinationLangPicker.Title);
 
