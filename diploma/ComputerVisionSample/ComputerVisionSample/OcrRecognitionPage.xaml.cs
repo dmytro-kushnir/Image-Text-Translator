@@ -26,6 +26,8 @@ namespace ComputerVisionSample
         // Початкове налаштування
         private int count = 0;
         private readonly VisionServiceClient visionClient;
+        protected static readonly TimeSpan QueryWaitTimeInSecond = TimeSpan.FromSeconds(3);
+        protected static readonly int MaxRetryTimes = 3;
 
         string sourceLanguage = "en"; // english by default
         string sourceText = "";
@@ -73,15 +75,54 @@ namespace ComputerVisionSample
                 return null;
             }
 
-            OcrResults ocrResult = await visionClient.RecognizeTextAsync(inputFile);
+            OcrResults ocrResult = await this.visionClient.RecognizeTextAsync(inputFile);
             return ocrResult;
+        }
+
+        /// <summary>
+        /// Uploads the image to Project Oxford and performs Handwriting Recognition
+        /// </summary>
+        /// <param name="imageFilePath">The image file path.</param>
+        /// <returns></returns>
+        private async Task<HandwritingRecognitionOperationResult> RecognizeUrl(Stream inputFile)
+        {
+            return await RecognizeAsync(async (VisionServiceClient VisionServiceClient) => await VisionServiceClient.CreateHandwritingRecognitionOperationAsync(inputFile));
+        }
+
+        private async Task<HandwritingRecognitionOperationResult> RecognizeAsync(Func<VisionServiceClient, Task<HandwritingRecognitionOperation>> Func)
+        {
+            HandwritingRecognitionOperationResult result;
+            try
+            {
+                Debug.WriteLine("Calling VisionServiceClient.CreateHandwritingRecognitionOperationAsync()...");
+                HandwritingRecognitionOperation operation = await Func(this.visionClient);
+
+                Debug.WriteLine("Calling VisionServiceClient.GetHandwritingRecognitionOperationResultAsync()...");
+                result = await this.visionClient.GetHandwritingRecognitionOperationResultAsync(operation);
+                PopulateUIWithHardwirttenLines(result);
+                int i = 0;
+                while ((result.Status == HandwritingRecognitionOperationStatus.Running || result.Status == HandwritingRecognitionOperationStatus.NotStarted) && i++ < MaxRetryTimes)
+                {
+                    Debug.WriteLine(string.Format("Server status: {0}, wait {1} seconds...", result.Status, QueryWaitTimeInSecond));
+                  //  await Task.Delay(QueryWaitTimeInSecond);
+
+                    Debug.WriteLine("Calling VisionServiceClient.GetHandwritingRecognitionOperationResultAsync()...");
+                    result = await this.visionClient.GetHandwritingRecognitionOperationResultAsync(operation);
+                }
+            }
+            catch (ClientException ex)
+            {
+                result = new HandwritingRecognitionOperationResult() { Status = HandwritingRecognitionOperationStatus.Failed };
+                Debug.WriteLine(ex.Error.Message);
+            }
+
+            return result;
         }
 
         private async void TakePictureButton_Clicked(object sender, EventArgs e)
         {
             try
             {
-
                 await CrossMedia.Current.Initialize();
 
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -114,13 +155,20 @@ namespace ComputerVisionSample
 
                 Image1.Source = ImageSource.FromStream(() => file.GetStream());
 
-                var ocrResult = await AnalyzePictureAsync(file.GetStream());
+                if (hardwrittenLanguageSupports.Any(s => "English".Contains(s)))
+                {
+                    HandwritingRecognitionOperationResult result;
+                    result = await RecognizeUrl(file.GetStream());
+                }
+                else
+                {
+                    var ocrResult = await AnalyzePictureAsync(file.GetStream());
+                    this.BindingContext = null;
+                    this.BindingContext = ocrResult;
+                    sourceLanguage = ocrResult.Language;
+                    PopulateUIWithRegions(ocrResult);
+                }
 
-                this.BindingContext = null;
-                this.BindingContext = ocrResult;
-                sourceLanguage = ocrResult.Language;
-
-                PopulateUIWithRegions(ocrResult);
                 TranslatedText.IsVisible = true;
                 Image1.IsVisible = true;
                 this.Indicator1.IsRunning = false;
@@ -145,7 +193,7 @@ namespace ComputerVisionSample
                   DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             TranslatedText.Children.Clear();
             string innerChunkOfText = "";
-       
+
             //Ітерація по регіонах
             foreach (var region in ocrResult.Regions)
             {
@@ -181,6 +229,41 @@ namespace ComputerVisionSample
                     innerChunkOfText = "";
                 }
             }
+        }
+
+        private void PopulateUIWithHardwirttenLines(HandwritingRecognitionOperationResult ocrResult)
+        {
+            destinationLanguage =
+                  DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
+            TranslatedText.Children.Clear();
+            string innerChunkOfText = "";
+       
+                //Ітерація по лініях в регіоні
+                foreach (var line in ocrResult.RecognitionResult.Lines)
+                {
+                    //   Для кожної лінії згенерувати горизонтальну панель
+                    var lineStack = new StackLayout
+                    { Orientation = StackOrientation.Horizontal };
+
+                    //Ітерація по словах в лінії
+                    foreach (var word in line.Words)
+                    {
+                        var textLabel = new Label
+                        {
+                            TextColor = Xamarin.Forms.Color.Black,
+                            Text = word.Text,
+                        };
+                        innerChunkOfText += textLabel.Text + " ";
+                        sourceText += textLabel.Text + " "; // save to global var 
+
+                        lineStack.Children.Add(textLabel);
+                    }
+
+                    // Відправка обробленого тексту на переклад
+                    Translate_Txt(innerChunkOfText, destinationLanguage);
+                    innerChunkOfText = "";
+                }
+           
         }
 
         static IEnumerable<string> SplitBy(string str, int chunkLength)
@@ -275,15 +358,21 @@ namespace ComputerVisionSample
                 this.Indicator1.IsRunning = true;
                 Image1.Source = ImageSource.FromStream(() => file.GetStream());
 
-                var ocrResult = await AnalyzePictureAsync(file.GetStream());
+                if (hardwrittenLanguageSupports.Any(s => "need to implement select dest lang".Contains(s)))
+                {
+                    HandwritingRecognitionOperationResult result;
+                    result = await RecognizeUrl(file.GetStream());
+                }
+                else
+                {
+                    var ocrResult = await AnalyzePictureAsync(file.GetStream());
+                    this.BindingContext = null;
+                    this.BindingContext = ocrResult;
+                    sourceLanguage = ocrResult.Language;
+                    PopulateUIWithRegions(ocrResult);
+                }
 
-                this.BindingContext = ocrResult;
-                sourceLanguage = ocrResult.Language;
-
-                PopulateUIWithRegions(ocrResult);
                 TranslatedText.IsVisible = true;
-
-
             }
             catch (Exception ex)
             {
