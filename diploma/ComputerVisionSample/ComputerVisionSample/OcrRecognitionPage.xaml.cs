@@ -1,6 +1,4 @@
-﻿using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
-using Plugin.Connectivity;
+﻿using Microsoft.ProjectOxford.Vision.Contract;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -12,6 +10,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using ComputerVisionSample.Translator;
 using ComputerVisionSample.ClipBoard;
+using ComputerVisionSample.services;
+using ComputerVisionSample.helpers;
+
 using System.Diagnostics;
 
 namespace ComputerVisionSample
@@ -25,9 +26,9 @@ namespace ComputerVisionSample
         }
         // Початкове налаштування
         private int count = 0;
-        private readonly VisionServiceClient visionClient;
         protected static readonly TimeSpan QueryWaitTimeInSecond = TimeSpan.FromSeconds(3);
         protected static readonly int MaxRetryTimes = 3;
+        CognitiveService computerVision;
 
         string sourceLanguage = "en"; // english by default
         string sourceText = "";
@@ -41,21 +42,24 @@ namespace ComputerVisionSample
         double g_screen_width = 0.0;
         double g_screen_height = 0.0;
 
-        string[] subscriptionKeys = new String[] { "7c45fc48ba8f42e993a1cd173e1b59a7" };
-        //
+        string[] subscriptionKeys = new String[] { "cf3b45431cc14c799696821dd9668990", "81e68751a466446c80076b8f82fd1adc", "81e68751a466446c80076b8f82fd1adc" }; // 7c45fc48ba8f42e993a1cd173e1b59a7 
+        string[] hardwrittenLanguageSupports = new String[] {"blab", "English", "English1"};
+
         string transaltedText = "";
         bool flag = false; // прапорець для делегування зміною стану кнопок Камери та Галереї
         bool imageInverseFlag = false; // прапорець для делегування зумування зображенням
         public OcrRecognitionPage()
         {
             this.Error = null;
-
             InitializeComponent();
 
             Random rand = new Random();
             int randomIndex = rand.Next(0, subscriptionKeys.Length);
-            this.visionClient = new VisionServiceClient(subscriptionKeys[randomIndex]);
+
+            computerVision = new CognitiveService(subscriptionKeys[randomIndex]);
+
             Debug.WriteLine("randomIndex -> {0} ", randomIndex);
+            Debug.WriteLine("VisionServiceClient is created");
 
             DestinationLangPicker.IsVisible = false;
             GettedLanguage.IsVisible = false;
@@ -63,61 +67,9 @@ namespace ComputerVisionSample
             BackButton.Text = "<- Back";
             UploadPictureButton.IsVisible = false;
             TakePictureButton.IsVisible = false;
-
             this.countryFlag.InputTransparent = true;
         }
 
-        private async Task<OcrResults> AnalyzePictureAsync(Stream inputFile)
-        {
-            if (!CrossConnectivity.Current.IsConnected)
-            {
-                await DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
-                return null;
-            }
-
-            OcrResults ocrResult = await this.visionClient.RecognizeTextAsync(inputFile);
-            return ocrResult;
-        }
-
-        /// <summary>
-        /// Uploads the image to Project Oxford and performs Handwriting Recognition
-        /// </summary>
-        /// <param name="imageFilePath">The image file path.</param>
-        /// <returns></returns>
-        private async Task<HandwritingRecognitionOperationResult> RecognizeUrl(Stream inputFile)
-        {
-            return await RecognizeAsync(async (VisionServiceClient VisionServiceClient) => await VisionServiceClient.CreateHandwritingRecognitionOperationAsync(inputFile));
-        }
-
-        private async Task<HandwritingRecognitionOperationResult> RecognizeAsync(Func<VisionServiceClient, Task<HandwritingRecognitionOperation>> Func)
-        {
-            HandwritingRecognitionOperationResult result;
-            try
-            {
-                Debug.WriteLine("Calling VisionServiceClient.CreateHandwritingRecognitionOperationAsync()...");
-                HandwritingRecognitionOperation operation = await Func(this.visionClient);
-
-                Debug.WriteLine("Calling VisionServiceClient.GetHandwritingRecognitionOperationResultAsync()...");
-                result = await this.visionClient.GetHandwritingRecognitionOperationResultAsync(operation);
-                PopulateUIWithHardwirttenLines(result);
-                int i = 0;
-                while ((result.Status == HandwritingRecognitionOperationStatus.Running || result.Status == HandwritingRecognitionOperationStatus.NotStarted) && i++ < MaxRetryTimes)
-                {
-                    Debug.WriteLine(string.Format("Server status: {0}, wait {1} seconds...", result.Status, QueryWaitTimeInSecond));
-                  //  await Task.Delay(QueryWaitTimeInSecond);
-
-                    Debug.WriteLine("Calling VisionServiceClient.GetHandwritingRecognitionOperationResultAsync()...");
-                    result = await this.visionClient.GetHandwritingRecognitionOperationResultAsync(operation);
-                }
-            }
-            catch (ClientException ex)
-            {
-                result = new HandwritingRecognitionOperationResult() { Status = HandwritingRecognitionOperationStatus.Failed };
-                Debug.WriteLine(ex.Error.Message);
-            }
-
-            return result;
-        }
 
         private async void TakePictureButton_Clicked(object sender, EventArgs e)
         {
@@ -158,11 +110,12 @@ namespace ComputerVisionSample
                 if (hardwrittenLanguageSupports.Any(s => "English".Contains(s)))
                 {
                     HandwritingRecognitionOperationResult result;
-                    result = await RecognizeUrl(file.GetStream());
+                    result = await computerVision.RecognizeUrl(file.GetStream());
+                    PopulateUIWithHardwirttenLines(result);
                 }
                 else
                 {
-                    var ocrResult = await AnalyzePictureAsync(file.GetStream());
+                    var ocrResult = await computerVision.AnalyzePictureAsync(file.GetStream());
                     this.BindingContext = null;
                     this.BindingContext = ocrResult;
                     sourceLanguage = ocrResult.Language;
@@ -185,6 +138,59 @@ namespace ComputerVisionSample
             {
                 this.Error = ex;
             }
+        }
+
+        private async void UploadPictureButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await DisplayAlert("No upload", "Picking a photo is not supported.", "OK");
+                    return;
+                }
+                var file = await CrossMedia.Current.PickPhotoAsync();
+                if (file == null)
+                    return;
+                if (backgroundImage.Opacity != 0)
+                {
+                    backgroundImage.Opacity = 0;
+                }
+                flag = true;
+                UploadPictureButton.IsVisible = false;
+                TakePictureButton.IsVisible = false;
+                Image1.IsVisible = true;
+                this.Indicator1.IsVisible = true;
+                this.Indicator1.IsRunning = true;
+                Image1.Source = ImageSource.FromStream(() => file.GetStream());
+
+                if (hardwrittenLanguageSupports.Any(s => "need to implement select dest lang".Contains(s)))
+                {
+                    HandwritingRecognitionOperationResult result;
+                    result = await computerVision.RecognizeUrl(file.GetStream());
+                }
+                else
+                {
+                    var ocrResult = await computerVision.AnalyzePictureAsync(file.GetStream());
+                    this.BindingContext = null;
+                    this.BindingContext = ocrResult;
+                    sourceLanguage = ocrResult.Language;
+                    PopulateUIWithRegions(ocrResult);
+                }
+
+                TranslatedText.IsVisible = true;
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex;
+            }
+            BackButton.IsVisible = true;
+            this.Indicator1.IsRunning = false;
+            this.Indicator1.IsVisible = false;
+
+            Image1.IsVisible = true;
+            DestinationLangPicker.IsVisible = true;
+            GettedLanguage.IsVisible = true;
         }
 
         private void PopulateUIWithRegions(OcrResults ocrResult)
@@ -262,22 +268,34 @@ namespace ComputerVisionSample
                     // Відправка обробленого тексту на переклад
                     Translate_Txt(innerChunkOfText, destinationLanguage);
                     innerChunkOfText = "";
-                }
-           
+                }    
         }
 
-        static IEnumerable<string> SplitBy(string str, int chunkLength)
+        void onTapFlagSelect(object sender, EventArgs args)
         {
-            if (String.IsNullOrEmpty(str)) yield return "";
+            Debug.WriteLine("CLIKCKED !!!!!!!!!!!!!!!");
+            DestinationLangPicker.Focus();
+        }
+        private void generateBoxes(int height, int width, int left, int top, string text)
+        {
+            Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height };
+            label.FontSize = 10;
+            container.Children.Add(label,
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return left;  // встановлення координати X
+                }),
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return top; // встановлення координати Y
+                }),
+                Constraint.Constant(width), // встановлення ширини
+                Constraint.Constant(height)  // встановлення высоти
 
-            for (int i = 0; i < str.Length; i += chunkLength)
-            {
-                if (chunkLength + i > str.Length)
-                    chunkLength = str.Length - i;
-
-                yield return str.Substring(i, chunkLength);
-            }
-         }
+            );
+            label.Text = text;
+            Content = container;
+        }
 
         private void generateFlag(string destLng)
         {
@@ -309,82 +327,6 @@ namespace ComputerVisionSample
                 case "Czech": countryFlag.Source = "cz.png"; break;
                 default: countryFlag.Source = "gb.png"; break;
             }
-        }
-        void countryFlag_Clicked(object sender, EventArgs args)
-        {
-            DestinationLangPicker.Focus();
-        }
-        private void generateBoxes(int height, int width, int left, int top, string text)
-        {
-            Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height };
-            label.FontSize = 10;
-            container.Children.Add(label,
-                Constraint.RelativeToParent((parent) =>
-                {
-                    return left;  // встановлення координати X
-                }),
-                Constraint.RelativeToParent((parent) =>
-                {
-                    return top; // встановлення координати Y
-                }),
-                Constraint.Constant(width), // встановлення ширини
-                Constraint.Constant(height)  // встановлення высоти
-
-            );
-            label.Text = text;
-            Content = container;
-        }
-        private async void UploadPictureButton_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!CrossMedia.Current.IsPickPhotoSupported)
-                {
-                    await DisplayAlert("No upload", "Picking a photo is not supported.", "OK");
-                    return;
-                }
-                var file = await CrossMedia.Current.PickPhotoAsync();
-                if (file == null)
-                    return;
-                if (backgroundImage.Opacity != 0)
-                {
-                    backgroundImage.Opacity = 0;
-                }
-                flag = true;
-                UploadPictureButton.IsVisible = false;
-                TakePictureButton.IsVisible = false;
-                Image1.IsVisible = true;
-                this.Indicator1.IsVisible = true;
-                this.Indicator1.IsRunning = true;
-                Image1.Source = ImageSource.FromStream(() => file.GetStream());
-
-                if (hardwrittenLanguageSupports.Any(s => "need to implement select dest lang".Contains(s)))
-                {
-                    HandwritingRecognitionOperationResult result;
-                    result = await RecognizeUrl(file.GetStream());
-                }
-                else
-                {
-                    var ocrResult = await AnalyzePictureAsync(file.GetStream());
-                    this.BindingContext = null;
-                    this.BindingContext = ocrResult;
-                    sourceLanguage = ocrResult.Language;
-                    PopulateUIWithRegions(ocrResult);
-                }
-
-                TranslatedText.IsVisible = true;
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex;
-            }
-            BackButton.IsVisible = true;
-            this.Indicator1.IsRunning = false;
-            this.Indicator1.IsVisible = false;
-
-            Image1.IsVisible = true;
-            DestinationLangPicker.IsVisible = true;
-            GettedLanguage.IsVisible = true;
         }
 
         protected override void OnSizeAllocated(double width, double height)
@@ -536,7 +478,6 @@ namespace ComputerVisionSample
         }
         void OnTapGestureRecognizerTapped(object sender, EventArgs args)
         {
-
             if (TakePictureButton.IsVisible == false)
             {
                 if (imageInverseFlag == false)
@@ -566,7 +507,7 @@ namespace ComputerVisionSample
             int splitChunkSize = 399;
 
             TranslatedText.Children.Clear();
-            var splittedText = SplitBy(sourceText, splitChunkSize);
+            var splittedText = Utils.SplitBy(sourceText, splitChunkSize);
 
             foreach (string item in splittedText)
             {

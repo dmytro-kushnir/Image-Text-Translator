@@ -11,7 +11,7 @@
                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05, Constant=0}"  WidthRequest="50" HeightRequest="50">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer 
-                    Tapped="countryFlag_Clicked"
+                    Tapped="onTapFlagSelect"
                     NumberOfTapsRequired="1">
                 </TapGestureRecognizer>
             </Image.GestureRecognizers>
