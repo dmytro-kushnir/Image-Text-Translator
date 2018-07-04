@@ -2,17 +2,12 @@
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using ComputerVisionSample.Translator;
 using ComputerVisionSample.ClipBoard;
 using ComputerVisionSample.services;
 using ComputerVisionSample.helpers;
-
 using System.Diagnostics;
 
 namespace ComputerVisionSample
@@ -24,6 +19,7 @@ namespace ComputerVisionSample
             get;
             private set;
         }
+
         // Початкове налаштування
         private int count = 0;
         protected static readonly TimeSpan QueryWaitTimeInSecond = TimeSpan.FromSeconds(3);
@@ -70,26 +66,40 @@ namespace ComputerVisionSample
             this.countryFlag.InputTransparent = true;
         }
 
-
-        private async void TakePictureButton_Clicked(object sender, EventArgs e)
+        private async void UploadPictureButton_Clicked(object sender, EventArgs e)
         {
             try
             {
-                await CrossMedia.Current.Initialize();
+                Button btn = (Button)sender;
+                var file = (dynamic)null;
 
-                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                if (btn.Text == "Camera")
                 {
-                    await DisplayAlert("No Camera", "No camera available.", "OK");
-                    return;
+                    await CrossMedia.Current.Initialize();
+                    if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                    {
+                        Debug.WriteLine("No camera available");
+                        await DisplayAlert("No Camera", "No camera available.", "OK");
+                        return;
+                    }
+                    file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                    {
+                        SaveToAlbum = false,
+                        Name = "test.jpg",
+                        CompressionQuality = 75,
+                        AllowCropping = true
+                    });
                 }
-                var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                else if (btn.Text == "Gallery")
                 {
-                    SaveToAlbum = false,
-                    Name = "test.jpg",
-                    CompressionQuality = 75,
-                    AllowCropping = true
-                });
-
+                    if (!CrossMedia.Current.IsPickPhotoSupported)
+                    {
+                        Debug.WriteLine("Picking a photo is not supported");
+                        await DisplayAlert("No upload", "Picking a photo is not supported.", "OK");
+                        return;
+                    }
+                    file = await CrossMedia.Current.PickPhotoAsync();
+                }
                 flag = true;
                 UploadPictureButton.IsVisible = false;
                 TakePictureButton.IsVisible = false;
@@ -98,13 +108,12 @@ namespace ComputerVisionSample
                 if (file == null)
                     return;
                 if (backgroundImage.Opacity != 0)
-                {
                     backgroundImage.Opacity = 0;
-                }
+
                 this.Indicator1.IsVisible = true;
                 this.Indicator1.IsRunning = true;
 
-
+               
                 Image1.Source = ImageSource.FromStream(() => file.GetStream());
 
                 if (hardwrittenLanguageSupports.Any(s => "English".Contains(s)))
@@ -121,69 +130,12 @@ namespace ComputerVisionSample
                     sourceLanguage = ocrResult.Language;
                     PopulateUIWithRegions(ocrResult);
                 }
-
-                TranslatedText.IsVisible = true;
-                Image1.IsVisible = true;
-                this.Indicator1.IsRunning = false;
-                this.Indicator1.IsVisible = false;
-                //  DestinationLangPicker.SelectedIndex = 0;
-                //  DestinationLangPicker.Title = "Destination language";
-
-                Image1.IsVisible = true;
-                // this.TranslatedText.Children.Clear();
-                DestinationLangPicker.IsVisible = true;
-                GettedLanguage.IsVisible = true;
             }
             catch (Exception ex)
             {
                 this.Error = ex;
             }
-        }
-
-        private async void UploadPictureButton_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!CrossMedia.Current.IsPickPhotoSupported)
-                {
-                    await DisplayAlert("No upload", "Picking a photo is not supported.", "OK");
-                    return;
-                }
-                var file = await CrossMedia.Current.PickPhotoAsync();
-                if (file == null)
-                    return;
-                if (backgroundImage.Opacity != 0)
-                {
-                    backgroundImage.Opacity = 0;
-                }
-                flag = true;
-                UploadPictureButton.IsVisible = false;
-                TakePictureButton.IsVisible = false;
-                Image1.IsVisible = true;
-                this.Indicator1.IsVisible = true;
-                this.Indicator1.IsRunning = true;
-                Image1.Source = ImageSource.FromStream(() => file.GetStream());
-
-                if (hardwrittenLanguageSupports.Any(s => "need to implement select dest lang".Contains(s)))
-                {
-                    HandwritingRecognitionOperationResult result;
-                    result = await computerVision.RecognizeUrl(file.GetStream());
-                }
-                else
-                {
-                    var ocrResult = await computerVision.AnalyzePictureAsync(file.GetStream());
-                    this.BindingContext = null;
-                    this.BindingContext = ocrResult;
-                    sourceLanguage = ocrResult.Language;
-                    PopulateUIWithRegions(ocrResult);
-                }
-
-                TranslatedText.IsVisible = true;
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex;
-            }
+            TranslatedText.IsVisible = true;
             BackButton.IsVisible = true;
             this.Indicator1.IsRunning = false;
             this.Indicator1.IsVisible = false;
@@ -191,6 +143,10 @@ namespace ComputerVisionSample
             Image1.IsVisible = true;
             DestinationLangPicker.IsVisible = true;
             GettedLanguage.IsVisible = true;
+
+            //  DestinationLangPicker.SelectedIndex = 0;
+            //  DestinationLangPicker.Title = "Destination language";
+            // this.TranslatedText.Children.Clear();
         }
 
         private void PopulateUIWithRegions(OcrResults ocrResult)
@@ -472,9 +428,7 @@ namespace ComputerVisionSample
                 GettedLanguage.IsVisible = false;
                 DestinationLangPicker.IsVisible = false;
                 imageInverseFlag = true;
-
             }
-
         }
         void OnTapGestureRecognizerTapped(object sender, EventArgs args)
         {

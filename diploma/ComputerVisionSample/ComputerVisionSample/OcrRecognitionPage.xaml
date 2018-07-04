@@ -46,7 +46,7 @@
                     </Button>
                     <Button 
                         x:Name="TakePictureButton" 
-                        Clicked="TakePictureButton_Clicked" 
+                        Clicked="UploadPictureButton_Clicked" 
                         BackgroundColor="#5C91C7" 
                         TextColor="Black"
                         Text="Camera"
