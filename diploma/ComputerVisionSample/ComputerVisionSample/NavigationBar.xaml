@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ComputerVisionSample.NavigationBar">
+    <ContentView.Content>
+        <Grid 
+            BackgroundColor="White" >
+            <BoxView
+                BackgroundColor="black"  />
+            <Grid
+                BackgroundColor="#AAAAAA"  Margin="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout 
+                    Orientation="Horizontal"
+                    Grid.Column="0"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="End">
+                    <Image
+                        Source="ru.png"
+                        WidthRequest="50"
+                        HeightRequest="50">
+                    </Image>
+                    <Label
+                        Text="Source Language"
+                        TextColor="White"
+                        WidthRequest="80">
+                    </Label>
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal"
+                    Grid.Column="1"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="End">
+                    <Image
+                        Source="camera.png"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        Margin="20, 0, 20, 0">
+                    </Image>
+                    <Image
+                        Source="gallery.png"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        Margin="20, 0, 20, 0">
+                    </Image>
+                </StackLayout>
+                <StackLayout
+                    Orientation="Horizontal"
+                    Grid.Column="2"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="End">
+                    <Label
+                        Text="Destination Language"
+                        TextColor="White"
+                        WidthRequest="80">
+                    </Label>
+                    <Image
+                        Source="ru.png"
+                        WidthRequest="50"
+                        HeightRequest="50">
+                    </Image>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

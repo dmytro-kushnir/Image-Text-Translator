@@ -253,38 +253,6 @@ namespace ComputerVisionSample
             Content = container;
         }
 
-        private void generateFlag(string destLng)
-        {
-            switch (destLng)
-            {
-                case "French": countryFlag.Source = "fr.png"; break;
-                case "English": countryFlag.Source = "gb.png"; break;
-                case "Russian": countryFlag.Source = "ru.png"; break;
-                case "Ukrainian": countryFlag.Source = "ua.png"; break;
-                case "Latvian": countryFlag.Source = "lv.png"; break;
-                case "German": countryFlag.Source = "gr.png"; break;
-                case "Polish": countryFlag.Source = "pl.png"; break;
-                case "Spanish": countryFlag.Source = "sp.png"; break;
-                case "Italian": countryFlag.Source = "it.png"; break;
-                case "Chinese": countryFlag.Source = "china.png"; break;
-                case "Korean": countryFlag.Source = "korea.png"; break;
-                case "Japanese": countryFlag.Source = "ja.png"; break;
-                case "Portuguese": countryFlag.Source = "po.png"; break;
-                case "Arabic": countryFlag.Source = "arabic.png"; break;
-                case "Hindi": countryFlag.Source = "india.png"; break;
-                case "Hebrew": countryFlag.Source = "isr.png"; break;
-                case "Swedish": countryFlag.Source = "sw.png"; break;
-                case "Norwegian": countryFlag.Source = "norway.png"; break;
-                case "Danish": countryFlag.Source = "denmark.png"; break;
-                case "Finnish": countryFlag.Source = "finland.png"; break;
-                case "Georgian": countryFlag.Source = "ge.png"; break;
-                case "Greek": countryFlag.Source = "gre.png"; break;
-                case "Turkish": countryFlag.Source = "turkey.png"; break;
-                case "Czech": countryFlag.Source = "cz.png"; break;
-                default: countryFlag.Source = "gb.png"; break;
-            }
-        }
-
         protected override void OnSizeAllocated(double width, double height)
         {
             if (count == 0)
@@ -468,7 +436,7 @@ namespace ComputerVisionSample
                 Translate_Txt(item, DestinationLangPicker.Title);
             }
 
-            generateFlag(DestinationLangPicker.Title);
+            countryFlag.Source = Utils.generateFlag(DestinationLangPicker.Title, countryFlag.Source);
 
             if (flag == false)
             {
