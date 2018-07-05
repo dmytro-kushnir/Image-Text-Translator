@@ -61,8 +61,6 @@ namespace ComputerVisionSample
             GettedLanguage.IsVisible = false;
             BackButton.IsVisible = false;
             BackButton.Text = "<- Back";
-            UploadPictureButton.IsVisible = false;
-            TakePictureButton.IsVisible = false;
             this.countryFlag.InputTransparent = true;
         }
 
@@ -70,10 +68,17 @@ namespace ComputerVisionSample
         {
             try
             {
-                Button btn = (Button)sender;
+                Image img = (Image)sender;
                 var file = (dynamic)null;
-
-                if (btn.Text == "Camera")
+                string imageName = "";
+                if (img.Source is Xamarin.Forms.FileImageSource)
+                {
+                    Xamarin.Forms.FileImageSource objFileImageSource = (Xamarin.Forms.FileImageSource)img.Source;
+                    //
+                    // Access the file that was specified:-
+                    imageName = objFileImageSource.File;
+                }
+                if (imageName == "camera.png")
                 {
                     await CrossMedia.Current.Initialize();
                     if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -90,7 +95,7 @@ namespace ComputerVisionSample
                         AllowCropping = true
                     });
                 }
-                else if (btn.Text == "Gallery")
+                else if (imageName == "gallery.png")
                 {
                     if (!CrossMedia.Current.IsPickPhotoSupported)
                     {
@@ -101,8 +106,6 @@ namespace ComputerVisionSample
                     file = await CrossMedia.Current.PickPhotoAsync();
                 }
                 flag = true;
-                UploadPictureButton.IsVisible = false;
-                TakePictureButton.IsVisible = false;
                 BackButton.IsVisible = true;
                 Image1.IsVisible = true;
                 if (file == null)
@@ -314,8 +317,6 @@ namespace ComputerVisionSample
         {
             if (imageInverseFlag == false) // якщо кнопка використовується для виходу в голове меню
             {
-                TakePictureButton.IsVisible = true;
-                UploadPictureButton.IsVisible = true;
                 BackButton.IsVisible = false;
                 Image1.IsVisible = false;
                 TranslatedText.IsVisible = false;
@@ -325,8 +326,6 @@ namespace ComputerVisionSample
                 // ImageBackButton.IsVisible = false;
                 backgroundImage.Opacity = 0.4;
                 sourceText = "";
-                UploadPictureButton.IsVisible = false;
-                TakePictureButton.IsVisible = false;
                 backgroundImage.IsVisible = true;
                 flag = false;
                 DestinationLangPicker.Focus();
@@ -388,8 +387,6 @@ namespace ComputerVisionSample
             else
             {
                 BackButton.Text = "Resize";
-                TakePictureButton.IsVisible = false;
-                UploadPictureButton.IsVisible = false;
                 Image1.HeightRequest = g_screen_height - 100;
                 Image1.WidthRequest = g_screen_width - 50;
                 TranslatedText.IsVisible = false;
@@ -400,13 +397,13 @@ namespace ComputerVisionSample
         }
         void OnTapGestureRecognizerTapped(object sender, EventArgs args)
         {
-            if (TakePictureButton.IsVisible == false)
-            {
-                if (imageInverseFlag == false)
-                    TapGesture(false);
-                else
-                    TapGesture(true);
-            }
+            //if (TakePictureButton.IsVisible == false)
+            //{
+            //    if (imageInverseFlag == false)
+            //        TapGesture(false);
+            //    else
+            //        TapGesture(true);
+            //}
         }
         void UnfocusedPicker(object sender, EventArgs e)
         {
@@ -438,11 +435,11 @@ namespace ComputerVisionSample
 
             countryFlag.Source = Utils.generateFlag(DestinationLangPicker.Title, countryFlag.Source);
 
-            if (flag == false)
-            {
-                UploadPictureButton.IsVisible = true;
-                TakePictureButton.IsVisible = true;
-            }
+            //if (flag == false)
+            //{
+            //    UploadPictureButton.IsVisible = true;
+            //    TakePictureButton.IsVisible = true;
+            //}
         }
     }
 }

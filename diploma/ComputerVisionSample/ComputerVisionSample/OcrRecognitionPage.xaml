@@ -24,16 +24,11 @@
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
         </Image>
-        <StackLayout
+        <!--<StackLayout
                 RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
                 RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}">
                     <views:NavigationBar/>
-        </StackLayout>
-        <StackLayout
-                RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
-                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 0.90}">
-                    <views:NavigationBar/>
-        </StackLayout>
+        </StackLayout>-->
         <Grid 
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
@@ -49,22 +44,6 @@
                     Text="Back"
                     Clicked="BackButton_Clicked"
                     Margin="80, 20">
-                </Button>
-                <Button 
-                    x:Name="TakePictureButton" 
-                    Clicked="UploadPictureButton_Clicked" 
-                    BackgroundColor="#5C91C7" 
-                    TextColor="Black"
-                    Text="Camera"
-                    Margin="40, 5">
-                </Button>
-                <Button
-                    x:Name="UploadPictureButton" 
-                    Clicked="UploadPictureButton_Clicked" 
-                    BackgroundColor="#5C91C7" 
-                    Text="Gallery"
-                    TextColor="Black"  
-                    Margin="40, 10">
                 </Button>
                 <ActivityIndicator 
                     x:Name="Indicator1" 
@@ -138,7 +117,8 @@
                                     WidthRequest="300">
                                 <StackLayout 
                                     x:Name="TranslatedText"
-                                    HorizontalOptions="CenterAndExpand">
+                                    HorizontalOptions="CenterAndExpand"
+                                    >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Tapped="ClipboardFunc" 
@@ -152,5 +132,10 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
+        <StackLayout
+                RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
+                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 0.93}">
+            <views:NavigationBar uploadPictureButton_Clicked="UploadPictureButton_Clicked"/>
+        </StackLayout>
     </RelativeLayout>
 </ContentPage>

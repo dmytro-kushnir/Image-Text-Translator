@@ -26,6 +26,7 @@
                         HeightRequest="50">
                     </Image>
                     <Label
+                        x:Name="srcLang"
                         Text="Source Language"
                         TextColor="White"
                         WidthRequest="80">
@@ -37,12 +38,15 @@
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="End">
                     <Image
+                        x:Name="camera"
                         Source="camera.png"
                         WidthRequest="50"
                         HeightRequest="50"
                         Margin="20, 0, 20, 0">
+
                     </Image>
                     <Image
+                        x:Name="gallery"
                         Source="gallery.png"
                         WidthRequest="50"
                         HeightRequest="50"
@@ -55,6 +59,7 @@
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="End">
                     <Label
+                        x:Name="DestLang"
                         Text="Destination Language"
                         TextColor="White"
                         WidthRequest="80">
