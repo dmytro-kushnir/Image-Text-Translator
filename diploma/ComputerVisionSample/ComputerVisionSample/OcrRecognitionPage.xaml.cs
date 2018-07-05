@@ -14,6 +14,7 @@ namespace ComputerVisionSample
 {
     public partial class OcrRecognitionPage : ContentPage
     {
+
         public Exception Error
         {
             get;
@@ -61,7 +62,7 @@ namespace ComputerVisionSample
             GettedLanguage.IsVisible = false;
             BackButton.IsVisible = false;
             BackButton.Text = "<- Back";
-            this.countryFlag.InputTransparent = true;
+            //this.countryFlag.InputTransparent = true;
         }
 
         private async void UploadPictureButton_Clicked(object sender, EventArgs e)
@@ -230,9 +231,8 @@ namespace ComputerVisionSample
                 }    
         }
 
-        void onTapFlagSelect(object sender, EventArgs args)
+        void OpenLanguagePicker_Clicked(object sender, EventArgs args)
         {
-            Debug.WriteLine("CLIKCKED !!!!!!!!!!!!!!!");
             DestinationLangPicker.Focus();
         }
         private void generateBoxes(int height, int width, int left, int top, string text)
@@ -260,7 +260,7 @@ namespace ComputerVisionSample
         {
             if (count == 0)
             {
-                DestinationLangPicker.Focus();
+                //DestinationLangPicker.Focus();
                 count++;
                 if (Device.OS == TargetPlatform.iOS) // 
                 {
@@ -433,7 +433,7 @@ namespace ComputerVisionSample
                 Translate_Txt(item, DestinationLangPicker.Title);
             }
 
-            countryFlag.Source = Utils.generateFlag(DestinationLangPicker.Title, countryFlag.Source);
+            //countryFlag.Source = Utils.generateFlag(DestinationLangPicker.Title, countryFlag.Source);
 
             //if (flag == false)
             //{

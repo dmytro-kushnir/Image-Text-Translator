@@ -6,17 +6,6 @@
              xmlns:views="ComputerVisionSample.NavigationBar"
             >
     <RelativeLayout x:Name="container">
-        <Image x:Name="countryFlag" 
-               Source="gb.png"  
-               RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.85, Constant=0}"
-               RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05, Constant=0}"  WidthRequest="50" HeightRequest="50">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer 
-                    Tapped="onTapFlagSelect"
-                    NumberOfTapsRequired="1">
-                </TapGestureRecognizer>
-            </Image.GestureRecognizers>
-        </Image>
         <Image 
             x:Name="backgroundImage" 
             Source="NULP.png"   
@@ -134,8 +123,11 @@
         </Grid>
         <StackLayout
                 RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
-                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 0.93}">
-            <views:NavigationBar uploadPictureButton_Clicked="UploadPictureButton_Clicked"/>
+                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 0.92}">
+            <views:NavigationBar 
+                uploadPictureButton_Clicked="UploadPictureButton_Clicked"
+                openLanguagePicker_Clicked="OpenLanguagePicker_Clicked">
+            </views:NavigationBar>
         </StackLayout>
     </RelativeLayout>
 </ContentPage>

@@ -54,5 +54,13 @@ namespace ComputerVisionSample.helpers
             }
             return imgSrc;
         }
+
+        public static void generateImageGesture(Image[] images, TapGestureRecognizer tgr)
+        {
+            foreach (var image in images)
+            {
+                image.GestureRecognizers.Add(tgr);
+            }
+        }
     }
 }

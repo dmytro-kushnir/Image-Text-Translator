@@ -8,7 +8,7 @@
             <BoxView
                 BackgroundColor="black"  />
             <Grid
-                BackgroundColor="#AAAAAA"  Margin="2" >
+                BackgroundColor="#AAAAAA"  Margin="0, 1, 0, 0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -21,16 +21,11 @@
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="End">
                     <Image
+                        x:Name="sourceLanguage"
                         Source="ru.png"
                         WidthRequest="50"
                         HeightRequest="50">
                     </Image>
-                    <Label
-                        x:Name="srcLang"
-                        Text="Source Language"
-                        TextColor="White"
-                        WidthRequest="80">
-                    </Label>
                 </StackLayout>
                 <StackLayout
                     Orientation="Horizontal"
@@ -42,15 +37,14 @@
                         Source="camera.png"
                         WidthRequest="50"
                         HeightRequest="50"
-                        Margin="20, 0, 20, 0">
-
+                        Margin="0, 0, 0, 0">
                     </Image>
                     <Image
                         x:Name="gallery"
                         Source="gallery.png"
                         WidthRequest="50"
                         HeightRequest="50"
-                        Margin="20, 0, 20, 0">
+                        Margin="0, 0, 0, 0">
                     </Image>
                 </StackLayout>
                 <StackLayout
@@ -58,13 +52,8 @@
                     Grid.Column="2"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="End">
-                    <Label
-                        x:Name="DestLang"
-                        Text="Destination Language"
-                        TextColor="White"
-                        WidthRequest="80">
-                    </Label>
                     <Image
+                        x:Name="destinationLanguage"
                         Source="ru.png"
                         WidthRequest="50"
                         HeightRequest="50">
