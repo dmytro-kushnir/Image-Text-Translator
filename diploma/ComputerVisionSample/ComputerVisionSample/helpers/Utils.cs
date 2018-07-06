@@ -62,5 +62,13 @@ namespace ComputerVisionSample.helpers
                 image.GestureRecognizers.Add(tgr);
             }
         }
+
+        public static void generatePicker(Picker picker, string[] languages)
+        {
+            foreach (var language in languages)
+            {
+                picker.Items.Add(language);
+            }
+        }
     }
 }

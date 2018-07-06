@@ -10,6 +10,7 @@ using ComputerVisionSample.services;
 using ComputerVisionSample.helpers;
 using System.Diagnostics;
 
+
 namespace ComputerVisionSample
 {
     public partial class OcrRecognitionPage : ContentPage
@@ -39,9 +40,6 @@ namespace ComputerVisionSample
         double g_screen_width = 0.0;
         double g_screen_height = 0.0;
 
-        string[] subscriptionKeys = new String[] { "cf3b45431cc14c799696821dd9668990", "81e68751a466446c80076b8f82fd1adc", "81e68751a466446c80076b8f82fd1adc" }; // 7c45fc48ba8f42e993a1cd173e1b59a7 
-        string[] hardwrittenLanguageSupports = new String[] {"blab", "English", "English1"};
-
         string transaltedText = "";
         bool flag = false; // прапорець для делегування зміною стану кнопок Камери та Галереї
         bool imageInverseFlag = false; // прапорець для делегування зумування зображенням
@@ -51,14 +49,14 @@ namespace ComputerVisionSample
             InitializeComponent();
 
             Random rand = new Random();
-            int randomIndex = rand.Next(0, subscriptionKeys.Length);
+            int randomIndex = rand.Next(0, Data.subscriptionKeys.Length);
 
-            computerVision = new CognitiveService(subscriptionKeys[randomIndex]);
+            computerVision = new CognitiveService(Data.subscriptionKeys[randomIndex]);
 
             Debug.WriteLine("randomIndex -> {0} ", randomIndex);
             Debug.WriteLine("VisionServiceClient is created");
 
-            DestinationLangPicker.IsVisible = false;
+         //   DestinationLangPicker.IsVisible = false;
             GettedLanguage.IsVisible = false;
             BackButton.IsVisible = false;
             BackButton.Text = "<- Back";
@@ -120,7 +118,7 @@ namespace ComputerVisionSample
                
                 Image1.Source = ImageSource.FromStream(() => file.GetStream());
 
-                if (hardwrittenLanguageSupports.Any(s => "English".Contains(s)))
+                if (Data.hardwrittenLanguageSupports.Any(s => "English".Contains(s)))
                 {
                     HandwritingRecognitionOperationResult result;
                     result = await computerVision.RecognizeUrl(file.GetStream());
@@ -145,7 +143,7 @@ namespace ComputerVisionSample
             this.Indicator1.IsVisible = false;
 
             Image1.IsVisible = true;
-            DestinationLangPicker.IsVisible = true;
+         //   DestinationLangPicker.IsVisible = true;
             GettedLanguage.IsVisible = true;
 
             //  DestinationLangPicker.SelectedIndex = 0;
@@ -155,8 +153,8 @@ namespace ComputerVisionSample
 
         private void PopulateUIWithRegions(OcrResults ocrResult)
         {
-            destinationLanguage =
-                  DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
+            //destinationLanguage =
+            //      DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             TranslatedText.Children.Clear();
             string innerChunkOfText = "";
 
@@ -199,8 +197,8 @@ namespace ComputerVisionSample
 
         private void PopulateUIWithHardwirttenLines(HandwritingRecognitionOperationResult ocrResult)
         {
-            destinationLanguage =
-                  DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
+      //      destinationLanguage =
+     //             DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             TranslatedText.Children.Clear();
             string innerChunkOfText = "";
        
@@ -229,11 +227,6 @@ namespace ComputerVisionSample
                     Translate_Txt(innerChunkOfText, destinationLanguage);
                     innerChunkOfText = "";
                 }    
-        }
-
-        void OpenLanguagePicker_Clicked(object sender, EventArgs args)
-        {
-            DestinationLangPicker.Focus();
         }
         private void generateBoxes(int height, int width, int left, int top, string text)
         {
@@ -264,6 +257,7 @@ namespace ComputerVisionSample
                 count++;
                 if (Device.OS == TargetPlatform.iOS) // 
                 {
+                    /*
                     DestinationLangPicker.Items.Clear();
                     DestinationLangPicker.Items.Add("Destination language");
 
@@ -296,6 +290,7 @@ namespace ComputerVisionSample
                         if (DestinationLangPicker.SelectedIndex == 0)
                             DestinationLangPicker.SelectedIndex = 1;
                     };
+                    */
                 }
             }
             base.OnSizeAllocated(width, height);
@@ -321,15 +316,15 @@ namespace ComputerVisionSample
                 Image1.IsVisible = false;
                 TranslatedText.IsVisible = false;
                 GettedLanguage.IsVisible = false;
-                DestinationLangPicker.IsVisible = false;
+              //  DestinationLangPicker.IsVisible = false;
                 TranslatedText.IsVisible = false;
                 // ImageBackButton.IsVisible = false;
                 backgroundImage.Opacity = 0.4;
                 sourceText = "";
                 backgroundImage.IsVisible = true;
                 flag = false;
-                DestinationLangPicker.Focus();
-                picker_func();
+              //  DestinationLangPicker.Focus();
+               // picker_func();
             }
             else // інакше, для виходу з режиму збільшеного зображення
             {
@@ -379,7 +374,7 @@ namespace ComputerVisionSample
                 BackButton.Text = " < -Back";
                 TranslatedText.IsVisible = true;
                 GettedLanguage.IsVisible = true;
-                DestinationLangPicker.IsVisible = true;
+             //   DestinationLangPicker.IsVisible = true;
                 Image1.HeightRequest = 240;
                 Image1.WidthRequest = 240;
                 imageInverseFlag = false;
@@ -391,7 +386,7 @@ namespace ComputerVisionSample
                 Image1.WidthRequest = g_screen_width - 50;
                 TranslatedText.IsVisible = false;
                 GettedLanguage.IsVisible = false;
-                DestinationLangPicker.IsVisible = false;
+              //  DestinationLangPicker.IsVisible = false;
                 imageInverseFlag = true;
             }
         }
@@ -405,24 +400,10 @@ namespace ComputerVisionSample
             //        TapGesture(true);
             //}
         }
-        void UnfocusedPicker(object sender, EventArgs e)
-        {
-            if (DestinationLangPicker.SelectedIndex < 0)
-                DestinationLangPicker.SelectedIndex = 0;
-        }
-        void picker_language_choose(object sender, EventArgs e)
-        {
-            picker_func();
-        }
-        void picker_func()
-        {
-            DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
 
-            if (Device.OS == TargetPlatform.Android)
-            {
-                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 12;
-            }
-
+        void PickLanguage_Clicked(object sender, EventArgs e)
+        {
+            Picker picker = (Picker)sender;
             int splitChunkSize = 399;
 
             TranslatedText.Children.Clear();
@@ -430,16 +411,8 @@ namespace ComputerVisionSample
 
             foreach (string item in splittedText)
             {
-                Translate_Txt(item, DestinationLangPicker.Title);
+                Translate_Txt(item, (string)picker.SelectedItem);
             }
-
-            //countryFlag.Source = Utils.generateFlag(DestinationLangPicker.Title, countryFlag.Source);
-
-            //if (flag == false)
-            //{
-            //    UploadPictureButton.IsVisible = true;
-            //    TakePictureButton.IsVisible = true;
-            //}
         }
     }
 }

@@ -14,7 +14,12 @@ namespace ComputerVisionSample
     public partial class NavigationBar : ContentView
     {
         public event EventHandler uploadPictureButton_Clicked;
-        public event EventHandler openLanguagePicker_Clicked;
+        public event EventHandler pickLanguage_Clicked;
+        public Exception Error
+        {
+            get;
+            private set;
+        }
         public NavigationBar()
         {
             InitializeComponent();
@@ -28,6 +33,9 @@ namespace ComputerVisionSample
 
             Utils.generateImageGesture(downloadImages, tgr);
             Utils.generateImageGesture(pickImages, tgr2);
+
+            Utils.generatePicker(DestinationLangPicker, Data.destinationLanguages);
+            Utils.generatePicker(SourceLangPicker, Data.sourceLanguages);
         }
         void UploadPictureButton_Clicked(object sender, EventArgs e)
         {
@@ -36,7 +44,24 @@ namespace ComputerVisionSample
 
         void OpenLanguagePicker_Clicked(object sender, EventArgs e)
         {
-            openLanguagePicker_Clicked?.Invoke(sender, e);
+            DestinationLangPicker.Focus();
+        }
+
+        public void PickLanguage_Clicked(object sender, EventArgs e)
+        {
+            pickLanguage_Clicked?.Invoke(sender, e);
+            DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
+            destinationLanguage.Source = Utils.generateFlag(DestinationLangPicker.Title, destinationLanguage.Source);
+            if (Device.OS == TargetPlatform.Android)
+            {
+                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 12;
+            }
+        }
+
+        void UnfocusedPicker(object sender, EventArgs e)
+        {
+            if (DestinationLangPicker.SelectedIndex < 0)
+                DestinationLangPicker.SelectedIndex = 0;
         }
     }
 }

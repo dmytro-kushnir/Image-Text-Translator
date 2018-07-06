@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ComputerVisionSample.NavigationBar">
+             x:Class="ComputerVisionSample.NavigationBar"
+             >
     <ContentView.Content>
         <Grid 
             BackgroundColor="White" >
@@ -58,6 +59,24 @@
                         WidthRequest="50"
                         HeightRequest="50">
                     </Image>
+                </StackLayout>
+                <StackLayout>
+                    <Picker 
+                        x:Name="DestinationLangPicker" 
+                        Title="Destination language"
+                        SelectedIndexChanged="PickLanguage_Clicked" 
+                        Unfocused="UnfocusedPicker"
+                        HorizontalOptions="CenterAndExpand">
+                    </Picker>
+                </StackLayout>
+                <StackLayout>
+                    <Picker 
+                        x:Name="SourceLangPicker" 
+                        Title="Source language"
+                        SelectedIndexChanged="PickLanguage_Clicked" 
+                        Unfocused="UnfocusedPicker"
+                        HorizontalOptions="CenterAndExpand">
+                    </Picker>
                 </StackLayout>
             </Grid>
         </Grid>
