@@ -63,7 +63,6 @@
                 <StackLayout>
                     <Picker 
                         x:Name="DestinationLangPicker" 
-                        Title="Destination language"
                         SelectedIndexChanged="PickLanguage_Clicked" 
                         Unfocused="UnfocusedPicker"
                         HorizontalOptions="CenterAndExpand">
@@ -72,7 +71,6 @@
                 <StackLayout>
                     <Picker 
                         x:Name="SourceLangPicker" 
-                        Title="Source language"
                         SelectedIndexChanged="PickLanguage_Clicked" 
                         Unfocused="UnfocusedPicker"
                         HorizontalOptions="CenterAndExpand">

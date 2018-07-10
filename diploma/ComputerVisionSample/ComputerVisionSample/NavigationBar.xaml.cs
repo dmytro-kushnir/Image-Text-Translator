@@ -50,11 +50,16 @@ namespace ComputerVisionSample
         public void PickLanguage_Clicked(object sender, EventArgs e)
         {
             pickLanguage_Clicked?.Invoke(sender, e);
-            DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
-            destinationLanguage.Source = Utils.generateFlag(DestinationLangPicker.Title, destinationLanguage.Source);
-            if (Device.OS == TargetPlatform.Android)
+  
+            Picker picker = (Picker)sender;
+
+            if (DestinationLangPicker == picker)
             {
-                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 12;
+                destinationLanguage.Source = Utils.generateFlag((string)picker.SelectedItem);
+            }
+            else if (SourceLangPicker == picker)
+            {
+                sourceLanguage.Source = Utils.generateFlag((string)picker.SelectedItem);
             }
         }
 

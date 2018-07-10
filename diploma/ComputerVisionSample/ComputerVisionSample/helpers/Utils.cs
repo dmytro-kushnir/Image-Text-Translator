@@ -22,8 +22,9 @@ namespace ComputerVisionSample.helpers
             }
          }
 
-        public static ImageSource generateFlag(string language, ImageSource imgSrc)
+        public static ImageSource generateFlag(string language)
         {
+            ImageSource imgSrc;
             switch (language)
             {
                 case "French": imgSrc = "fr.png"; break;
