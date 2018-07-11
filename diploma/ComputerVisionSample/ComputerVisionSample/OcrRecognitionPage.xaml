@@ -3,7 +3,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComputerVisionSample.OcrRecognitionPage"
-             xmlns:views="ComputerVisionSample.NavigationBar"
+             xmlns:views="clr-namespace:ComputerVisionSample"
             >
     <RelativeLayout x:Name="container">
         <Image 
@@ -92,6 +92,7 @@
                 RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
                 RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 0.92}">
             <views:NavigationBar
+                x:Name="navBar"
                 uploadPictureButton_Clicked="UploadPictureButton_Clicked"
                 pickLanguage_Clicked="PickLanguage_Clicked">
             </views:NavigationBar>

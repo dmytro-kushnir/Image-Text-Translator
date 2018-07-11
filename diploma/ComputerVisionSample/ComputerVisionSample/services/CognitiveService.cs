@@ -8,10 +8,11 @@ using Microsoft.ProjectOxford.Vision.Contract;
 using System.Diagnostics;
 using System.IO;
 using Plugin.Connectivity;
+using Xamarin.Forms;
 
 namespace ComputerVisionSample.services
 {
-    public class CognitiveService
+    public partial class CognitiveService : ContentPage
     {
         private readonly VisionServiceClient visionClient;
         protected static readonly TimeSpan QueryWaitTimeInSecond = TimeSpan.FromSeconds(3);
@@ -26,8 +27,10 @@ namespace ComputerVisionSample.services
         {
             if (!CrossConnectivity.Current.IsConnected)
             {
-                Debug.WriteLine("Network error", "Please check your network connection and retry");
-               // await DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
+                Debug.WriteLine("Network error. Please check your network connection and retry");
+                Device.BeginInvokeOnMainThread(async () => {
+                    await DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
+                });
                 return null;
             }
 
@@ -71,7 +74,6 @@ namespace ComputerVisionSample.services
                 result = new HandwritingRecognitionOperationResult() { Status = HandwritingRecognitionOperationStatus.Failed };
                 Debug.WriteLine(ex.Error.Message);
             }
-
             return result;
         }
     }

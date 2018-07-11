@@ -23,7 +23,7 @@
                     VerticalOptions="End">
                     <Image
                         x:Name="sourceLanguage"
-                        Source="ru.png"
+                        Source="gb.png"
                         WidthRequest="50"
                         HeightRequest="50">
                     </Image>
@@ -55,23 +55,23 @@
                     VerticalOptions="End">
                     <Image
                         x:Name="destinationLanguage"
-                        Source="ru.png"
+                        Source="gb.png"
                         WidthRequest="50"
                         HeightRequest="50">
                     </Image>
                 </StackLayout>
                 <StackLayout>
                     <Picker 
-                        x:Name="DestinationLangPicker" 
-                        SelectedIndexChanged="PickLanguage_Clicked" 
+                        x:Name="DestinationLangPicker"
+                        SelectedIndexChanged="PickLanguage_Clicked"
                         Unfocused="UnfocusedPicker"
                         HorizontalOptions="CenterAndExpand">
                     </Picker>
                 </StackLayout>
                 <StackLayout>
-                    <Picker 
-                        x:Name="SourceLangPicker" 
-                        SelectedIndexChanged="PickLanguage_Clicked" 
+                    <Picker
+                        x:Name="SourceLangPicker"
+                        SelectedIndexChanged="PickLanguage_Clicked"
                         Unfocused="UnfocusedPicker"
                         HorizontalOptions="CenterAndExpand">
                     </Picker>

@@ -37,6 +37,12 @@ namespace ComputerVisionSample
             Utils.generatePicker(DestinationLangPicker, Data.destinationLanguages);
             Utils.generatePicker(SourceLangPicker, Data.sourceLanguages);
         }
+
+        public string getCurrentSourceLanguage()
+        {
+            return (string)SourceLangPicker.SelectedItem != null ? (string)SourceLangPicker.SelectedItem : "English";
+        }
+
         void UploadPictureButton_Clicked(object sender, EventArgs e)
         {
             uploadPictureButton_Clicked?.Invoke(sender, e);
@@ -63,10 +69,13 @@ namespace ComputerVisionSample
             }
         }
 
+        // TODO - handle if picker index is -1
         void UnfocusedPicker(object sender, EventArgs e)
         {
-            if (DestinationLangPicker.SelectedIndex < 0)
-                DestinationLangPicker.SelectedIndex = 0;
+            //if (DestinationLangPicker.SelectedIndex < 0)
+            //{
+            //    DestinationLangPicker.SelectedIndex = 0;
+            //}
         }
     }
 }

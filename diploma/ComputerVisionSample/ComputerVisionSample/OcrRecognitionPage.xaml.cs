@@ -115,10 +115,9 @@ namespace ComputerVisionSample
                 this.Indicator1.IsVisible = true;
                 this.Indicator1.IsRunning = true;
 
-               
                 Image1.Source = ImageSource.FromStream(() => file.GetStream());
 
-                if (Data.hardwrittenLanguageSupports.Any(s => "English".Contains(s)))
+                if (Data.hardwrittenLanguageSupports.Any(s => navBar.getCurrentSourceLanguage().Contains(s)))
                 {
                     HandwritingRecognitionOperationResult result;
                     result = await computerVision.RecognizeUrl(file.GetStream());
@@ -400,7 +399,6 @@ namespace ComputerVisionSample
             //        TapGesture(true);
             //}
         }
-
         void PickLanguage_Clicked(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
@@ -411,7 +409,10 @@ namespace ComputerVisionSample
 
             foreach (string item in splittedText)
             {
-                Translate_Txt(item, (string)picker.SelectedItem);
+                if (item.Length > 0)
+                {
+                    Translate_Txt(item, (string)picker.SelectedItem);
+                }
             }
         }
     }

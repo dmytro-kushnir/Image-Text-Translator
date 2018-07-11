@@ -21,7 +21,6 @@ namespace ComputerVisionSample.helpers
                 yield return str.Substring(i, chunkLength);
             }
          }
-
         public static ImageSource generateFlag(string language)
         {
             ImageSource imgSrc;
@@ -37,6 +36,8 @@ namespace ComputerVisionSample.helpers
                 case "Spanish": imgSrc = "sp.png"; break;
                 case "Italian": imgSrc = "it.png"; break;
                 case "Chinese": imgSrc = "china.png"; break;
+                case "ChineseTraditional": imgSrc = "china.png"; break;
+                case "ChineseSimplified": imgSrc = "china.png"; break;
                 case "Korean": imgSrc = "korea.png"; break;
                 case "Japanese": imgSrc = "ja.png"; break;
                 case "Portuguese": imgSrc = "po.png"; break;
@@ -51,11 +52,14 @@ namespace ComputerVisionSample.helpers
                 case "Greek": imgSrc = "gre.png"; break;
                 case "Turkish": imgSrc = "turkey.png"; break;
                 case "Czech": imgSrc = "cz.png"; break;
+                case "Slovak": imgSrc = "slo.png"; break;
+                case "Romanian": imgSrc = "ro.png"; break;
+                case "SerbianLatin": imgSrc = "sk.png"; break;
+                case "SerbianCyrillic": imgSrc = "sk.png"; break;
                 default: imgSrc = "gb.png"; break;
             }
             return imgSrc;
         }
-
         public static void generateImageGesture(Image[] images, TapGestureRecognizer tgr)
         {
             foreach (var image in images)
@@ -63,7 +67,6 @@ namespace ComputerVisionSample.helpers
                 image.GestureRecognizers.Add(tgr);
             }
         }
-
         public static void generatePicker(Picker picker, string[] languages)
         {
             foreach (var language in languages)
