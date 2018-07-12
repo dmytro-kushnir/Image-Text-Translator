@@ -56,6 +56,10 @@ namespace ComputerVisionSample.helpers
                 case "Romanian": imgSrc = "ro.png"; break;
                 case "SerbianLatin": imgSrc = "sk.png"; break;
                 case "SerbianCyrillic": imgSrc = "sk.png"; break;
+                case "Standart mode": imgSrc = "settings.png"; break;
+                case "Info": imgSrc = "info"; break;
+                case "Handwritten mode": imgSrc = "handwritten.png"; break;
+                case "Clear all": imgSrc = "clear.png"; break;
                 default: imgSrc = "gb.png"; break;
             }
             return imgSrc;
@@ -67,11 +71,11 @@ namespace ComputerVisionSample.helpers
                 image.GestureRecognizers.Add(tgr);
             }
         }
-        public static void generatePicker(Picker picker, string[] languages)
+        public static void generatePicker(Picker picker, string[] pickers)
         {
-            foreach (var language in languages)
+            foreach (var pr in pickers)
             {
-                picker.Items.Add(language);
+                picker.Items.Add(pr);
             }
         }
     }

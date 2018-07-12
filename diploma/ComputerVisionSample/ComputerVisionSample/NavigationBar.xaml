@@ -15,15 +15,30 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-
-                <StackLayout 
+                <StackLayout>
+                    <Picker 
+                        x:Name="DestinationLangPicker"
+                        SelectedIndexChanged="Picker_Clicked"
+                        Unfocused="UnfocusedPicker"
+                        HorizontalOptions="CenterAndExpand">
+                    </Picker>
+                </StackLayout>
+                <StackLayout>
+                    <Picker
+                        x:Name="SettingsPicker"
+                        SelectedIndexChanged="Picker_Clicked"
+                        Unfocused="UnfocusedPicker"
+                        HorizontalOptions="CenterAndExpand">
+                    </Picker>
+                </StackLayout>
+                <StackLayout
                     Orientation="Horizontal"
                     Grid.Column="0"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="End">
                     <Image
-                        x:Name="sourceLanguage"
-                        Source="gb.png"
+                        x:Name="settings"
+                        Source="settings.png"
                         WidthRequest="50"
                         HeightRequest="50">
                     </Image>
@@ -59,22 +74,6 @@
                         WidthRequest="50"
                         HeightRequest="50">
                     </Image>
-                </StackLayout>
-                <StackLayout>
-                    <Picker 
-                        x:Name="DestinationLangPicker"
-                        SelectedIndexChanged="PickLanguage_Clicked"
-                        Unfocused="UnfocusedPicker"
-                        HorizontalOptions="CenterAndExpand">
-                    </Picker>
-                </StackLayout>
-                <StackLayout>
-                    <Picker
-                        x:Name="SourceLangPicker"
-                        SelectedIndexChanged="PickLanguage_Clicked"
-                        Unfocused="UnfocusedPicker"
-                        HorizontalOptions="CenterAndExpand">
-                    </Picker>
                 </StackLayout>
             </Grid>
         </Grid>

@@ -26,14 +26,6 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 Margin="40, 1">
-                <Button 
-                    x:Name="BackButton"  
-                    BackgroundColor="#5C91C7" 
-                    TextColor="Black"
-                    Text="Back"
-                    Clicked="BackButton_Clicked"
-                    Margin="80, 20">
-                </Button>
                 <ActivityIndicator 
                     x:Name="Indicator1" 
                     IsVisible="False" 
@@ -94,7 +86,7 @@
             <views:NavigationBar
                 x:Name="navBar"
                 uploadPictureButton_Clicked="UploadPictureButton_Clicked"
-                pickLanguage_Clicked="PickLanguage_Clicked">
+                picker_Clicked="Picker_Clicked">
             </views:NavigationBar>
         </StackLayout>
     </RelativeLayout>

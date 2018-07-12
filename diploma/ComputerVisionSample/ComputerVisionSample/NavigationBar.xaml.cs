@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ComputerVisionSample.helpers;
@@ -14,7 +13,7 @@ namespace ComputerVisionSample
     public partial class NavigationBar : ContentView
     {
         public event EventHandler uploadPictureButton_Clicked;
-        public event EventHandler pickLanguage_Clicked;
+        public event EventHandler picker_Clicked;
         public Exception Error
         {
             get;
@@ -24,23 +23,27 @@ namespace ComputerVisionSample
         {
             InitializeComponent();
             Image[] downloadImages = new Image[] { gallery, camera };
-            Image[] pickImages = new Image[] { sourceLanguage, destinationLanguage };
+            Image[] pickLanguage = new Image[] { destinationLanguage };
+            Image[] pickSettings = new Image[] { settings };
 
             var tgr = new TapGestureRecognizer();
             tgr.Tapped += (s, e) => UploadPictureButton_Clicked(s, e);
             var tgr2 = new TapGestureRecognizer();
             tgr2.Tapped += (s, e) => OpenLanguagePicker_Clicked(s, e);
+            var tgr3 = new TapGestureRecognizer();
+            tgr3.Tapped += (s, e) => OpenSettingsPicker_Clicked(s, e);
 
             Utils.generateImageGesture(downloadImages, tgr);
-            Utils.generateImageGesture(pickImages, tgr2);
+            Utils.generateImageGesture(pickLanguage, tgr2);
+            Utils.generateImageGesture(pickSettings, tgr3);
 
             Utils.generatePicker(DestinationLangPicker, Data.destinationLanguages);
-            Utils.generatePicker(SourceLangPicker, Data.sourceLanguages);
+            Utils.generatePicker(SettingsPicker, Data.settings);
         }
 
         public string getCurrentSourceLanguage()
         {
-            return (string)SourceLangPicker.SelectedItem != null ? (string)SourceLangPicker.SelectedItem : "English";
+            return (string)SettingsPicker.SelectedItem != null ? (string)SettingsPicker.SelectedItem : "if";
         }
 
         void UploadPictureButton_Clicked(object sender, EventArgs e)
@@ -53,19 +56,26 @@ namespace ComputerVisionSample
             DestinationLangPicker.Focus();
         }
 
-        public void PickLanguage_Clicked(object sender, EventArgs e)
+        void OpenSettingsPicker_Clicked(object sender, EventArgs e)
         {
-            pickLanguage_Clicked?.Invoke(sender, e);
-  
-            Picker picker = (Picker)sender;
+            SettingsPicker.Focus();
+        }
 
+        public void Picker_Clicked(object sender, EventArgs e)
+        {
+            Picker picker = (Picker)sender;
             if (DestinationLangPicker == picker)
             {
+                if (DestinationLangPicker.SelectedIndex == 0)
+                {
+                    DestinationLangPicker.SelectedIndex = 1;
+                };
                 destinationLanguage.Source = Utils.generateFlag((string)picker.SelectedItem);
+                picker_Clicked?.Invoke(sender, e);
             }
-            else if (SourceLangPicker == picker)
+            else if (SettingsPicker == picker)
             {
-                sourceLanguage.Source = Utils.generateFlag((string)picker.SelectedItem);
+                settings.Source = Utils.generateFlag((string)picker.SelectedItem);
             }
         }
 

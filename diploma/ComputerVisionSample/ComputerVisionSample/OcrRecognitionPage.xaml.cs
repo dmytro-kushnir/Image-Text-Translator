@@ -58,9 +58,8 @@ namespace ComputerVisionSample
 
          //   DestinationLangPicker.IsVisible = false;
             GettedLanguage.IsVisible = false;
-            BackButton.IsVisible = false;
-            BackButton.Text = "<- Back";
             //this.countryFlag.InputTransparent = true;
+
         }
 
         private async void UploadPictureButton_Clicked(object sender, EventArgs e)
@@ -104,8 +103,8 @@ namespace ComputerVisionSample
                     }
                     file = await CrossMedia.Current.PickPhotoAsync();
                 }
+               // var res = DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
                 flag = true;
-                BackButton.IsVisible = true;
                 Image1.IsVisible = true;
                 if (file == null)
                     return;
@@ -137,7 +136,6 @@ namespace ComputerVisionSample
                 this.Error = ex;
             }
             TranslatedText.IsVisible = true;
-            BackButton.IsVisible = true;
             this.Indicator1.IsRunning = false;
             this.Indicator1.IsVisible = false;
 
@@ -311,7 +309,6 @@ namespace ComputerVisionSample
         {
             if (imageInverseFlag == false) // якщо кнопка використовується для виходу в голове меню
             {
-                BackButton.IsVisible = false;
                 Image1.IsVisible = false;
                 TranslatedText.IsVisible = false;
                 GettedLanguage.IsVisible = false;
@@ -337,7 +334,6 @@ namespace ComputerVisionSample
             {
                 string buffer = DependencyService.Get<PCL_Translator>().
                             Translate(sourceTxt, sourceLanguage, destLang) + " ";
-
 
                 var textLabel = new Label
                 {
@@ -370,7 +366,6 @@ namespace ComputerVisionSample
         {
             if (move_to_default == true)
             {
-                BackButton.Text = " < -Back";
                 TranslatedText.IsVisible = true;
                 GettedLanguage.IsVisible = true;
              //   DestinationLangPicker.IsVisible = true;
@@ -380,7 +375,6 @@ namespace ComputerVisionSample
             }
             else
             {
-                BackButton.Text = "Resize";
                 Image1.HeightRequest = g_screen_height - 100;
                 Image1.WidthRequest = g_screen_width - 50;
                 TranslatedText.IsVisible = false;
@@ -399,7 +393,7 @@ namespace ComputerVisionSample
             //        TapGesture(true);
             //}
         }
-        void PickLanguage_Clicked(object sender, EventArgs e)
+        void Picker_Clicked(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
             int splitChunkSize = 399;

@@ -8,40 +8,17 @@ namespace ComputerVisionSample.helpers
 {
     class Data
     {
-        // INFO There is auto detect, but we need this to determne handwritten OCR
-        static public string[] sourceLanguages = new String[]
+        static public string[] settings = new String[]
         {
-            "English",
-            "Russian",
-            "French",
-            "German",
-            "Italian",
-            "Russian",
-            "Spanish",
-            "Arabic",
-            "Chinese",
-            "ChineseSimplified",
-            "ChineseTraditional",
-            "Polish",
-            "Turkish",
-            "Portuguese",
-            "Greek",
-            "Japanese",
-            "Hungarian",
-            "Finnish",
-            "Swedish",
-            "Norwegian",
-            "Korean",
-            "Czech",
-            "Danish",
-            "Dutch",
-            "Slovak",
-            "Romanian",
-            "SerbianCyrillic",
-            "SerbianLatin"
+            "Standart mode",
+            "Info",
+            "Clear all",
+            "Handwritten mode"
         };
+
         static public string[] destinationLanguages = new String[]
         {
+            "Choose destination language",
             "English",
             "Ukrainian",
             "Russian",
