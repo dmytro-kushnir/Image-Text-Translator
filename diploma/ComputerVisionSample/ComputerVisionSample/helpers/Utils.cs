@@ -56,10 +56,10 @@ namespace ComputerVisionSample.helpers
                 case "Romanian": imgSrc = "ro.png"; break;
                 case "SerbianLatin": imgSrc = "sk.png"; break;
                 case "SerbianCyrillic": imgSrc = "sk.png"; break;
-                case "Standart mode": imgSrc = "settings.png"; break;
-                case "Info": imgSrc = "info"; break;
-                case "Handwritten mode": imgSrc = "handwritten.png"; break;
-                case "Clear all": imgSrc = "clear.png"; break;
+                case Data.Settings_defaultMode: imgSrc = "settings.png"; break;
+                case Data.Settings_info: imgSrc = "info.png"; break;
+                case Data.Settings_handwrittenMode: imgSrc = "handwritten.png"; break;
+                case Data.Settings_clrAll: imgSrc = "clear.png"; break;
                 default: imgSrc = "gb.png"; break;
             }
             return imgSrc;

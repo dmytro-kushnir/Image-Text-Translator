@@ -13,7 +13,8 @@ namespace ComputerVisionSample
     public partial class NavigationBar : ContentView
     {
         public event EventHandler uploadPictureButton_Clicked;
-        public event EventHandler picker_Clicked;
+        public event EventHandler pickerLanguage_Clicked;
+        public event EventHandler pickerSettings_Clicked;
         public Exception Error
         {
             get;
@@ -41,8 +42,9 @@ namespace ComputerVisionSample
             Utils.generatePicker(SettingsPicker, Data.settings);
         }
 
-        public string getCurrentSourceLanguage()
+        public string checkHandwrittenMode()
         {
+            // TODO - remade this logic
             return (string)SettingsPicker.SelectedItem != null ? (string)SettingsPicker.SelectedItem : "if";
         }
 
@@ -56,7 +58,7 @@ namespace ComputerVisionSample
             DestinationLangPicker.Focus();
         }
 
-        void OpenSettingsPicker_Clicked(object sender, EventArgs e)
+        async void OpenSettingsPicker_Clicked(object sender, EventArgs e)
         {
             SettingsPicker.Focus();
         }
@@ -71,11 +73,12 @@ namespace ComputerVisionSample
                     DestinationLangPicker.SelectedIndex = 1;
                 };
                 destinationLanguage.Source = Utils.generateFlag((string)picker.SelectedItem);
-                picker_Clicked?.Invoke(sender, e);
+                pickerLanguage_Clicked?.Invoke(sender, e);
             }
             else if (SettingsPicker == picker)
             {
                 settings.Source = Utils.generateFlag((string)picker.SelectedItem);
+                pickerSettings_Clicked?.Invoke(sender, e);
             }
         }
 

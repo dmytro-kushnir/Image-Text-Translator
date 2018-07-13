@@ -28,9 +28,7 @@ namespace ComputerVisionSample.services
             if (!CrossConnectivity.Current.IsConnected)
             {
                 Debug.WriteLine("Network error. Please check your network connection and retry");
-                Device.BeginInvokeOnMainThread(async () => {
-                    await DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
-                });
+                await DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
                 return null;
             }
 

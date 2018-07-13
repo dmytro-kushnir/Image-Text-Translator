@@ -103,7 +103,6 @@ namespace ComputerVisionSample
                     }
                     file = await CrossMedia.Current.PickPhotoAsync();
                 }
-               // var res = DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
                 flag = true;
                 Image1.IsVisible = true;
                 if (file == null)
@@ -116,7 +115,7 @@ namespace ComputerVisionSample
 
                 Image1.Source = ImageSource.FromStream(() => file.GetStream());
 
-                if (Data.hardwrittenLanguageSupports.Any(s => navBar.getCurrentSourceLanguage().Contains(s)))
+                if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
                 {
                     HandwritingRecognitionOperationResult result;
                     result = await computerVision.RecognizeUrl(file.GetStream());
@@ -393,7 +392,7 @@ namespace ComputerVisionSample
             //        TapGesture(true);
             //}
         }
-        void Picker_Clicked(object sender, EventArgs e)
+        void PickerLanguage_Clicked(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
             int splitChunkSize = 399;
@@ -407,6 +406,26 @@ namespace ComputerVisionSample
                 {
                     Translate_Txt(item, (string)picker.SelectedItem);
                 }
+            }
+        }
+
+        void PickerSettings_Clicked(object sender, EventArgs e)
+        {
+            Picker picker = (Picker)sender;
+            switch ((string)picker.SelectedItem)
+            {
+                case Data.Settings_defaultMode:
+                    break;
+                case Data.Settings_info:
+                    DisplayAlert(Data.Settings_info_Title, Data.Settings_info_Data, "Got it");
+                    break;
+                case Data.Settings_clrAll:
+                    break;
+                case Data.Settings_handwrittenMode:
+
+                    break;
+                default:
+                    break;
             }
         }
     }

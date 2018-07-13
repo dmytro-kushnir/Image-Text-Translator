@@ -81,7 +81,8 @@
             <views:NavigationBar
                 x:Name="navBar"
                 uploadPictureButton_Clicked="UploadPictureButton_Clicked"
-                picker_Clicked="Picker_Clicked">
+                pickerLanguage_Clicked="PickerLanguage_Clicked"
+                pickerSettings_Clicked="PickerSettings_Clicked">
             </views:NavigationBar>
         </StackLayout>
     </RelativeLayout>
