@@ -44,8 +44,12 @@ namespace ComputerVisionSample
 
         public string checkHandwrittenMode()
         {
-            // TODO - remade this logic
-            return (string)SettingsPicker.SelectedItem != null ? (string)SettingsPicker.SelectedItem : "if";
+            return (string)SettingsPicker.SelectedItem != null ? (string)SettingsPicker.SelectedItem : Data.Settings_defaultMode;
+        }
+
+        public void setSettingsToDefault()
+        {
+            SettingsPicker.SelectedIndex = 0;
         }
 
         void UploadPictureButton_Clicked(object sender, EventArgs e)

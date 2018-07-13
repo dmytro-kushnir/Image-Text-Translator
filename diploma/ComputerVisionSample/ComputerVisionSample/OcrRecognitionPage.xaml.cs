@@ -23,9 +23,6 @@ namespace ComputerVisionSample
         }
 
         // Початкове налаштування
-        private int count = 0;
-        protected static readonly TimeSpan QueryWaitTimeInSecond = TimeSpan.FromSeconds(3);
-        protected static readonly int MaxRetryTimes = 3;
         CognitiveService computerVision;
 
         string sourceLanguage = "en"; // english by default
@@ -107,15 +104,16 @@ namespace ComputerVisionSample
                 Image1.IsVisible = true;
                 if (file == null)
                     return;
-                if (backgroundImage.Opacity != 0)
-                    backgroundImage.Opacity = 0;
+                backgroundImage.IsVisible = !(GettedLanguage.IsVisible == false);
 
                 this.Indicator1.IsVisible = true;
                 this.Indicator1.IsRunning = true;
 
                 Image1.Source = ImageSource.FromStream(() => file.GetStream());
-
-                if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
+                
+                // INFO - for future modifications
+                //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
+                if (navBar.checkHandwrittenMode() == Data.Settings_handwrittenMode)
                 {
                     HandwritingRecognitionOperationResult result;
                     result = await computerVision.RecognizeUrl(file.GetStream());
@@ -247,47 +245,43 @@ namespace ComputerVisionSample
 
         protected override void OnSizeAllocated(double width, double height)
         {
-            if (count == 0)
+            //DestinationLangPicker.Focus();
+            if (Device.OS == TargetPlatform.iOS) // 
             {
-                //DestinationLangPicker.Focus();
-                count++;
-                if (Device.OS == TargetPlatform.iOS) // 
-                {
-                    /*
-                    DestinationLangPicker.Items.Clear();
-                    DestinationLangPicker.Items.Add("Destination language");
+                /*
+                DestinationLangPicker.Items.Clear();
+                DestinationLangPicker.Items.Add("Destination language");
 
-                    DestinationLangPicker.Items.Add("English");
-                    DestinationLangPicker.Items.Add("Ukrainian");
-                    DestinationLangPicker.Items.Add("French");
-                    DestinationLangPicker.Items.Add("Polish");
-                    DestinationLangPicker.Items.Add("Spanish");
-                    DestinationLangPicker.Items.Add("German");
-                    DestinationLangPicker.Items.Add("Italian");
-                    DestinationLangPicker.Items.Add("Latvian");
-                    DestinationLangPicker.Items.Add("Chinese");
-                    DestinationLangPicker.Items.Add("Japanese");
-                    DestinationLangPicker.Items.Add("Korean");
-                    DestinationLangPicker.Items.Add("Portuguese");
-                    DestinationLangPicker.Items.Add("Arabic");
-                    DestinationLangPicker.Items.Add("Hindi");
-                    DestinationLangPicker.Items.Add("Hebrew");
-                    DestinationLangPicker.Items.Add("Swedish");
-                    DestinationLangPicker.Items.Add("Danish");
-                    DestinationLangPicker.Items.Add("Norwegian");
-                    DestinationLangPicker.Items.Add("Finnish");
-                    DestinationLangPicker.Items.Add("Georgian");
-                    DestinationLangPicker.Items.Add("Turkish");
-                    DestinationLangPicker.Items.Add("Russian");
-                    DestinationLangPicker.Items.Add("Czech");
-                    DestinationLangPicker.Items.Add("Greek");
-                    DestinationLangPicker.SelectedIndexChanged += (sender, e) =>
-                    {
-                        if (DestinationLangPicker.SelectedIndex == 0)
-                            DestinationLangPicker.SelectedIndex = 1;
-                    };
-                    */
-                }
+                DestinationLangPicker.Items.Add("English");
+                DestinationLangPicker.Items.Add("Ukrainian");
+                DestinationLangPicker.Items.Add("French");
+                DestinationLangPicker.Items.Add("Polish");
+                DestinationLangPicker.Items.Add("Spanish");
+                DestinationLangPicker.Items.Add("German");
+                DestinationLangPicker.Items.Add("Italian");
+                DestinationLangPicker.Items.Add("Latvian");
+                DestinationLangPicker.Items.Add("Chinese");
+                DestinationLangPicker.Items.Add("Japanese");
+                DestinationLangPicker.Items.Add("Korean");
+                DestinationLangPicker.Items.Add("Portuguese");
+                DestinationLangPicker.Items.Add("Arabic");
+                DestinationLangPicker.Items.Add("Hindi");
+                DestinationLangPicker.Items.Add("Hebrew");
+                DestinationLangPicker.Items.Add("Swedish");
+                DestinationLangPicker.Items.Add("Danish");
+                DestinationLangPicker.Items.Add("Norwegian");
+                DestinationLangPicker.Items.Add("Finnish");
+                DestinationLangPicker.Items.Add("Georgian");
+                DestinationLangPicker.Items.Add("Turkish");
+                DestinationLangPicker.Items.Add("Russian");
+                DestinationLangPicker.Items.Add("Czech");
+                DestinationLangPicker.Items.Add("Greek");
+                DestinationLangPicker.SelectedIndexChanged += (sender, e) =>
+                {
+                    if (DestinationLangPicker.SelectedIndex == 0)
+                        DestinationLangPicker.SelectedIndex = 1;
+                };
+                */
             }
             base.OnSizeAllocated(width, height);
             g_screen_height = height;
@@ -326,7 +320,6 @@ namespace ComputerVisionSample
                 TapGesture(true);
             }
         }
-        /// //////////////// TRANSLATION///////////////////////
         void Translate_Txt(string sourceTxt, string destLang)
         {
             if (sourceLanguage != "unk")
@@ -354,7 +347,6 @@ namespace ComputerVisionSample
                 TranslatedText.Children.Clear();
             }
         }
-        /// //////////////// TRANSLATION END///////////////////////
         public void ClipboardFunc(object sender, EventArgs e)
         {
             DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(transaltedText);
@@ -408,7 +400,6 @@ namespace ComputerVisionSample
                 }
             }
         }
-
         void PickerSettings_Clicked(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
@@ -420,9 +411,17 @@ namespace ComputerVisionSample
                     DisplayAlert(Data.Settings_info_Title, Data.Settings_info_Data, "Got it");
                     break;
                 case Data.Settings_clrAll:
+                    if (backgroundImage.IsVisible == false)
+                    {
+                        backgroundImage.IsVisible = true;
+                        GettedLanguage.IsVisible = false;
+                        TranslatedText.IsVisible = false;
+                        Image1.IsVisible = false;
+                        sourceText = sourceText.Length > 0 ? "" : sourceText;
+                    }
+                    navBar.setSettingsToDefault();
                     break;
                 case Data.Settings_handwrittenMode:
-
                     break;
                 default:
                     break;

@@ -9,7 +9,7 @@ namespace ComputerVisionSample.helpers
     class Data
     {
         public const string VERSION = "2.0";
-        public const string Settings_defaultMode = "Standart mode";
+        public const string Settings_defaultMode = "Settings";
         public const string Settings_info = "Info";
         public const string Settings_clrAll = "Clear all";
         public const string Settings_handwrittenMode = "Handwritten mode";

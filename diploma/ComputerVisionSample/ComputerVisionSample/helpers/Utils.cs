@@ -57,8 +57,8 @@ namespace ComputerVisionSample.helpers
                 case "SerbianLatin": imgSrc = "sk.png"; break;
                 case "SerbianCyrillic": imgSrc = "sk.png"; break;
                 case Data.Settings_defaultMode: imgSrc = "settings.png"; break;
-                case Data.Settings_info: imgSrc = "info.png"; break;
                 case Data.Settings_handwrittenMode: imgSrc = "handwritten.png"; break;
+                case Data.Settings_info: imgSrc = "info.png"; break;
                 case Data.Settings_clrAll: imgSrc = "clear.png"; break;
                 default: imgSrc = "gb.png"; break;
             }
