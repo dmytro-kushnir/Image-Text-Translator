@@ -8,16 +8,11 @@
     <RelativeLayout x:Name="container">
         <Image 
             x:Name="backgroundImage" 
-            Source="NULP.png"   
-            Opacity="0.4"
+            Source="Background.png"   
+            Opacity="1"
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
         </Image>
-        <!--<StackLayout
-                RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
-                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}">
-                    <views:NavigationBar/>
-        </StackLayout>-->
         <Grid 
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
@@ -81,8 +76,8 @@
             </StackLayout>
         </Grid>
         <StackLayout
-                RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}" 
-                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 0.92}">
+                RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"  
+                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 1, Constant=-50}">
             <views:NavigationBar
                 x:Name="navBar"
                 uploadPictureButton_Clicked="UploadPictureButton_Clicked"

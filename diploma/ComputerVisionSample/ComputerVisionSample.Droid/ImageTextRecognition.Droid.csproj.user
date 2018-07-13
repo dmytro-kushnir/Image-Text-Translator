@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
-    <SelectedDevice>Genymotion HTC One - 4.2.2 - API 17 - 1080x1920</SelectedDevice>
+    <SelectedDevice>Genymotion Google Nexus 9 - 7.1.0 - API 25 - 1536x2048</SelectedDevice>
     <DefaultDevice>my_device</DefaultDevice>
   </PropertyGroup>
 </Project>
