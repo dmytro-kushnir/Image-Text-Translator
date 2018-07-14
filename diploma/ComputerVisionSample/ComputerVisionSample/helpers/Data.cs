@@ -15,7 +15,8 @@ namespace ComputerVisionSample.helpers
         public const string Settings_handwrittenMode = "Handwritten mode";
 
         public const string Settings_info_Title = "Image Text Translator v" + VERSION;
-        public const string Settings_info_Data = "Functionality: \n " +
+        public const string Settings_info_Data = "Application requires internet connection! \n " +
+            "Functionality: \n " +
             "- To start translating you may press cmare or gallery icon \n " +
             "- Before that you may choose translation destination language in right bottom corner \n" +
             "- 'Clear all' option removes all recognized data, and returns to default app state \n " +

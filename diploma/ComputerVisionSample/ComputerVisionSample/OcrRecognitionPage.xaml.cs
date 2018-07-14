@@ -32,13 +32,13 @@ namespace ComputerVisionSample
         int g_Left = 0;
         int g_Width = 0;
         int g_Height = 0;
-        //
-        double g_screen_width = 0.0;
-        double g_screen_height = 0.0;
+        const int DEFAULT_CROPPED_IMAGE_WIDHT = 480;
+        const int DEFAULT_CROPPED_IMAGE_HEIGHT = 480;
+
+        double CROP_KOEF_W = 0.0;
+        double CROP_KOEF_H = 0.0;
 
         string transaltedText = "";
-        bool flag = false; // прапорець для делегування зміною стану кнопок Камери та Галереї
-        bool imageInverseFlag = false; // прапорець для делегування зумування зображенням
         public OcrRecognitionPage()
         {
             this.Error = null;
@@ -51,11 +51,7 @@ namespace ComputerVisionSample
 
             Debug.WriteLine("randomIndex -> {0} ", randomIndex);
             Debug.WriteLine("VisionServiceClient is created");
-
-         //   DestinationLangPicker.IsVisible = false;
             GettedLanguage.IsVisible = false;
-            //this.countryFlag.InputTransparent = true;
-
         }
 
         private async void UploadPictureButton_Clicked(object sender, EventArgs e)
@@ -87,6 +83,7 @@ namespace ComputerVisionSample
                         SaveToAlbum = false,
                         Name = "test.jpg",
                         CompressionQuality = 75,
+                        PhotoSize = PhotoSize.Full,
                         AllowCropping = true
                     });
                 }
@@ -98,19 +95,24 @@ namespace ComputerVisionSample
                         await DisplayAlert("No upload", "Picking a photo is not supported.", "OK");
                         return;
                     }
-                    file = await CrossMedia.Current.PickPhotoAsync();
+                    file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                    {
+                        PhotoSize = PhotoSize.Full
+                    });
                 }
+
                 if (file == null)
                     return;
-                flag = true;
-                Image1.IsVisible = true;
+                originImage.IsVisible = true;
+                croppedImage.IsVisible = false;
                 backgroundImage.IsVisible = false;
 
                 this.Indicator1.IsVisible = true;
                 this.Indicator1.IsRunning = true;
 
-                Image1.Source = ImageSource.FromStream(() => file.GetStream());
-                
+                originImage.Source = ImageSource.FromStream(() => file.GetStream());
+                croppedImage.Source = ImageSource.FromStream(() => file.GetStream());
+
                 // INFO - for future modifications
                 //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
                 if (navBar.CheckHandwrittenMode() == Data.Settings_handwrittenMode)
@@ -135,13 +137,7 @@ namespace ComputerVisionSample
             TranslatedText.IsVisible = true;
             this.Indicator1.IsRunning = false;
             this.Indicator1.IsVisible = false;
-
-            Image1.IsVisible = true;
-         //   DestinationLangPicker.IsVisible = true;
             GettedLanguage.IsVisible = true;
-
-            //  DestinationLangPicker.SelectedIndex = 0;
-            //  DestinationLangPicker.Title = "Destination language";
             // this.TranslatedText.Children.Clear();
         }
 
@@ -218,22 +214,21 @@ namespace ComputerVisionSample
                     innerChunkOfText = "";
                 }    
         }
-        private void generateBoxes(int height, int width, int left, int top, string text)
+        private void generateBoxes(int height, int width, int left, int top, string text, double koefW, double koefH)
         {
             Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height };
             label.FontSize = 10;
             container.Children.Add(label,
                 Constraint.RelativeToParent((parent) =>
                 {
-                    return left;  // встановлення координати X
+                    return left * koefW;  // встановлення координати X
                 }),
                 Constraint.RelativeToParent((parent) =>
                 {
-                    return top; // встановлення координати Y
+                    return top * koefH; // встановлення координати Y
                 }),
-                Constraint.Constant(width), // встановлення ширини
-                Constraint.Constant(height)  // встановлення высоти
-
+                Constraint.Constant(width * koefW), // встановлення ширини
+                Constraint.Constant(height * koefH)  // встановлення висоти
             );
             label.Text = text;
             Content = container;
@@ -241,48 +236,11 @@ namespace ComputerVisionSample
 
         protected override void OnSizeAllocated(double width, double height)
         {
-            //DestinationLangPicker.Focus();
-            if (Device.OS == TargetPlatform.iOS) // 
-            {
-                /*
-                DestinationLangPicker.Items.Clear();
-                DestinationLangPicker.Items.Add("Destination language");
-
-                DestinationLangPicker.Items.Add("English");
-                DestinationLangPicker.Items.Add("Ukrainian");
-                DestinationLangPicker.Items.Add("French");
-                DestinationLangPicker.Items.Add("Polish");
-                DestinationLangPicker.Items.Add("Spanish");
-                DestinationLangPicker.Items.Add("German");
-                DestinationLangPicker.Items.Add("Italian");
-                DestinationLangPicker.Items.Add("Latvian");
-                DestinationLangPicker.Items.Add("Chinese");
-                DestinationLangPicker.Items.Add("Japanese");
-                DestinationLangPicker.Items.Add("Korean");
-                DestinationLangPicker.Items.Add("Portuguese");
-                DestinationLangPicker.Items.Add("Arabic");
-                DestinationLangPicker.Items.Add("Hindi");
-                DestinationLangPicker.Items.Add("Hebrew");
-                DestinationLangPicker.Items.Add("Swedish");
-                DestinationLangPicker.Items.Add("Danish");
-                DestinationLangPicker.Items.Add("Norwegian");
-                DestinationLangPicker.Items.Add("Finnish");
-                DestinationLangPicker.Items.Add("Georgian");
-                DestinationLangPicker.Items.Add("Turkish");
-                DestinationLangPicker.Items.Add("Russian");
-                DestinationLangPicker.Items.Add("Czech");
-                DestinationLangPicker.Items.Add("Greek");
-                DestinationLangPicker.SelectedIndexChanged += (sender, e) =>
-                {
-                    if (DestinationLangPicker.SelectedIndex == 0)
-                        DestinationLangPicker.SelectedIndex = 1;
-                };
-                */
-            }
             base.OnSizeAllocated(width, height);
-            g_screen_height = height;
-            g_screen_width = width;
-
+            croppedImage.WidthRequest = width;
+            croppedImage.HeightRequest = height;
+            CROP_KOEF_W = (width / DEFAULT_CROPPED_IMAGE_WIDHT);
+            CROP_KOEF_H = (height / DEFAULT_CROPPED_IMAGE_HEIGHT);
 
             if (DeviceInfo.IsOrientationPortrait() && width < height || !DeviceInfo.IsOrientationPortrait() && width > height)
             {
@@ -294,34 +252,11 @@ namespace ComputerVisionSample
             }
         }
 
-        void BackButton_Clicked(object sender, EventArgs e)
-        {
-            if (imageInverseFlag == false) // якщо кнопка використовується для виходу в голове меню
-            {
-                Image1.IsVisible = false;
-                TranslatedText.IsVisible = false;
-                GettedLanguage.IsVisible = false;
-              //  DestinationLangPicker.IsVisible = false;
-                TranslatedText.IsVisible = false;
-                // ImageBackButton.IsVisible = false;
-                backgroundImage.Opacity = 0.4;
-                sourceText = "";
-                backgroundImage.IsVisible = true;
-                flag = false;
-              //  DestinationLangPicker.Focus();
-               // picker_func();
-            }
-            else // інакше, для виходу з режиму збільшеного зображення
-            {
-                TapGesture(true);
-            }
-        }
         void Translate_Txt(string sourceTxt, string destLang)
         {
             if (sourceLanguage != "unk")
             {
-                string buffer = DependencyService.Get<PCL_Translator>().
-                            Translate(sourceTxt, sourceLanguage, destLang) + " ";
+                string buffer = DependencyService.Get<PCL_Translator>().Translate(sourceTxt, sourceLanguage, destLang) + " ";
 
                 var textLabel = new Label
                 {
@@ -335,7 +270,7 @@ namespace ComputerVisionSample
 
                 transaltedText += buffer;
 
-                //generateBoxes(g_Height, g_Width, g_Left, g_Top, buffer);
+                generateBoxes(g_Height, g_Width, g_Left, g_Top, buffer, CROP_KOEF_W, CROP_KOEF_H);
             }
             else
             {
@@ -349,36 +284,22 @@ namespace ComputerVisionSample
             DisplayAlert("", "Successfully copied to the clipboard", "OK");
             // clipboardText = TranslatedText.Text;
         }
-        void TapGesture(bool move_to_default)
+        void OnImageTapped(object sender, EventArgs args)
         {
-            if (move_to_default == true)
+            if (originImage.IsVisible) // збільшений режим
             {
-                TranslatedText.IsVisible = true;
-                GettedLanguage.IsVisible = true;
-             //   DestinationLangPicker.IsVisible = true;
-                Image1.HeightRequest = 240;
-                Image1.WidthRequest = 240;
-                imageInverseFlag = false;
-            }
-            else
-            {
-                Image1.HeightRequest = g_screen_height - 100;
-                Image1.WidthRequest = g_screen_width - 50;
+                originImage.IsVisible = false;
                 TranslatedText.IsVisible = false;
                 GettedLanguage.IsVisible = false;
-              //  DestinationLangPicker.IsVisible = false;
-                imageInverseFlag = true;
+                croppedImage.IsVisible = true;
             }
-        }
-        void OnTapGestureRecognizerTapped(object sender, EventArgs args)
-        {
-            //if (TakePictureButton.IsVisible == false)
-            //{
-            //    if (imageInverseFlag == false)
-            //        TapGesture(false);
-            //    else
-            //        TapGesture(true);
-            //}
+            else // звичайний режим
+            {
+                originImage.IsVisible = true;
+                TranslatedText.IsVisible = true;
+                GettedLanguage.IsVisible = true;
+                croppedImage.IsVisible = false;
+            }
         }
         void PickerLanguage_Clicked(object sender, EventArgs e)
         {
@@ -416,7 +337,6 @@ namespace ComputerVisionSample
                     break;
             }
         }
-
         void ClearView()
         {
             if (backgroundImage.IsVisible == false)
@@ -424,7 +344,8 @@ namespace ComputerVisionSample
                 backgroundImage.IsVisible = true;
                 GettedLanguage.IsVisible = false;
                 TranslatedText.Children.Clear();
-                Image1.Source = null;
+                originImage.Source = null;
+                croppedImage.Source = null;
                 sourceText = sourceText.Length > 0 ? "" : sourceText;
             }
         }
