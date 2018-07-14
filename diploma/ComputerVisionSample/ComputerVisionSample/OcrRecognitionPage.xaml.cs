@@ -27,7 +27,6 @@ namespace ComputerVisionSample
 
         string sourceLanguage = "en"; // english by default
         string sourceText = "";
-        string destinationLanguage = "";
         // визначимо координати лінії тексту
         int g_Top = 0;
         int g_Left = 0;
@@ -73,6 +72,7 @@ namespace ComputerVisionSample
                     // Access the file that was specified:-
                     imageName = objFileImageSource.File;
                 }
+                ClearView();
                 if (imageName == "camera.png")
                 {
                     await CrossMedia.Current.Initialize();
@@ -100,11 +100,11 @@ namespace ComputerVisionSample
                     }
                     file = await CrossMedia.Current.PickPhotoAsync();
                 }
-                flag = true;
-                Image1.IsVisible = true;
                 if (file == null)
                     return;
-                backgroundImage.IsVisible = !(GettedLanguage.IsVisible == false);
+                flag = true;
+                Image1.IsVisible = true;
+                backgroundImage.IsVisible = false;
 
                 this.Indicator1.IsVisible = true;
                 this.Indicator1.IsRunning = true;
@@ -113,7 +113,7 @@ namespace ComputerVisionSample
                 
                 // INFO - for future modifications
                 //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
-                if (navBar.checkHandwrittenMode() == Data.Settings_handwrittenMode)
+                if (navBar.CheckHandwrittenMode() == Data.Settings_handwrittenMode)
                 {
                     HandwritingRecognitionOperationResult result;
                     result = await computerVision.RecognizeUrl(file.GetStream());
@@ -147,8 +147,6 @@ namespace ComputerVisionSample
 
         private void PopulateUIWithRegions(OcrResults ocrResult)
         {
-            //destinationLanguage =
-            //      DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             TranslatedText.Children.Clear();
             string innerChunkOfText = "";
 
@@ -183,7 +181,7 @@ namespace ComputerVisionSample
 
                     //Xamarin.Forms.Rectangle rec = new Xamarin.Forms.Rectangle(Top, Left, width, height);
                     // Відправка обробленого тексту на переклад
-                    Translate_Txt(innerChunkOfText, destinationLanguage);
+                    Translate_Txt(innerChunkOfText, navBar.getDestinationLanguage());
                     innerChunkOfText = "";
                 }
             }
@@ -191,8 +189,6 @@ namespace ComputerVisionSample
 
         private void PopulateUIWithHardwirttenLines(HandwritingRecognitionOperationResult ocrResult)
         {
-      //      destinationLanguage =
-     //             DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
             TranslatedText.Children.Clear();
             string innerChunkOfText = "";
        
@@ -218,7 +214,7 @@ namespace ComputerVisionSample
                     }
 
                     // Відправка обробленого тексту на переклад
-                    Translate_Txt(innerChunkOfText, destinationLanguage);
+                    Translate_Txt(innerChunkOfText, navBar.getDestinationLanguage());
                     innerChunkOfText = "";
                 }    
         }
@@ -411,20 +407,25 @@ namespace ComputerVisionSample
                     DisplayAlert(Data.Settings_info_Title, Data.Settings_info_Data, "Got it");
                     break;
                 case Data.Settings_clrAll:
-                    if (backgroundImage.IsVisible == false)
-                    {
-                        backgroundImage.IsVisible = true;
-                        GettedLanguage.IsVisible = false;
-                        TranslatedText.IsVisible = false;
-                        Image1.IsVisible = false;
-                        sourceText = sourceText.Length > 0 ? "" : sourceText;
-                    }
-                    navBar.setSettingsToDefault();
+                    ClearView();
+                    navBar.SetPickersToDefault();
                     break;
                 case Data.Settings_handwrittenMode:
                     break;
                 default:
                     break;
+            }
+        }
+
+        void ClearView()
+        {
+            if (backgroundImage.IsVisible == false)
+            {
+                backgroundImage.IsVisible = true;
+                GettedLanguage.IsVisible = false;
+                TranslatedText.Children.Clear();
+                Image1.Source = null;
+                sourceText = sourceText.Length > 0 ? "" : sourceText;
             }
         }
     }

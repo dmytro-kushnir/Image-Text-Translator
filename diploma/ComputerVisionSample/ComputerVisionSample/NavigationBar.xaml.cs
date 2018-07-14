@@ -42,14 +42,19 @@ namespace ComputerVisionSample
             Utils.generatePicker(SettingsPicker, Data.settings);
         }
 
-        public string checkHandwrittenMode()
+        public string CheckHandwrittenMode()
         {
-            return (string)SettingsPicker.SelectedItem != null ? (string)SettingsPicker.SelectedItem : Data.Settings_defaultMode;
+            return (string)SettingsPicker.SelectedItem ?? Data.Settings_defaultMode;
+        }
+        public string getDestinationLanguage()
+        {
+            return (string)DestinationLangPicker.SelectedItem ?? "English";
         }
 
-        public void setSettingsToDefault()
+        public void SetPickersToDefault()
         {
             SettingsPicker.SelectedIndex = 0;
+            DestinationLangPicker.SelectedIndex = 0;
         }
 
         void UploadPictureButton_Clicked(object sender, EventArgs e)
@@ -62,12 +67,12 @@ namespace ComputerVisionSample
             DestinationLangPicker.Focus();
         }
 
-        async void OpenSettingsPicker_Clicked(object sender, EventArgs e)
+        void OpenSettingsPicker_Clicked(object sender, EventArgs e)
         {
             SettingsPicker.Focus();
         }
 
-        public void Picker_Clicked(object sender, EventArgs e)
+        void Picker_Clicked(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
             if (DestinationLangPicker == picker)
