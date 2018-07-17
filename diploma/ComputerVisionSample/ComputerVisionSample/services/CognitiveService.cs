@@ -28,7 +28,7 @@ namespace ComputerVisionSample.services
             if (!CrossConnectivity.Current.IsConnected)
             {
                 Debug.WriteLine("Network error. Please check your network connection and retry");
-                await DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
+                await App.Current.MainPage.DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
                 return null;
             }
 
@@ -49,6 +49,12 @@ namespace ComputerVisionSample.services
         public async Task<HandwritingRecognitionOperationResult> RecognizeAsync(Func<VisionServiceClient, Task<HandwritingRecognitionOperation>> Func)
         {
             HandwritingRecognitionOperationResult result;
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                Debug.WriteLine("Network error. Please check your network connection and retry");
+                await App.Current.MainPage.DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
+                return null;
+            }
             try
             {
                 Debug.WriteLine("Calling VisionServiceClient.CreateHandwritingRecognitionOperationAsync()...");

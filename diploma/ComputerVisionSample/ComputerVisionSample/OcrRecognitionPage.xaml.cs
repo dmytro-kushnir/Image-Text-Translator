@@ -9,7 +9,7 @@ using ComputerVisionSample.ClipBoard;
 using ComputerVisionSample.services;
 using ComputerVisionSample.helpers;
 using System.Diagnostics;
-
+using System.Collections.Generic;
 
 namespace ComputerVisionSample
 {
@@ -25,13 +25,11 @@ namespace ComputerVisionSample
         // Початкове налаштування
         CognitiveService computerVision;
 
-        string sourceLanguage = "en"; // english by default
-        string sourceText = "";
-        // визначимо координати лінії тексту
-        int g_Top = 0;
-        int g_Left = 0;
-        int g_Width = 0;
-        int g_Height = 0;
+        string g_sourceLanguage = "en"; // english by default
+        string g_sourceText = "";
+
+        List<IDictionary<string, string>> g_lines = new List<IDictionary<string, string>>();
+
         const int DEFAULT_CROPPED_IMAGE_WIDHT = 480;
         const int DEFAULT_CROPPED_IMAGE_HEIGHT = 480;
 
@@ -53,7 +51,6 @@ namespace ComputerVisionSample
             Debug.WriteLine("VisionServiceClient is created");
             GettedLanguage.IsVisible = false;
         }
-
         private async void UploadPictureButton_Clicked(object sender, EventArgs e)
         {
             try
@@ -117,16 +114,26 @@ namespace ComputerVisionSample
                 //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
                 if (navBar.CheckHandwrittenMode() == Data.Settings_handwrittenMode)
                 {
-                    HandwritingRecognitionOperationResult result;
-                    result = await computerVision.RecognizeUrl(file.GetStream());
-                    PopulateUIWithHardwirttenLines(result);
+                    HandwritingRecognitionOperationResult hwResult;
+                    hwResult = await computerVision.RecognizeUrl(file.GetStream());
+                    if (hwResult == null)
+                    {
+                        ClearView();
+                        return;
+                    }
+                    PopulateUIWithHardwirttenLines(hwResult);
                 }
                 else
                 {
                     var ocrResult = await computerVision.AnalyzePictureAsync(file.GetStream());
+                    if (ocrResult == null)
+                    {
+                        ClearView();
+                        return;
+                    }
                     this.BindingContext = null;
                     this.BindingContext = ocrResult;
-                    sourceLanguage = ocrResult.Language;
+                    g_sourceLanguage = ocrResult.Language;
                     PopulateUIWithRegions(ocrResult);
                 }
             }
@@ -140,81 +147,97 @@ namespace ComputerVisionSample
             GettedLanguage.IsVisible = true;
             // this.TranslatedText.Children.Clear();
         }
-
         private void PopulateUIWithRegions(OcrResults ocrResult)
         {
             TranslatedText.Children.Clear();
-            string innerChunkOfText = "";
-
             //Ітерація по регіонах
             foreach (var region in ocrResult.Regions)
             {
                 //Ітерація по лініях в регіоні
                 foreach (var line in region.Lines)
                 {
-                    //   Для кожної лінії згенерувати горизонтальну панель
-                    var lineStack = new StackLayout
-                    { Orientation = StackOrientation.Horizontal };
-
+                    string wordsInLine = "";
                     //Ітерація по словах в лінії
                     foreach (var word in line.Words)
                     {
-                        var textLabel = new Label
-                        {
-                            TextColor = Xamarin.Forms.Color.Black,
-                            Text = word.Text,
-                        };
-                        innerChunkOfText += textLabel.Text + " ";
-                        sourceText += textLabel.Text + " "; // save to global var 
-
-                        lineStack.Children.Add(textLabel);
+                        // конкатенація слів в лінію
+                        wordsInLine += word.Text + " ";
                     }
-
-                    g_Height = line.Rectangle.Height;
-                    g_Width = line.Rectangle.Width;
-                    g_Left = line.Rectangle.Left;
-                    g_Top = line.Rectangle.Top;
-
-                    //Xamarin.Forms.Rectangle rec = new Xamarin.Forms.Rectangle(Top, Left, width, height);
-                    // Відправка обробленого тексту на переклад
-                    Translate_Txt(innerChunkOfText, navBar.getDestinationLanguage());
-                    innerChunkOfText = "";
+                    // генерація словника, з якого формуємо список ліній з координатами та текстом кожної з них
+                    IDictionary<string, string> coordinates = new Dictionary<string, string>();
+                    coordinates["height"] = line.Rectangle.Height.ToString();
+                    coordinates["width"] = line.Rectangle.Width.ToString();
+                    coordinates["left"] = line.Rectangle.Left.ToString();
+                    coordinates["top"] = line.Rectangle.Top.ToString();
+                    coordinates["words"] = wordsInLine;
+                    g_lines.Add(coordinates);
                 }
             }
+            // Відправка обробленого тексту на переклад
+            Translate_Txt(navBar.getDestinationLanguage(), g_lines);
         }
-
         private void PopulateUIWithHardwirttenLines(HandwritingRecognitionOperationResult ocrResult)
         {
             TranslatedText.Children.Clear();
-            string innerChunkOfText = "";
-       
+
                 //Ітерація по лініях в регіоні
                 foreach (var line in ocrResult.RecognitionResult.Lines)
                 {
-                    //   Для кожної лінії згенерувати горизонтальну панель
-                    var lineStack = new StackLayout
-                    { Orientation = StackOrientation.Horizontal };
-
+                    string wordsInLine = "";
                     //Ітерація по словах в лінії
                     foreach (var word in line.Words)
                     {
-                        var textLabel = new Label
-                        {
-                            TextColor = Xamarin.Forms.Color.Black,
-                            Text = word.Text,
-                        };
-                        innerChunkOfText += textLabel.Text + " ";
-                        sourceText += textLabel.Text + " "; // save to global var 
-
-                        lineStack.Children.Add(textLabel);
+                        wordsInLine += word.Text + " ";
                     }
+                // TODO - handwritten returns 8 positions instead of 4
+                // [height, width, xy, xy, xy, xy, xy, xy]
 
-                    // Відправка обробленого тексту на переклад
-                    Translate_Txt(innerChunkOfText, navBar.getDestinationLanguage());
-                    innerChunkOfText = "";
-                }    
+                // генерація словника, з якого формуємо список ліній з координатами та текстом кожної з них
+                IDictionary<string, string> coordinates = new Dictionary<string, string>();
+                coordinates["height"] = line.BoundingBox[0].ToString();
+                coordinates["width"] = line.BoundingBox[1].ToString();
+                coordinates["left"] = line.BoundingBox[3].ToString();
+                coordinates["top"] = line.BoundingBox[7].ToString();
+                coordinates["words"] = wordsInLine;
+                g_lines.Add(coordinates);
+            }
+            // Відправка обробленого тексту на переклад
+            Translate_Txt(navBar.getDestinationLanguage(), g_lines);
         }
-        private void generateBoxes(int height, int width, int left, int top, string text, double koefW, double koefH)
+        void Translate_Txt(string destLang, List<IDictionary<string, string>> lines)
+        {
+            if (g_sourceLanguage != "unk")
+            {
+                if(transaltedText.Length > 0)
+                {
+                    transaltedText = string.Empty;
+                }
+                foreach (var line in lines)
+                {
+                    int h = Int32.Parse(line["height"]);
+                    int w = Int32.Parse(line["width"]);
+                    int t = Int32.Parse(line["left"]);
+                    int l = Int32.Parse(line["top"]);
+                    string words = line["words"];
+
+                    string translatedwords = DependencyService.Get<PCL_Translator>().Translate(words, g_sourceLanguage, destLang) + " ";
+                    var textLabel = new Label
+                    {
+                        TextColor = Xamarin.Forms.Color.Black,
+                        Text = translatedwords
+                    };
+                    TranslatedText.Children.Add(textLabel);
+                    transaltedText += translatedwords;
+                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_W, CROP_KOEF_H);
+                }
+            }
+            else
+            {
+                //var Error = "unknown language! Please try again";
+                TranslatedText.Children.Clear();
+            }
+        }
+        private void GenerateBoxes(int height, int width, int left, int top, string text, double koefW, double koefH)
         {
             Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height };
             label.FontSize = 10;
@@ -233,56 +256,26 @@ namespace ComputerVisionSample
             label.Text = text;
             Content = container;
         }
-
-        protected override void OnSizeAllocated(double width, double height)
+        protected override void OnSizeAllocated(double deviceW, double deviceH)
         {
-            base.OnSizeAllocated(width, height);
-            croppedImage.WidthRequest = width;
-            croppedImage.HeightRequest = height;
-            CROP_KOEF_W = (width / DEFAULT_CROPPED_IMAGE_WIDHT);
-            CROP_KOEF_H = (height / DEFAULT_CROPPED_IMAGE_HEIGHT);
-
-            if (DeviceInfo.IsOrientationPortrait() && width < height || !DeviceInfo.IsOrientationPortrait() && width > height)
+            base.OnSizeAllocated(deviceW, deviceH);
+            croppedImage.WidthRequest = deviceW;
+            croppedImage.HeightRequest = deviceH;
+            CROP_KOEF_W = (deviceW / DEFAULT_CROPPED_IMAGE_WIDHT);
+            CROP_KOEF_H = (deviceH / DEFAULT_CROPPED_IMAGE_HEIGHT);
+            if (DeviceInfo.IsOrientationPortrait() && deviceW < deviceH || !DeviceInfo.IsOrientationPortrait() && deviceW > deviceH)
             {
-                //Image1.IsVisible = false;
+                // Horizontal
             }
             else
             {
-                // Image1.IsVisible = true;
-            }
-        }
-
-        void Translate_Txt(string sourceTxt, string destLang)
-        {
-            if (sourceLanguage != "unk")
-            {
-                string buffer = DependencyService.Get<PCL_Translator>().Translate(sourceTxt, sourceLanguage, destLang) + " ";
-
-                var textLabel = new Label
-                {
-                    TextColor = Xamarin.Forms.Color.Black,
-                    Text = buffer
-                };
-
-                TranslatedText.Children.Add(textLabel);
-
-                // this.TranslatedText.Text += buffer;
-
-                transaltedText += buffer;
-
-                generateBoxes(g_Height, g_Width, g_Left, g_Top, buffer, CROP_KOEF_W, CROP_KOEF_H);
-            }
-            else
-            {
-                //var Error = "unknown language! Please try again";
-                TranslatedText.Children.Clear();
+                // Vertical
             }
         }
         public void ClipboardFunc(object sender, EventArgs e)
         {
             DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(transaltedText);
-            DisplayAlert("", "Successfully copied to the clipboard", "OK");
-            // clipboardText = TranslatedText.Text;
+            DisplayAlert("Clipboard", "Successfully copied to the clipboard", "OK");
         }
         void OnImageTapped(object sender, EventArgs args)
         {
@@ -304,17 +297,10 @@ namespace ComputerVisionSample
         void PickerLanguage_Clicked(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
-            int splitChunkSize = 399;
-
             TranslatedText.Children.Clear();
-            var splittedText = Utils.SplitBy(sourceText, splitChunkSize);
-
-            foreach (string item in splittedText)
+            if (g_lines.Any())
             {
-                if (item.Length > 0)
-                {
-                    Translate_Txt(item, (string)picker.SelectedItem);
-                }
+                Translate_Txt((string)picker.SelectedItem, g_lines);
             }
         }
         void PickerSettings_Clicked(object sender, EventArgs e)
@@ -346,7 +332,9 @@ namespace ComputerVisionSample
                 TranslatedText.Children.Clear();
                 originImage.Source = null;
                 croppedImage.Source = null;
-                sourceText = sourceText.Length > 0 ? "" : sourceText;
+                Indicator1.IsRunning = false;
+                Indicator1.IsVisible = false;
+                g_sourceText = g_sourceText.Length > 0 ? "" : g_sourceText;
             }
         }
     }
