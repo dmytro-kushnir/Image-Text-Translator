@@ -27,6 +27,7 @@ namespace ComputerVisionSample
 
         string g_sourceLanguage = "en"; // english by default
         string g_sourceText = "";
+        string g_transaltedText = "";
 
         List<IDictionary<string, string>> g_lines = new List<IDictionary<string, string>>();
 
@@ -35,8 +36,6 @@ namespace ComputerVisionSample
 
         double CROP_KOEF_W = 0.0;
         double CROP_KOEF_H = 0.0;
-
-        string transaltedText = "";
         public OcrRecognitionPage()
         {
             this.Error = null;
@@ -97,7 +96,6 @@ namespace ComputerVisionSample
                         PhotoSize = PhotoSize.Full
                     });
                 }
-
                 if (file == null)
                     return;
                 originImage.IsVisible = true;
@@ -141,11 +139,11 @@ namespace ComputerVisionSample
             {
                 this.Error = ex;
             }
+            BoxesLayout.IsVisible = false;
             TranslatedText.IsVisible = true;
             this.Indicator1.IsRunning = false;
             this.Indicator1.IsVisible = false;
             GettedLanguage.IsVisible = true;
-            // this.TranslatedText.Children.Clear();
         }
         private void PopulateUIWithRegions(OcrResults ocrResult)
         {
@@ -196,8 +194,8 @@ namespace ComputerVisionSample
                 IDictionary<string, string> coordinates = new Dictionary<string, string>();
                 coordinates["height"] = line.BoundingBox[0].ToString();
                 coordinates["width"] = line.BoundingBox[1].ToString();
-                coordinates["left"] = line.BoundingBox[3].ToString();
-                coordinates["top"] = line.BoundingBox[7].ToString();
+                coordinates["left"] = line.BoundingBox[2].ToString();
+                coordinates["top"] = line.BoundingBox[3].ToString();
                 coordinates["words"] = wordsInLine;
                 g_lines.Add(coordinates);
             }
@@ -208,9 +206,9 @@ namespace ComputerVisionSample
         {
             if (g_sourceLanguage != "unk")
             {
-                if(transaltedText.Length > 0)
+                if(g_transaltedText.Length > 0)
                 {
-                    transaltedText = string.Empty;
+                    g_transaltedText = string.Empty;
                 }
                 foreach (var line in lines)
                 {
@@ -227,13 +225,13 @@ namespace ComputerVisionSample
                         Text = translatedwords
                     };
                     TranslatedText.Children.Add(textLabel);
-                    transaltedText += translatedwords;
+                    g_transaltedText += translatedwords;
                     GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_W, CROP_KOEF_H);
                 }
             }
             else
             {
-                //var Error = "unknown language! Please try again";
+                DisplayAlert("Language don't recognized", "We can't recognize your language", "Try again");
                 TranslatedText.Children.Clear();
             }
         }
@@ -241,7 +239,7 @@ namespace ComputerVisionSample
         {
             Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height };
             label.FontSize = 10;
-            container.Children.Add(label,
+            BoxesLayout.Children.Add(label,
                 Constraint.RelativeToParent((parent) =>
                 {
                     return left * koefW;  // встановлення координати X
@@ -274,7 +272,7 @@ namespace ComputerVisionSample
         }
         public void ClipboardFunc(object sender, EventArgs e)
         {
-            DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(transaltedText);
+            DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(g_transaltedText);
             DisplayAlert("Clipboard", "Successfully copied to the clipboard", "OK");
         }
         void OnImageTapped(object sender, EventArgs args)
@@ -285,6 +283,7 @@ namespace ComputerVisionSample
                 TranslatedText.IsVisible = false;
                 GettedLanguage.IsVisible = false;
                 croppedImage.IsVisible = true;
+                BoxesLayout.IsVisible = true;
             }
             else // звичайний режим
             {
@@ -292,6 +291,7 @@ namespace ComputerVisionSample
                 TranslatedText.IsVisible = true;
                 GettedLanguage.IsVisible = true;
                 croppedImage.IsVisible = false;
+                BoxesLayout.IsVisible = false;
             }
         }
         void PickerLanguage_Clicked(object sender, EventArgs e)
@@ -300,6 +300,7 @@ namespace ComputerVisionSample
             TranslatedText.Children.Clear();
             if (g_lines.Any())
             {
+                BoxesLayout.Children.Clear();
                 Translate_Txt((string)picker.SelectedItem, g_lines);
             }
         }
@@ -335,6 +336,8 @@ namespace ComputerVisionSample
                 Indicator1.IsRunning = false;
                 Indicator1.IsVisible = false;
                 g_sourceText = g_sourceText.Length > 0 ? "" : g_sourceText;
+                BoxesLayout.Children.Clear();
+                g_lines.Clear();
             }
         }
     }

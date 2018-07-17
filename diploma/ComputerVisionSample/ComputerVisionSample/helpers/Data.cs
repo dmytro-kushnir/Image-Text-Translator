@@ -17,8 +17,9 @@ namespace ComputerVisionSample.helpers
         public const string Settings_info_Title = "Image Text Translator v" + VERSION;
         public const string Settings_info_Data = "Application requires internet connection! \n " +
             "Functionality: \n " +
-            "- To start translating you may press cmare or gallery icon \n " +
-            "- Before that you may choose translation destination language in right bottom corner \n" +
+            "- To start translating you may press camera or gallery icon \n " +
+            "- Before that you may choose translation destination language in right bottom corne \n" +
+            "- You are able to change destination language in any time \n" +
             "- 'Clear all' option removes all recognized data, and returns to default app state \n " +
             "- Handwritten Mode. IMPORTANT. For now allows to recognize only english text \n " +
             "- Awailable languages to detect: English, Czech, Danish, Dutch, Finnish, French, German, Greek, Hungarian, ChineseSimplified, ChineseTraditional, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Romanian, Slovac, Serbian \n " +

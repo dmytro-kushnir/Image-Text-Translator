@@ -5,7 +5,8 @@
              x:Class="ComputerVisionSample.OcrRecognitionPage"
              xmlns:views="clr-namespace:ComputerVisionSample"
             >
-    <RelativeLayout x:Name="container">
+    <RelativeLayout
+        x:Name="container">
         <Image 
             x:Name="backgroundImage" 
             Source="Background.png"   
@@ -83,6 +84,9 @@
                 </TapGestureRecognizer>
             </Image.GestureRecognizers>
         </Image>
+        <RelativeLayout
+            x:Name="BoxesLayout">
+        </RelativeLayout>
         <StackLayout
                 RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"  
                 RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 1, Constant=-50}">
