@@ -9,7 +9,7 @@
         x:Name="container">
         <Image 
             x:Name="backgroundImage" 
-            Source="Background.png"   
+            Source="Background.jpg"   
             Opacity="1"
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
@@ -64,7 +64,7 @@
                                     >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer
-                                            Tapped="ClipboardFunc" 
+                                            Tapped="ClipboardFunc"
                                             NumberOfTapsRequired="2">
                                         </TapGestureRecognizer>
                                     </Label.GestureRecognizers>
@@ -75,6 +75,9 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
+        <RelativeLayout
+            x:Name="BoxesLayout">
+        </RelativeLayout>
         <Image 
             x:Name="croppedImage">
             <Image.GestureRecognizers>
@@ -84,9 +87,6 @@
                 </TapGestureRecognizer>
             </Image.GestureRecognizers>
         </Image>
-        <RelativeLayout
-            x:Name="BoxesLayout">
-        </RelativeLayout>
         <StackLayout
                 RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"  
                 RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 1, Constant=-50}">

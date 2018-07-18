@@ -15,17 +15,15 @@ namespace ComputerVisionSample
 {
     public partial class OcrRecognitionPage : ContentPage
     {
-
         public Exception Error
         {
             get;
             private set;
         }
-
         // Початкове налаштування
         CognitiveService computerVision;
 
-        string g_sourceLanguage = "en"; // english by default
+        string g_sourceLanguage = "";
         string g_sourceText = "";
         string g_transaltedText = "";
 
@@ -57,11 +55,9 @@ namespace ComputerVisionSample
                 Image img = (Image)sender;
                 var file = (dynamic)null;
                 string imageName = "";
-                if (img.Source is Xamarin.Forms.FileImageSource)
+                if (img.Source is FileImageSource)
                 {
-                    Xamarin.Forms.FileImageSource objFileImageSource = (Xamarin.Forms.FileImageSource)img.Source;
-                    //
-                    // Access the file that was specified:-
+                    FileImageSource objFileImageSource = (FileImageSource)img.Source;
                     imageName = objFileImageSource.File;
                 }
                 ClearView();
@@ -97,7 +93,9 @@ namespace ComputerVisionSample
                     });
                 }
                 if (file == null)
+                {
                     return;
+                }
                 originImage.IsVisible = true;
                 croppedImage.IsVisible = false;
                 backgroundImage.IsVisible = false;
@@ -119,6 +117,7 @@ namespace ComputerVisionSample
                         ClearView();
                         return;
                     }
+                    g_sourceLanguage = "en";
                     PopulateUIWithHardwirttenLines(hwResult);
                 }
                 else
@@ -132,6 +131,7 @@ namespace ComputerVisionSample
                     this.BindingContext = null;
                     this.BindingContext = ocrResult;
                     g_sourceLanguage = ocrResult.Language;
+                    GettedLanguage.IsVisible = true;
                     PopulateUIWithRegions(ocrResult);
                 }
             }
@@ -143,7 +143,6 @@ namespace ComputerVisionSample
             TranslatedText.IsVisible = true;
             this.Indicator1.IsRunning = false;
             this.Indicator1.IsVisible = false;
-            GettedLanguage.IsVisible = true;
         }
         private void PopulateUIWithRegions(OcrResults ocrResult)
         {
@@ -226,13 +225,13 @@ namespace ComputerVisionSample
                     };
                     TranslatedText.Children.Add(textLabel);
                     g_transaltedText += translatedwords;
-                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_W, CROP_KOEF_H);
+                    //GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
                 }
             }
             else
             {
                 DisplayAlert("Language don't recognized", "We can't recognize your language", "Try again");
-                TranslatedText.Children.Clear();
+                ClearView();
             }
         }
         private void GenerateBoxes(int height, int width, int left, int top, string text, double koefW, double koefH)
@@ -251,14 +250,23 @@ namespace ComputerVisionSample
                 Constraint.Constant(width * koefW), // встановлення ширини
                 Constraint.Constant(height * koefH)  // встановлення висоти
             );
+
+            //var boxTgr = new TapGestureRecognizer();
+            //boxTgr.Tapped += (s, e) => OnImageTapped(s, e);
+            //label.GestureRecognizers.Add(boxTgr);
+
             label.Text = text;
             Content = container;
         }
         protected override void OnSizeAllocated(double deviceW, double deviceH)
         {
             base.OnSizeAllocated(deviceW, deviceH);
+            originImage.WidthRequest = DEFAULT_CROPPED_IMAGE_WIDHT / 2;
+            originImage.HeightRequest = DEFAULT_CROPPED_IMAGE_HEIGHT / 2;
+
             croppedImage.WidthRequest = deviceW;
             croppedImage.HeightRequest = deviceH;
+
             CROP_KOEF_W = (deviceW / DEFAULT_CROPPED_IMAGE_WIDHT);
             CROP_KOEF_H = (deviceH / DEFAULT_CROPPED_IMAGE_HEIGHT);
             if (DeviceInfo.IsOrientationPortrait() && deviceW < deviceH || !DeviceInfo.IsOrientationPortrait() && deviceW > deviceH)

@@ -7,30 +7,33 @@
         <Grid 
             BackgroundColor="White" >
             <BoxView
-                BackgroundColor="black"  />
+                BackgroundColor="Gray">
+            </BoxView>
+            <StackLayout
+                Margin="0, 5, 0, 0">
+                <Picker 
+                        x:Name="DestinationLangPicker"
+                        SelectedIndexChanged="Picker_Clicked"
+                        Unfocused="UnfocusedPicker"
+                        HorizontalOptions="CenterAndExpand">
+                </Picker>
+            </StackLayout>
+            <StackLayout
+                Margin="0, 5, 0, 0">
+                <Picker
+                        x:Name="SettingsPicker"
+                        SelectedIndexChanged="Picker_Clicked"
+                        Unfocused="UnfocusedPicker"
+                        HorizontalOptions="CenterAndExpand">
+                </Picker>
+            </StackLayout>
             <Grid
-                BackgroundColor="#AAAAAA"  Margin="0, 1, 0, 0" >
+                BackgroundColor="#AAAAAA"  Margin="0, 1, 0, 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <StackLayout>
-                    <Picker 
-                        x:Name="DestinationLangPicker"
-                        SelectedIndexChanged="Picker_Clicked"
-                        Unfocused="UnfocusedPicker"
-                        HorizontalOptions="CenterAndExpand">
-                    </Picker>
-                </StackLayout>
-                <StackLayout>
-                    <Picker
-                        x:Name="SettingsPicker"
-                        SelectedIndexChanged="Picker_Clicked"
-                        Unfocused="UnfocusedPicker"
-                        HorizontalOptions="CenterAndExpand">
-                    </Picker>
-                </StackLayout>
                 <StackLayout
                     Orientation="Horizontal"
                     Grid.Column="0"
