@@ -123,7 +123,9 @@ namespace ComputerVisionSample.Droid
                         sourceLanguage = "Danish";
                     else if (sourceLanguage == "nl")
                         sourceLanguage = "Dutch";
-                
+                    else if (sourceLanguage == "sr-Cyrl")
+                        sourceLanguage = "Serbian";
+
                     // Отримуємо колекцію фраз
                     string text = File.ReadAllText(outputFile);
                     int index = text.IndexOf(string.Format(",,\"{0}\"", Android_Translator.LanguageEnumToIdentifier(sourceLanguage)));

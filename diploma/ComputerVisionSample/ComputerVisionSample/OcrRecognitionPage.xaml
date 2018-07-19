@@ -8,26 +8,27 @@
     <RelativeLayout
         x:Name="container">
         <Image 
-            x:Name="backgroundImage" 
-            Source="Background.jpg"   
+            x:Name="backgroundImage"
+            Source="Background.jpg"
             Opacity="1"
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
         </Image>
-        <Grid 
+        <Grid
             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
-            <StackLayout 
-                Orientation="Vertical" 
+            <StackLayout
+                Orientation="Vertical"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 Margin="40, 1">
                 <ActivityIndicator 
-                    x:Name="Indicator1" 
-                    IsVisible="False" 
+                    x:Name="Indicator1"
+                    IsVisible="False"
                     IsRunning="False">
                 </ActivityIndicator>
-                <Image 
+                <Image
+                    Margin="0, 15, 0, 0"
                     x:Name="originImage">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
@@ -37,15 +38,15 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <StackLayout  
-                    Orientation="Horizontal" 
-                    x:Name="GettedLanguage"  
+                    Orientation="Horizontal"
+                    x:Name="GettedLanguage"
                     HorizontalOptions="CenterAndExpand">
                     <Label 
-                        Font="17" 
+                        Font="17"
                         Text="Detected Language: ">
                     </Label>
-                    <Label 
-                        Font="17"  
+                    <Label
+                        Font="17"
                         TextColor="Black" 
                         Text="{Binding Language}">
                     </Label>
@@ -61,13 +62,8 @@
                                 <StackLayout 
                                     x:Name="TranslatedText"
                                     HorizontalOptions="CenterAndExpand"
+                                    Margin="0, 0, 0, 65"
                                     >
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Tapped="ClipboardFunc"
-                                            NumberOfTapsRequired="2">
-                                        </TapGestureRecognizer>
-                                    </Label.GestureRecognizers>
                                 </StackLayout>
                             </ScrollView>
                         </StackLayout>
@@ -75,11 +71,9 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
-        <RelativeLayout
-            x:Name="BoxesLayout">
-        </RelativeLayout>
         <Image 
-            x:Name="croppedImage">
+            x:Name="croppedImage"
+            Margin="0, 15, 0, 0">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer
                             Tapped="OnImageTapped"
@@ -87,6 +81,9 @@
                 </TapGestureRecognizer>
             </Image.GestureRecognizers>
         </Image>
+        <RelativeLayout
+            x:Name="BoxesLayout">
+        </RelativeLayout>
         <StackLayout
                 RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"  
                 RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 1, Constant=-50}">

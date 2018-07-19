@@ -134,6 +134,11 @@ namespace ComputerVisionSample
                     GettedLanguage.IsVisible = true;
                     PopulateUIWithRegions(ocrResult);
                 }
+                // добавити хендлер на копіювання тексту після обпрацювання зображення
+                var tgr = new TapGestureRecognizer();
+                tgr.Tapped += (s, ev) => ClipboardFunc(s, ev);
+                tgr.NumberOfTapsRequired = 2;
+                TranslatedText.GestureRecognizers.Add(tgr);
             }
             catch (Exception ex)
             {
@@ -225,7 +230,7 @@ namespace ComputerVisionSample
                     };
                     TranslatedText.Children.Add(textLabel);
                     g_transaltedText += translatedwords;
-                    //GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
+                    GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
                 }
             }
             else
@@ -233,6 +238,10 @@ namespace ComputerVisionSample
                 DisplayAlert("Language don't recognized", "We can't recognize your language", "Try again");
                 ClearView();
             }
+            var tgr = new TapGestureRecognizer();
+            tgr.Tapped += (s, ev) => OnImageTapped(s, ev);
+            tgr.NumberOfTapsRequired = 2;
+            BoxesLayout.GestureRecognizers.Add(tgr);
         }
         private void GenerateBoxes(int height, int width, int left, int top, string text, double koefW, double koefH)
         {
@@ -251,9 +260,10 @@ namespace ComputerVisionSample
                 Constraint.Constant(height * koefH)  // встановлення висоти
             );
 
-            //var boxTgr = new TapGestureRecognizer();
-            //boxTgr.Tapped += (s, e) => OnImageTapped(s, e);
-            //label.GestureRecognizers.Add(boxTgr);
+            var boxTgr = new TapGestureRecognizer();
+            boxTgr.Tapped += (s, e) => OnImageTapped(s, e);
+            boxTgr.NumberOfTapsRequired = 2;
+            label.GestureRecognizers.Add(boxTgr);
 
             label.Text = text;
             Content = container;
@@ -263,9 +273,10 @@ namespace ComputerVisionSample
             base.OnSizeAllocated(deviceW, deviceH);
             originImage.WidthRequest = DEFAULT_CROPPED_IMAGE_WIDHT / 2;
             originImage.HeightRequest = DEFAULT_CROPPED_IMAGE_HEIGHT / 2;
+            int bottomOffset = 65;
 
             croppedImage.WidthRequest = deviceW;
-            croppedImage.HeightRequest = deviceH;
+            croppedImage.HeightRequest = deviceH - bottomOffset;
 
             CROP_KOEF_W = (deviceW / DEFAULT_CROPPED_IMAGE_WIDHT);
             CROP_KOEF_H = (deviceH / DEFAULT_CROPPED_IMAGE_HEIGHT);
@@ -276,6 +287,15 @@ namespace ComputerVisionSample
             else
             {
                 // Vertical
+            }
+            if (Application.Current.Properties.ContainsKey("FirstUse"))
+            {
+                //Do things when it's NOT the first use...
+            }
+            else
+            {
+                Application.Current.Properties["FirstUse"] = false;
+                DisplayAlert(Data.Settings_info_Title, Data.Settings_info_Data, "Got it");
             }
         }
         public void ClipboardFunc(object sender, EventArgs e)
