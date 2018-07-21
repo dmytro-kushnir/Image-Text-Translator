@@ -14,7 +14,8 @@ namespace ComputerVisionSample.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-             base.Window.RequestFeature(WindowFeatures.ActionBar);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
+            base.Window.RequestFeature(WindowFeatures.ActionBar);
              //Name of the MainActivity theme you had there before.
            //  Or you can use global::Android.Resource.Style.ThemeHoloLight
                 base.SetTheme(Resource.Style.MainTheme_Base);

@@ -29,8 +29,8 @@ namespace ComputerVisionSample
 
         List<IDictionary<string, string>> g_lines = new List<IDictionary<string, string>>();
 
-        const int DEFAULT_CROPPED_IMAGE_WIDHT = 480;
-        const int DEFAULT_CROPPED_IMAGE_HEIGHT = 480;
+        double g_OriginWidth = 0.0;
+        double g_OriginHeight = 0.0;
 
         double CROP_KOEF_W = 0.0;
         double CROP_KOEF_H = 0.0;
@@ -103,8 +103,16 @@ namespace ComputerVisionSample
                 this.Indicator1.IsVisible = true;
                 this.Indicator1.IsRunning = true;
 
-                originImage.Source = ImageSource.FromStream(() => file.GetStream());
-                croppedImage.Source = ImageSource.FromStream(() => file.GetStream());
+                ImageSource photoStream = null;
+                photoStream = ImageSource.FromStream(() => file.GetStream());
+
+                originImage.Source = croppedImage.Source = photoStream;
+
+                g_OriginWidth = originImage.Bounds.Size.Width;
+                g_OriginHeight = originImage.Bounds.Size.Height;
+
+                CROP_KOEF_W = g_OriginWidth != 0 ? (croppedImage.Width / g_OriginWidth) : 1;
+                CROP_KOEF_H = g_OriginHeight != 0 ? (croppedImage.Height / g_OriginHeight) : 1;
 
                 // INFO - for future modifications
                 //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
@@ -230,7 +238,7 @@ namespace ComputerVisionSample
                     };
                     TranslatedText.Children.Add(textLabel);
                     g_transaltedText += translatedwords;
-                    GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
+                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_W, CROP_KOEF_H);
                 }
             }
             else
@@ -271,15 +279,10 @@ namespace ComputerVisionSample
         protected override void OnSizeAllocated(double deviceW, double deviceH)
         {
             base.OnSizeAllocated(deviceW, deviceH);
-            originImage.WidthRequest = DEFAULT_CROPPED_IMAGE_WIDHT / 2;
-            originImage.HeightRequest = DEFAULT_CROPPED_IMAGE_HEIGHT / 2;
             int bottomOffset = 65;
 
             croppedImage.WidthRequest = deviceW;
             croppedImage.HeightRequest = deviceH - bottomOffset;
-
-            CROP_KOEF_W = (deviceW / DEFAULT_CROPPED_IMAGE_WIDHT);
-            CROP_KOEF_H = (deviceH / DEFAULT_CROPPED_IMAGE_HEIGHT);
             if (DeviceInfo.IsOrientationPortrait() && deviceW < deviceH || !DeviceInfo.IsOrientationPortrait() && deviceW > deviceH)
             {
                 // Horizontal
