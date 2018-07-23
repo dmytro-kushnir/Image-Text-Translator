@@ -40,15 +40,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeviceInfo.cs" />
+    <Compile Include="helpers\DeviceInfo.cs" />
     <Compile Include="helpers\Data.cs" />
     <Compile Include="helpers\Utils.cs" />
     <Compile Include="OcrRecognitionPage.xaml.cs">
       <DependentUpon>OcrRecognitionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PCL_ClipBoard.cs" />
+    <Compile Include="interfaces\PCL_ClipBoard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PCL_Translator.cs" />
+    <Compile Include="interfaces\PCL_Translator.cs" />
     <Compile Include="services\CognitiveService.cs" />
     <Compile Include="NavigationBar.xaml.cs">
       <DependentUpon>NavigationBar.xaml</DependentUpon>
@@ -141,9 +141,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

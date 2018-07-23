@@ -21,7 +21,7 @@ namespace ComputerVisionSample.helpers
                 yield return str.Substring(i, chunkLength);
             }
          }
-        public static ImageSource generateFlag(string language)
+        public static ImageSource GenerateFlag(string language)
         {
             ImageSource imgSrc = null;
             switch (language)
@@ -64,18 +64,47 @@ namespace ComputerVisionSample.helpers
             }
             return imgSrc;
         }
-        public static void generateImageGesture(Image[] images, TapGestureRecognizer tgr)
+        public static void GenerateImageGesture(Image[] images, TapGestureRecognizer tgr)
         {
             foreach (var image in images)
             {
                 image.GestureRecognizers.Add(tgr);
             }
         }
-        public static void generatePicker(Picker picker, string[] pickers)
+        public static void GeneratePicker(Picker picker, string[] pickers)
         {
             foreach (var pr in pickers)
             {
                 picker.Items.Add(pr);
+            }
+        }
+        /// <summary>
+        /// Генерує розмір шрифта, відповідно до висоти прямокутника
+        /// </summary>
+        /// <param name="boxHeight">Висота прямокутника</param>
+        /// <returns>[Int] - розмір шрифта</returns>
+        public static int FontSizeGenerator(double boxHeight)
+        {
+            const int SMALL_BOX_HEIGHT = 60;
+            const int MEDIUM_BOX_HEIGHT = 80;
+            const int BIX_BOX_HEIGHT = 120;
+
+            const int SMALL_FONT_SIZE = 18; 
+            const int MEDIUM_FONT_SIZE = 22; 
+            const int BIX_FONT_SIZE = 26; 
+            const int EXTRA_BIX_FONT_SIZE = 30;
+
+            if (boxHeight <= SMALL_BOX_HEIGHT)
+            {
+                return SMALL_FONT_SIZE;
+            }
+            else if (boxHeight <= MEDIUM_BOX_HEIGHT)
+            {
+                return MEDIUM_FONT_SIZE;
+            }
+            else
+            {
+                return boxHeight <= BIX_BOX_HEIGHT ? BIX_FONT_SIZE : EXTRA_BIX_FONT_SIZE;
             }
         }
     }

@@ -1,6 +1,6 @@
-// БКР : модуль "Перекладач" Android
-// розробник: Кушнір Дмитро (c) 2017
-// Призначення: перклад тексту отриманого з зображення та повернення його у вигляді стрічки
+// МКР : модуль "Перекладач" Android
+// розробник: Кушнір Дмитро (c) 2018
+// Призначення: переклад тексту отриманого з зображення та повернення його у вигляді стрічки
 
 using System;
 using System.Collections.Generic;
@@ -29,7 +29,6 @@ namespace ComputerVisionSample.Droid
                 return Android_Translator._languageModeMap.Keys.OrderBy(p => p);
             }
         }
-
         /// <summary>
         /// Помилки.
         /// </summary>
@@ -38,11 +37,8 @@ namespace ComputerVisionSample.Droid
             get;
             private set;
         }
-
         #endregion
-
         #region Public methods
-
         /// <summary>
         /// Трансюємо необідний текст
         /// </summary>
@@ -91,9 +87,25 @@ namespace ComputerVisionSample.Droid
                         sourceLanguage = "Russian";
                     else if (sourceLanguage == "es")
                         sourceLanguage = "Spanish";
+                    else if (sourceLanguage == "hr")
+                        sourceLanguage = "Croatian";
                     else if (sourceLanguage == "ar")
                         sourceLanguage = "Arabic";
+                    else if (sourceLanguage == "he")
+                        sourceLanguage = "Hebrew";
+                    else if (sourceLanguage == "vi")
+                        sourceLanguage = "Vietnamese";
+                    else if (sourceLanguage == "th")
+                        sourceLanguage = "Thai";
+                    else if (sourceLanguage == "ms")
+                        sourceLanguage = "Malay";
                     else if (sourceLanguage == "zh-CN")
+                        sourceLanguage = "Chinese";
+                    else if (sourceLanguage == "zh-HK")
+                        sourceLanguage = "Chinese";
+                    else if (sourceLanguage == "zh-Hant")
+                        sourceLanguage = "Chinese";
+                    else if (sourceLanguage == "zh-Hans")
                         sourceLanguage = "Chinese";
                     else if (sourceLanguage == "ch")
                         sourceLanguage = "Chinese";
@@ -102,6 +114,8 @@ namespace ComputerVisionSample.Droid
                     else if (sourceLanguage == "tr")
                         sourceLanguage = "Turkish";
                     else if (sourceLanguage == "pt")
+                        sourceLanguage = "Portuguese";
+                    else if (sourceLanguage == "pt-BR")
                         sourceLanguage = "Portuguese";
                     else if (sourceLanguage == "el")
                         sourceLanguage = "Greek";
@@ -114,6 +128,8 @@ namespace ComputerVisionSample.Droid
                     else if (sourceLanguage == "sv")
                         sourceLanguage = "Swedish";
                     else if (sourceLanguage == "no")
+                        sourceLanguage = "Norwegian";
+                    else if (sourceLanguage == "nb")
                         sourceLanguage = "Norwegian";
                     else if (sourceLanguage == "ko")
                         sourceLanguage = "Korean";
@@ -148,9 +164,7 @@ namespace ComputerVisionSample.Droid
                                 }
                             }
                         }
-
                     }
-                   
                     // Корегуємо можливі помилки в відображенні тексту
                     translation = translation.Trim();
                     translation = translation.Replace(" ?", "?");
@@ -162,19 +176,14 @@ namespace ComputerVisionSample.Droid
             }
             catch (Exception ex)
             {
-                translation = "Sorry, to much words :-(";
                 this.Error = ex;
-                return translation;
+                return null;
             }
-
             // Повертаємо результат
             return translation;
         }
-
         #endregion
-
         #region Private methods
-
         /// <summary> 
         /// Конвертування "мова -> ідентифікатор" (наприклад Ukrainian -> ua)
         /// </summary>
@@ -262,16 +271,12 @@ namespace ComputerVisionSample.Droid
                 Android_Translator._languageModeMap.Add("Yiddish", "yi");
             }
         }
-
         #endregion
-
         #region Fields
-
         /// <summary>
         /// мова для пересування по словнику
         /// </summary>
         private static Dictionary<string, string> _languageModeMap;
-
         #endregion
     }
 }

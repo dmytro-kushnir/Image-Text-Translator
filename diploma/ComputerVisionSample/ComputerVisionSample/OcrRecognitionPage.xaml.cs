@@ -108,11 +108,12 @@ namespace ComputerVisionSample
 
                 originImage.Source = croppedImage.Source = photoStream;
 
-                g_OriginWidth = originImage.Bounds.Size.Width;
-                g_OriginHeight = originImage.Bounds.Size.Height;
+                //g_OriginWidth = originImage.Bounds.Size.Width != 0 ? originImage.Bounds.Size.Width : 240; // default size
+                //g_OriginHeight = originImage.Bounds.Size.Height != 0 ? originImage.Bounds.Size.Height : 240; // default size
 
-                CROP_KOEF_W = g_OriginWidth != 0 ? (croppedImage.Width / g_OriginWidth) : 1;
-                CROP_KOEF_H = g_OriginHeight != 0 ? (croppedImage.Height / g_OriginHeight) : 1;
+                // TODO - investigate api_returns_scale
+                CROP_KOEF_W = (croppedImage.Width / (240 * 2)); // (deviceW / originW) * api_returns_scale 
+                CROP_KOEF_H = (croppedImage.Height / (340 * 2)); // ((deviceH - bottomOffset) / originH) * api_returns_scale
 
                 // INFO - for future modifications
                 //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
@@ -174,12 +175,14 @@ namespace ComputerVisionSample
                         wordsInLine += word.Text + " ";
                     }
                     // генерація словника, з якого формуємо список ліній з координатами та текстом кожної з них
-                    IDictionary<string, string> coordinates = new Dictionary<string, string>();
-                    coordinates["height"] = line.Rectangle.Height.ToString();
-                    coordinates["width"] = line.Rectangle.Width.ToString();
-                    coordinates["left"] = line.Rectangle.Left.ToString();
-                    coordinates["top"] = line.Rectangle.Top.ToString();
-                    coordinates["words"] = wordsInLine;
+                    IDictionary<string, string> coordinates = new Dictionary<string, string>
+                    {
+                        ["height"] = line.Rectangle.Height.ToString(),
+                        ["width"] = line.Rectangle.Width.ToString(),
+                        ["left"] = line.Rectangle.Left.ToString(),
+                        ["top"] = line.Rectangle.Top.ToString(),
+                        ["words"] = wordsInLine
+                    };
                     g_lines.Add(coordinates);
                 }
             }
@@ -203,12 +206,14 @@ namespace ComputerVisionSample
                 // [height, width, xy, xy, xy, xy, xy, xy]
 
                 // генерація словника, з якого формуємо список ліній з координатами та текстом кожної з них
-                IDictionary<string, string> coordinates = new Dictionary<string, string>();
-                coordinates["height"] = line.BoundingBox[0].ToString();
-                coordinates["width"] = line.BoundingBox[1].ToString();
-                coordinates["left"] = line.BoundingBox[2].ToString();
-                coordinates["top"] = line.BoundingBox[3].ToString();
-                coordinates["words"] = wordsInLine;
+                IDictionary<string, string> coordinates = new Dictionary<string, string>
+                {
+                    ["height"] = line.BoundingBox[0].ToString(),
+                    ["width"] = line.BoundingBox[1].ToString(),
+                    ["left"] = line.BoundingBox[2].ToString(),
+                    ["top"] = line.BoundingBox[3].ToString(),
+                    ["words"] = wordsInLine
+                };
                 g_lines.Add(coordinates);
             }
             // Відправка обробленого тексту на переклад
@@ -231,6 +236,11 @@ namespace ComputerVisionSample
                     string words = line["words"];
 
                     string translatedwords = DependencyService.Get<PCL_Translator>().Translate(words, g_sourceLanguage, destLang) + " ";
+                    if (translatedwords == null)
+                    {
+                        DisplayAlert("Translation error", "We can't transalte your text", "Try again");
+                        return;
+                    }
                     var textLabel = new Label
                     {
                         TextColor = Xamarin.Forms.Color.Black,
@@ -253,8 +263,10 @@ namespace ComputerVisionSample
         }
         private void GenerateBoxes(int height, int width, int left, int top, string text, double koefW, double koefH)
         {
-            Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height };
-            label.FontSize = 10;
+            Label label = new Label { BackgroundColor = Xamarin.Forms.Color.DarkGray, WidthRequest = width, HeightRequest = height };
+
+            label.FontSize = Utils.FontSizeGenerator(height * koefH);
+
             BoxesLayout.Children.Add(label,
                 Constraint.RelativeToParent((parent) =>
                 {

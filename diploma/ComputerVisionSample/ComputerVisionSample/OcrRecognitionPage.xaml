@@ -4,9 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComputerVisionSample.OcrRecognitionPage"
              xmlns:views="clr-namespace:ComputerVisionSample"
-             xmlns:xamvvm="clr-namespace:Xamvvm;assembly=Xamvvm.Forms"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
             >
     <RelativeLayout
         x:Name="container">
@@ -30,17 +27,17 @@
                     IsVisible="False"
                     IsRunning="False">
                 </ActivityIndicator>
-                <ffimageloading:CachedImage
+                <Image
                     Margin="0, 15, 0, 0"
                     x:Name="originImage"
-                    DownsampleToViewSize="true">
-                    <ffimageloading:CachedImage.GestureRecognizers>
+                    >
+                    <Image.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnImageTapped"
                             NumberOfTapsRequired="2">
                         </TapGestureRecognizer>
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
+                    </Image.GestureRecognizers>
+                </Image>
                 <StackLayout  
                     Orientation="Horizontal"
                     x:Name="GettedLanguage"

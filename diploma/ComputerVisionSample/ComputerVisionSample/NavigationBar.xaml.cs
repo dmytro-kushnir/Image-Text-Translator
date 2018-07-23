@@ -34,12 +34,12 @@ namespace ComputerVisionSample
             var tgr3 = new TapGestureRecognizer();
             tgr3.Tapped += (s, e) => OpenSettingsPicker_Clicked(s, e);
 
-            Utils.generateImageGesture(downloadImages, tgr);
-            Utils.generateImageGesture(pickLanguage, tgr2);
-            Utils.generateImageGesture(pickSettings, tgr3);
+            Utils.GenerateImageGesture(downloadImages, tgr);
+            Utils.GenerateImageGesture(pickLanguage, tgr2);
+            Utils.GenerateImageGesture(pickSettings, tgr3);
 
-            Utils.generatePicker(DestinationLangPicker, Data.destinationLanguages);
-            Utils.generatePicker(SettingsPicker, Data.settings);
+            Utils.GeneratePicker(DestinationLangPicker, Data.destinationLanguages);
+            Utils.GeneratePicker(SettingsPicker, Data.settings);
         }
 
         public string CheckHandwrittenMode()
@@ -81,12 +81,12 @@ namespace ComputerVisionSample
                 {
                     DestinationLangPicker.SelectedIndex = 1;
                 };
-                destinationLanguage.Source = Utils.generateFlag((string)picker.SelectedItem);
+                destinationLanguage.Source = Utils.GenerateFlag((string)picker.SelectedItem);
                 pickerLanguage_Clicked?.Invoke(sender, e);
             }
             else if (SettingsPicker == picker)
             {
-                settings.Source = Utils.generateFlag((string)picker.SelectedItem);
+                settings.Source = Utils.GenerateFlag((string)picker.SelectedItem);
                 pickerSettings_Clicked?.Invoke(sender, e);
             }
         }

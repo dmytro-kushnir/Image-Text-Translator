@@ -20,7 +20,7 @@
 &lt;/dict&gt;
 &lt;/plist&gt;
 </TargetiOSDevice>
-    <DefaultDevice>iPhone 6 iOS 10.2</DefaultDevice>
+    <DefaultDevice>iPad Air 2 iOS 10.2</DefaultDevice>
     <DeveloperId />
     <DevelopmentTeamId />
   </PropertyGroup>
