@@ -107,5 +107,17 @@ namespace ComputerVisionSample.helpers
                 return boxHeight <= BIX_BOX_HEIGHT ? BIX_FONT_SIZE : EXTRA_BIX_FONT_SIZE;
             }
         }
+
+        /// <summary> 
+        /// Конвертування "мова -> ідентифікатор" (наприклад Ukrainian -> ua)
+        /// </summary>
+        /// <param name="language">Мова."</param>
+        /// <returns>Ідентифікатор <see cref="string.Empty"/> якщо нема співпадінь</returns>
+        public static string LanguageEnumToIdentifier(string language)
+        {
+            string mode = string.Empty;
+            Data._languageModeMap.TryGetValue(language, out mode);
+            return mode;
+        }
     }
 }

@@ -187,7 +187,7 @@ namespace ComputerVisionSample
                 }
             }
             // Відправка обробленого тексту на переклад
-            Translate_Txt(navBar.getDestinationLanguage(), g_lines);
+            Translate_Txt(Utils.LanguageEnumToIdentifier(navBar.getDestinationLanguage()), g_lines);
         }
         private void PopulateUIWithHardwirttenLines(HandwritingRecognitionOperationResult ocrResult)
         {
@@ -217,7 +217,7 @@ namespace ComputerVisionSample
                 g_lines.Add(coordinates);
             }
             // Відправка обробленого тексту на переклад
-            Translate_Txt(navBar.getDestinationLanguage(), g_lines);
+            Translate_Txt(Utils.LanguageEnumToIdentifier(navBar.getDestinationLanguage()), g_lines);
         }
         void Translate_Txt(string destLang, List<IDictionary<string, string>> lines)
         {
@@ -236,9 +236,10 @@ namespace ComputerVisionSample
                     string words = line["words"];
 
                     string translatedwords = DependencyService.Get<PCL_Translator>().Translate(words, g_sourceLanguage, destLang) + " ";
-                    if (translatedwords == null)
+                    if (translatedwords == null || translatedwords == " ")
                     {
-                        DisplayAlert("Translation error", "We can't transalte your text", "Try again");
+                        DisplayAlert("Translation error", "We can't translate your text", "Try again");
+                        ClearView();
                         return;
                     }
                     var textLabel = new Label
@@ -344,7 +345,7 @@ namespace ComputerVisionSample
             if (g_lines.Any())
             {
                 BoxesLayout.Children.Clear();
-                Translate_Txt((string)picker.SelectedItem, g_lines);
+                Translate_Txt(Utils.LanguageEnumToIdentifier((string)picker.SelectedItem), g_lines);
             }
         }
         void PickerSettings_Clicked(object sender, EventArgs e)
