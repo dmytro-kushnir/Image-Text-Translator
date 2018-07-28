@@ -87,10 +87,10 @@ namespace ComputerVisionSample.helpers
             const int MEDIUM_BOX_HEIGHT = 80;
             const int BIX_BOX_HEIGHT = 120;
 
-            const int SMALL_FONT_SIZE = 16; 
-            const int MEDIUM_FONT_SIZE = 20; 
-            const int BIX_FONT_SIZE = 24; 
-            const int EXTRA_BIX_FONT_SIZE = 28;
+            const int SMALL_FONT_SIZE = 20; 
+            const int MEDIUM_FONT_SIZE = 24; 
+            const int BIX_FONT_SIZE = 28; 
+            const int EXTRA_BIX_FONT_SIZE = 32;
 
             if (boxHeight <= SMALL_BOX_HEIGHT)
             {
