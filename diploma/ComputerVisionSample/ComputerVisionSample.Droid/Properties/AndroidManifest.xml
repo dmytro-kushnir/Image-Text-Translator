@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="com.dima.traslator" android:versionCode="3" android:versionName="3">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="Image_Text_Translator"></application>
+	<application android:label="Image Text Translator"></application>
 </manifest>
