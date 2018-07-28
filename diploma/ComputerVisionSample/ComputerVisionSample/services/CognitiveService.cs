@@ -31,7 +31,7 @@ namespace ComputerVisionSample.services
                 await App.Current.MainPage.DisplayAlert("Network error", "Please check your network connection and retry.", "Got it");
                 return null;
             }
-
+             
             OcrResults ocrResult = await this.visionClient.RecognizeTextAsync(inputFile);
             return ocrResult;
         }

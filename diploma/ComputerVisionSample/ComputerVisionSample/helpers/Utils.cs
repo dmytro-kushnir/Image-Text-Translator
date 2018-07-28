@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace ComputerVisionSample.helpers
@@ -89,10 +87,10 @@ namespace ComputerVisionSample.helpers
             const int MEDIUM_BOX_HEIGHT = 80;
             const int BIX_BOX_HEIGHT = 120;
 
-            const int SMALL_FONT_SIZE = 18; 
-            const int MEDIUM_FONT_SIZE = 22; 
-            const int BIX_FONT_SIZE = 26; 
-            const int EXTRA_BIX_FONT_SIZE = 30;
+            const int SMALL_FONT_SIZE = 20; 
+            const int MEDIUM_FONT_SIZE = 24; 
+            const int BIX_FONT_SIZE = 28; 
+            const int EXTRA_BIX_FONT_SIZE = 32;
 
             if (boxHeight <= SMALL_BOX_HEIGHT)
             {
@@ -118,6 +116,13 @@ namespace ComputerVisionSample.helpers
             string mode = string.Empty;
             Data._languageModeMap.TryGetValue(language, out mode);
             return mode;
+        }
+
+        public static string GenerateRandomKey(string[] keys)
+        {
+            Random rand = new Random();
+            Debug.WriteLine("randomIndex -> {0} ", rand.Next(0, keys.Length));
+            return keys[rand.Next(0, keys.Length)];
         }
     }
 }

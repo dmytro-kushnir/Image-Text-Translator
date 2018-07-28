@@ -38,13 +38,7 @@ namespace ComputerVisionSample
         {
             this.Error = null;
             InitializeComponent();
-
-            Random rand = new Random();
-            int randomIndex = rand.Next(0, Data.subscriptionKeys.Length);
-
-            computerVision = new CognitiveService(Data.subscriptionKeys[randomIndex]);
-
-            Debug.WriteLine("randomIndex -> {0} ", randomIndex);
+            computerVision = new CognitiveService(Utils.GenerateRandomKey(Data.computerVisionKeys));
             Debug.WriteLine("VisionServiceClient is created");
             GettedLanguage.IsVisible = false;
         }
@@ -110,10 +104,6 @@ namespace ComputerVisionSample
 
                 //g_OriginWidth = originImage.Bounds.Size.Width != 0 ? originImage.Bounds.Size.Width : 240; // default size
                 //g_OriginHeight = originImage.Bounds.Size.Height != 0 ? originImage.Bounds.Size.Height : 240; // default size
-
-                // TODO - investigate api_returns_scale
-                CROP_KOEF_W = (croppedImage.Width / (240 * 2)); // (deviceW / originW) * api_returns_scale 
-                CROP_KOEF_H = (croppedImage.Height / (340 * 2)); // ((deviceH - bottomOffset) / originH) * api_returns_scale
 
                 // INFO - for future modifications
                 //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
@@ -235,7 +225,13 @@ namespace ComputerVisionSample
                     int l = Int32.Parse(line["top"]);
                     string words = line["words"];
 
-                    string translatedwords = DependencyService.Get<PCL_Translator>().Translate(words, g_sourceLanguage, destLang) + " ";
+                    string translatedwords = DependencyService.Get<PCL_Translator>().Translate(
+                        words, 
+                        g_sourceLanguage, 
+                        destLang, 
+                        Utils.GenerateRandomKey(Data.translationKeys)) 
+                        + " ";
+
                     if (translatedwords == null || translatedwords == " ")
                     {
                         DisplayAlert("Translation error", "We can't translate your text", "Try again");
@@ -249,7 +245,7 @@ namespace ComputerVisionSample
                     };
                     TranslatedText.Children.Add(textLabel);
                     g_transaltedText += translatedwords;
-                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_W, CROP_KOEF_H);
+                    GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
                 }
             }
             else
@@ -294,8 +290,16 @@ namespace ComputerVisionSample
             base.OnSizeAllocated(deviceW, deviceH);
             int bottomOffset = 65;
 
+
+            // (deviceW / originW) * api_returns_scale 
+            //CROP_KOEF_W = (croppedImage.Width / (240 * 2));
+            // ((deviceH - bottomOffset) / originH) * api_returns_scale
+            //CROP_KOEF_H = (croppedImage.Height / (340 * 2));
+
             croppedImage.WidthRequest = deviceW;
             croppedImage.HeightRequest = deviceH - bottomOffset;
+            
+
             if (DeviceInfo.IsOrientationPortrait() && deviceW < deviceH || !DeviceInfo.IsOrientationPortrait() && deviceW > deviceH)
             {
                 // Horizontal
