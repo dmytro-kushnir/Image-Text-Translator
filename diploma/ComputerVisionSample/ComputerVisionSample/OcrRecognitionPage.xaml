@@ -30,6 +30,7 @@
                 <Image
                     Margin="0, 15, 0, 0"
                     x:Name="originImage"
+                    HeightRequest="240"
                     >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer
