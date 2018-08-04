@@ -256,7 +256,7 @@ namespace ComputerVisionSample
                     };
                     TranslatedText.Children.Add(textLabel);
                     g_transaltedText += translatedwords;
-                    GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
+                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_H, CROP_KOEF_W);
                 }
             }
             else
@@ -301,11 +301,13 @@ namespace ComputerVisionSample
             base.OnSizeAllocated(deviceW, deviceH);
             int bottomOffset = 65;
 
+            croppedImage.WidthRequest = deviceW;
+            croppedImage.HeightRequest = deviceH - bottomOffset;
 
             // (deviceW / originW) * api_returns_scale 
-            //CROP_KOEF_W = (croppedImage.Width / (240 * 2));
+            CROP_KOEF_W = (croppedImage.Width / (240 * 2));
             // ((deviceH - bottomOffset) / originH) * api_returns_scale
-            //CROP_KOEF_H = (croppedImage.Height / (340 * 2));
+            CROP_KOEF_H = (croppedImage.Height / (340 * 2));
 
             croppedImage.WidthRequest = deviceW;
             croppedImage.HeightRequest = deviceH - bottomOffset;
