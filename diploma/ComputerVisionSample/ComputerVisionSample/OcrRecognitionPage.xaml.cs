@@ -177,7 +177,7 @@ namespace ComputerVisionSample
                 }
             }
             // Відправка обробленого тексту на переклад
-            Translate_Txt(Utils.LanguageEnumToIdentifier(navBar.getDestinationLanguage()), g_lines);
+            Translate_Txt(Utils.LanguageEnumToIdentifier(navBar.GetDestinationLanguage()), g_lines);
         }
         private void PopulateUIWithHardwirttenLines(HandwritingRecognitionOperationResult ocrResult)
         {
@@ -207,7 +207,7 @@ namespace ComputerVisionSample
                 g_lines.Add(coordinates);
             }
             // Відправка обробленого тексту на переклад
-            Translate_Txt(Utils.LanguageEnumToIdentifier(navBar.getDestinationLanguage()), g_lines);
+            Translate_Txt(Utils.LanguageEnumToIdentifier(navBar.GetDestinationLanguage()), g_lines);
         }
         void Translate_Txt(string destLang, List<IDictionary<string, string>> lines)
         {
@@ -245,7 +245,7 @@ namespace ComputerVisionSample
                     };
                     TranslatedText.Children.Add(textLabel);
                     g_transaltedText += translatedwords;
-                    GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
+                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_H, CROP_KOEF_W);
                 }
             }
             else
@@ -290,15 +290,13 @@ namespace ComputerVisionSample
             base.OnSizeAllocated(deviceW, deviceH);
             int bottomOffset = 65;
 
-
-            // (deviceW / originW) * api_returns_scale 
-            //CROP_KOEF_W = (croppedImage.Width / (240 * 2));
-            // ((deviceH - bottomOffset) / originH) * api_returns_scale
-            //CROP_KOEF_H = (croppedImage.Height / (340 * 2));
-
             croppedImage.WidthRequest = deviceW;
             croppedImage.HeightRequest = deviceH - bottomOffset;
-            
+
+            // (deviceW / originW) * api_returns_scale 
+            CROP_KOEF_W = (croppedImage.Width / (240 * 2));
+            // ((deviceH - bottomOffset) / originH) * api_returns_scale
+            CROP_KOEF_H = (croppedImage.Height / (340 * 2));
 
             if (DeviceInfo.IsOrientationPortrait() && deviceW < deviceH || !DeviceInfo.IsOrientationPortrait() && deviceW > deviceH)
             {
@@ -341,6 +339,11 @@ namespace ComputerVisionSample
                 croppedImage.IsVisible = false;
                 BoxesLayout.IsVisible = false;
             }
+        }
+
+        void SourceLanguageTapped(object sender, EventArgs args)
+        {
+            navBar.SourceLanguageTapped();
         }
         void PickerLanguage_Clicked(object sender, EventArgs e)
         {

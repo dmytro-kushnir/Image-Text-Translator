@@ -41,22 +41,23 @@ namespace ComputerVisionSample
             Utils.GeneratePicker(DestinationLangPicker, Data.destinationLanguages);
             Utils.GeneratePicker(SettingsPicker, Data.settings);
         }
-
         public string CheckHandwrittenMode()
         {
             return (string)SettingsPicker.SelectedItem ?? Data.Settings_defaultMode;
         }
-        public string getDestinationLanguage()
+        public string GetDestinationLanguage()
         {
             return (string)DestinationLangPicker.SelectedItem ?? "English";
         }
-
         public void SetPickersToDefault()
         {
             SettingsPicker.SelectedIndex = 0;
             DestinationLangPicker.SelectedIndex = 0;
         }
-
+        public void SourceLanguageTapped()
+        {
+            DestinationLangPicker.Focus();
+        }
         void UploadPictureButton_Clicked(object sender, EventArgs e)
         {
             uploadPictureButton_Clicked?.Invoke(sender, e);
@@ -71,7 +72,6 @@ namespace ComputerVisionSample
         {
             SettingsPicker.Focus();
         }
-
         void Picker_Clicked(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
@@ -80,6 +80,7 @@ namespace ComputerVisionSample
                 if (DestinationLangPicker.SelectedIndex == 0)
                 {
                     DestinationLangPicker.SelectedIndex = 1;
+                    picker.SelectedItem = "English";
                 };
                 destinationLanguage.Source = Utils.GenerateFlag((string)picker.SelectedItem);
                 pickerLanguage_Clicked?.Invoke(sender, e);

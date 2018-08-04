@@ -43,6 +43,12 @@
                     Orientation="Horizontal"
                     x:Name="GettedLanguage"
                     HorizontalOptions="CenterAndExpand">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Tapped="SourceLanguageTapped" 
+                            NumberOfTapsRequired="1"
+                        />
+                    </StackLayout.GestureRecognizers>
                     <Label 
                         Font="17"
                         Text="Detected Language: ">
