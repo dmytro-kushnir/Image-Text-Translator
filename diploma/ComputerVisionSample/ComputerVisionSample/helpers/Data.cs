@@ -137,7 +137,8 @@ namespace ComputerVisionSample.helpers
 
         static public string[] translationKeys = new String[]
         {
-            "7f2a4a04e05144ad8e6816b3651851e6"
+            "7f2a4a04e05144ad8e6816b3651851e6",
+            "110acd383b4c418fab59731f02fbbf81"
         };
     }
 }

@@ -31,9 +31,17 @@ namespace ComputerVisionSample.services
                 await App.Current.MainPage.DisplayAlert("Network error", "Please check your network connection and retry.", "Got it");
                 return null;
             }
-             
-            OcrResults ocrResult = await this.visionClient.RecognizeTextAsync(inputFile);
-            return ocrResult;
+            try
+            {
+                OcrResults ocrResult = await this.visionClient.RecognizeTextAsync(inputFile);
+                return ocrResult;
+            }
+            catch (ClientException ex)
+            {
+                Debug.WriteLine(ex.Error.Message);
+                await App.Current.MainPage.DisplayAlert("Application error","API retuned code -> 500. Internal server Error", "Try later");
+                return null;
+            }
         }
 
         /// <summary>
@@ -75,6 +83,7 @@ namespace ComputerVisionSample.services
             }
             catch (ClientException ex)
             {
+                await App.Current.MainPage.DisplayAlert("Application error", "API retuned code -> 500. Internal server Error", "Try later");
                 result = new HandwritingRecognitionOperationResult() { Status = HandwritingRecognitionOperationStatus.Failed };
                 Debug.WriteLine(ex.Error.Message);
             }

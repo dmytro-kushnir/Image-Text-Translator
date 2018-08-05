@@ -102,8 +102,13 @@ namespace ComputerVisionSample
 
                 originImage.Source = croppedImage.Source = photoStream;
 
-                //g_OriginWidth = originImage.Bounds.Size.Width != 0 ? originImage.Bounds.Size.Width : 240; // default size
-                //g_OriginHeight = originImage.Bounds.Size.Height != 0 ? originImage.Bounds.Size.Height : 240; // default size
+                g_OriginWidth = originImage.Bounds.Size.Width != 0 ? originImage.Bounds.Size.Width : 240; // default size
+                g_OriginHeight = originImage.Bounds.Size.Height != 0 ? originImage.Bounds.Size.Height : 340; // default size
+
+                if (g_OriginWidth * 1.5 > croppedImage.WidthRequest)
+                {
+                    croppedImage.WidthRequest = g_OriginWidth;
+                }
 
                 // INFO - for future modifications
                 //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
@@ -142,6 +147,8 @@ namespace ComputerVisionSample
             catch (Exception ex)
             {
                 this.Error = ex;
+                ClearView();
+                return;
             }
             BoxesLayout.IsVisible = false;
             TranslatedText.IsVisible = true;
@@ -198,10 +205,10 @@ namespace ComputerVisionSample
                 // генерація словника, з якого формуємо список ліній з координатами та текстом кожної з них
                 IDictionary<string, string> coordinates = new Dictionary<string, string>
                 {
-                    ["height"] = line.BoundingBox[0].ToString(),
-                    ["width"] = line.BoundingBox[1].ToString(),
-                    ["left"] = line.BoundingBox[2].ToString(),
-                    ["top"] = line.BoundingBox[3].ToString(),
+                    ["height"] = "0",
+                    ["width"] = "0",
+                    ["left"] = "0",
+                    ["top"] = "0",
                     ["words"] = wordsInLine
                 };
                 g_lines.Add(coordinates);
@@ -245,7 +252,7 @@ namespace ComputerVisionSample
                     };
                     TranslatedText.Children.Add(textLabel);
                     g_transaltedText += translatedwords;
-                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_H, CROP_KOEF_W);
+                    GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
                 }
             }
             else

@@ -65,6 +65,8 @@
     <MtouchProfiling>true</MtouchProfiling>
     <CodesignExtraArgs />
     <CodesignResourceRules />
+    <MtouchSdkVersion>
+    </MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -152,6 +154,27 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="FFImageLoading, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.3.840\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.4.3.840\lib\Xamarin.iOS10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Platform, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Forms.2.4.3.840\lib\Xamarin.iOS10\FFImageLoading.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.3.840\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Svg.Forms, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Svg.Forms.2.4.3.840\lib\Xamarin.iOS10\FFImageLoading.Svg.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Svg.Platform, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Svg.2.4.3.840\lib\Xamarin.iOS10\FFImageLoading.Svg.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.FFImageLoading.Transformations.2.4.3.840\lib\Xamarin.iOS10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
