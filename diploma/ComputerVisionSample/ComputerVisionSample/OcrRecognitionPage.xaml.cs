@@ -256,7 +256,7 @@ namespace ComputerVisionSample
                     };
                     TranslatedText.Children.Add(textLabel);
                     g_transaltedText += translatedwords;
-                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_H, CROP_KOEF_W);
+                    GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
                 }
             }
             else
