@@ -39,6 +39,9 @@ namespace ComputerVisionSample.helpers
                 case "Korean": imgSrc = "korea.png"; break;
                 case "Japanese": imgSrc = "ja.png"; break;
                 case "Portuguese": imgSrc = "po.png"; break;
+                case "Croatian": imgSrc = "croatia.png"; break;
+                case "Estonian": imgSrc = "estonia.png"; break;
+                case "Bulgarian": imgSrc = "bulgaria.png"; break;
                 case "Arabic": imgSrc = "arabic.png"; break;
                 case "Hindi": imgSrc = "india.png"; break;
                 case "Hebrew": imgSrc = "isr.png"; break;

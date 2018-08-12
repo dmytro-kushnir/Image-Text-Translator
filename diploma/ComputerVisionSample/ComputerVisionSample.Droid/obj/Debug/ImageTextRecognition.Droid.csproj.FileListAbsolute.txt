@@ -107,7 +107,6 @@ C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\Computer
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\korea.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\lv.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\norway.png
-C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\nulp.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\pl.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\po.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\ru.png
@@ -115,7 +114,6 @@ C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\Computer
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\sw.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\turkey.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\ua.png
-C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\splashscreen.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable-hdpi\splashscreen.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable-xhdpi\splashscreen.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable-xxhdpi\splashscreen.png
@@ -221,6 +219,9 @@ C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\Computer
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Image Text  Translator.dll.mdb
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Plugin.Connectivity.dll.mdb
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\bulgaria.png
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\croatia.png
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\estonia.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Image Text  Translator.dll
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ComputerVisionSample.dll.mdb

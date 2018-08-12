@@ -326,6 +326,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\Background.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bulgaria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\croatia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\estonia.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

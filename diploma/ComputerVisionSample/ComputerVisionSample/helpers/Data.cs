@@ -15,14 +15,14 @@ namespace ComputerVisionSample.helpers
         public const string Settings_handwrittenMode = "Handwritten mode";
 
         public const string Settings_info_Title = "Image Text Translator v" + VERSION;
-        public const string Settings_info_Data = "Application requires internet connection! \n " +
+        public const string Settings_info_Data = "Application requires internet connection! It allows you to translate text, detected from image up to 25 foreign languages.\n " +
             "Functionality: \n " +
             "- To start translating you may press camera or gallery icon \n " +
-            "- Before that you may choose translation destination language in right bottom corne \n" +
+            "- Before that you may choose translation destination language in right bottom corner \n" +
             "- You are able to change destination language in any time \n" +
             "- 'Clear all' option removes all recognized data, and returns to default app state \n " +
             "- Handwritten Mode. IMPORTANT. For now allows to recognize only english text \n " +
-            "- Awailable languages to detect: English, Czech, Danish, Dutch, Finnish, French, German, Greek, Hungarian, ChineseSimplified, ChineseTraditional, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Romanian, Slovac, Serbian \n " +
+            "- Available languages to detect: English, Czech, Danish, Dutch, Finnish, French, German, Greek, Hungarian, ChineseSimplified, ChineseTraditional, Italian, Japanese, Korean, Norwegian, Polish, Portuguese, Russian, Spanish, Swedish, Turkish, Romanian, Slovac, Serbian \n " +
             "- To enter ZOOM mode double tap on image after recognition is complete. To exit double tap again on image or on boxes with text\n " +
             "- To copy recognized and translated text into clipboard just use double click and popup will be triggered.";
 
@@ -127,6 +127,7 @@ namespace ComputerVisionSample.helpers
             ["Yiddish"] = "yi"
         };
 
+        // TODO - future logic
         static public string[] hardwrittenLanguageSupports = new String[] 
         {
             "blab",
