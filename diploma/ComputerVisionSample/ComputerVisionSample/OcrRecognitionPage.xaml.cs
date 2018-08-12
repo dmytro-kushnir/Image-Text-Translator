@@ -359,7 +359,6 @@ namespace ComputerVisionSample
                 BoxesLayout.IsVisible = false;
             }
         }
-
         void SourceLanguageTapped(object sender, EventArgs args)
         {
             navBar.SourceLanguageTapped();
