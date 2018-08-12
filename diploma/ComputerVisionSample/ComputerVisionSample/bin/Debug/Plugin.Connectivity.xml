@@ -9,9 +9,14 @@
             Cross platform Connectivity implementations
             </summary>
         </member>
+        <member name="P:Plugin.Connectivity.CrossConnectivity.IsSupported">
+            <summary>
+            Gets if the plugin is supported on the current platform.
+            </summary>
+        </member>
         <member name="P:Plugin.Connectivity.CrossConnectivity.Current">
             <summary>
-            Current settings to use
+            Current plugin implementation to use
             </summary>
         </member>
         <member name="M:Plugin.Connectivity.CrossConnectivity.Dispose">

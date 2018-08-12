@@ -1,2 +1,2 @@
 android.app.Application
-Image_Text__Translator.Image_Text__Translator
+com.dima.traslator

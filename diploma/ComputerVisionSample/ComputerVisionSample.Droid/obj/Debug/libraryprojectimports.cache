@@ -2,8 +2,8 @@
 <Paths>
   <Jars>
     <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\1\jl\formsviewgroup.jar</Jar>
-    <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\10\jl\support-annotations.jar</Jar>
-    <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\11\jl\bin\classes.jar</Jar>
+    <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\10\jl\bin\classes.jar</Jar>
+    <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\11\jl\support-annotations.jar</Jar>
     <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\12\jl\bin\classes.jar</Jar>
     <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\13\jl\bin\classes.jar</Jar>
     <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\14\jl\bin\classes.jar</Jar>
@@ -17,26 +17,28 @@
     <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\22\jl\bin\classes.jar</Jar>
     <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\23\jl\bin\classes.jar</Jar>
     <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\24\jl\bin\classes.jar</Jar>
-    <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\9\jl\bin\classes.jar</Jar>
+    <Jar>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\25\jl\bin\classes.jar</Jar>
   </Jars>
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\14\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\15\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\18\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\19\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\20\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\21\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\23\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\22\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\24\jl\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
-    <ResolvedAssetDirectory>obj\Debug\lp\18\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\lp\19\jl\assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\14.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\15.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\18.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\19.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\20.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\21.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\23.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\22.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\lp\24.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

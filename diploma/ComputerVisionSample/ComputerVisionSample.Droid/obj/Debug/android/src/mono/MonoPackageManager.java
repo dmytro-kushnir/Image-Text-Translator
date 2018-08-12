@@ -38,6 +38,13 @@ public class MonoPackageManager {
 				String cacheDir     = context.getCacheDir ().getAbsolutePath ();
 				String dataDir      = getNativeLibraryPath (context);
 				ClassLoader loader  = context.getClassLoader ();
+				java.io.File external0 = android.os.Environment.getExternalStorageDirectory ();
+				String externalDir = new java.io.File (
+							external0,
+							"Android/data/" + context.getPackageName () + "/files/.__override__").getAbsolutePath ();
+				String externalLegacyDir = new java.io.File (
+							external0,
+							"../legacy/Android/data/" + context.getPackageName () + "/files/.__override__").getAbsolutePath ();
 
 				Runtime.init (
 						language,
@@ -49,9 +56,10 @@ public class MonoPackageManager {
 							dataDir,
 						},
 						loader,
-						new java.io.File (
-							android.os.Environment.getExternalStorageDirectory (),
-							"Android/data/" + context.getPackageName () + "/files/.__override__").getAbsolutePath (),
+						new String[] {
+							externalDir,
+							externalLegacyDir
+						},
 						MonoPackageManager_Resources.Assemblies,
 						context.getPackageName ());
 				
@@ -100,20 +108,35 @@ class MonoPackageManager_Resources {
 		/* We need to ensure that "Image Text  Translator.dll" comes first in this list. */
 		"Image Text  Translator.dll",
 		"ComputerVisionSample.dll",
+		"FFImageLoading.dll",
+		"FFImageLoading.Forms.dll",
+		"FFImageLoading.Forms.Platform.dll",
+		"FFImageLoading.Platform.dll",
+		"FFImageLoading.Svg.Forms.dll",
+		"FFImageLoading.Svg.Platform.dll",
+		"FFImageLoading.Transformations.dll",
 		"FormsViewGroup.dll",
+		"Newtonsoft.Json.dll",
 		"Plugin.Connectivity.Abstractions.dll",
 		"Plugin.Connectivity.dll",
 		"Plugin.CurrentActivity.dll",
-		"Plugin.Media.Abstractions.dll",
 		"Plugin.Media.dll",
-		"Plugin.Permissions.Abstractions.dll",
 		"Plugin.Permissions.dll",
+		"SkiaSharp.dll",
 		"Xamarin.Android.Support.Animated.Vector.Drawable.dll",
+		"Xamarin.Android.Support.Annotations.dll",
+		"Xamarin.Android.Support.Compat.dll",
+		"Xamarin.Android.Support.Core.UI.dll",
+		"Xamarin.Android.Support.Core.Utils.dll",
 		"Xamarin.Android.Support.Design.dll",
+		"Xamarin.Android.Support.Fragment.dll",
+		"Xamarin.Android.Support.Media.Compat.dll",
+		"Xamarin.Android.Support.Transition.dll",
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
 		"Xamarin.Android.Support.v7.CardView.dll",
 		"Xamarin.Android.Support.v7.MediaRouter.dll",
+		"Xamarin.Android.Support.v7.Palette.dll",
 		"Xamarin.Android.Support.v7.RecyclerView.dll",
 		"Xamarin.Android.Support.Vector.Drawable.dll",
 		"Xamarin.Forms.Core.dll",
@@ -121,9 +144,8 @@ class MonoPackageManager_Resources {
 		"Xamarin.Forms.Platform.dll",
 		"Xamarin.Forms.Xaml.dll",
 		"Microsoft.ProjectOxford.Vision.dll",
-		"Newtonsoft.Json.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};
-	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_25";
+	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_27";
 }

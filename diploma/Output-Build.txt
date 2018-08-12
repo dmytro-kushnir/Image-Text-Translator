@@ -1,0 +1,5 @@
+﻿Starting runtime checks
+Detecting installed packages
+Detecting installed packages...
+Runtime checks failed
+1>------ Build started: Project: ImageTextRecognition.Droid, Configuration: Debug Any CPU ------

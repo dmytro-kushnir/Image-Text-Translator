@@ -3,139 +3,107 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ComputerVisionSample.OcrRecognitionPage"
+             xmlns:views="clr-namespace:ComputerVisionSample"
+             xmlns:xamvvm="clr-namespace:Xamvvm;assembly=Xamvvm.Forms" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
             >
-
-    <RelativeLayout x:Name="container">
-
-        <Image x:Name="countryFlag" Source="gb.png"  RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, 
-             Property=Width, Factor=0.85, Constant=0}" RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, 
-             Property=Width, Factor=0.01, Constant=0}"  WidthRequest="50" HeightRequest="50">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer
-                Tapped="countryFlag_Clicked"
-                NumberOfTapsRequired="1" />
-            </Image.GestureRecognizers>
+    <RelativeLayout
+        x:Name="container">
+        <Image 
+            x:Name="backgroundImage"
+            Source="Background.jpg"
+            Opacity="1"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
         </Image>
-
-        <Image x:Name="backgroundImage" Source="NULP.png"   Opacity="0.4"
-               RelativeLayout.WidthConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}" >
-        </Image>
-        <StackLayout x:Name="container2"
-                    RelativeLayout.WidthConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"
-                   />
-       
-        <Grid RelativeLayout.WidthConstraint=
-              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-            RelativeLayout.HeightConstraint=
-              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-            <StackLayout Orientation="Vertical" 
-              VerticalOptions="Center"
-               HorizontalOptions="Center"
-              Margin="40, 1">
-
-                <Button x:Name="BackButton"  
-            BackgroundColor="#5C91C7" 
-            TextColor="Black"
-             Text="Back"
-                Clicked="BackButton_Clicked"
-            Margin="80, 20"/>
-                <Button x:Name="TakePictureButton" 
-            Clicked="TakePictureButton_Clicked" 
-            BackgroundColor="#5C91C7" 
-            TextColor="Black"
-             Text="Camera"
-            Margin="40, 5"/>
-          <Button x:Name="UploadPictureButton" 
-            Clicked="UploadPictureButton_Clicked" 
-            BackgroundColor="#5C91C7" 
-            Text="Gallery"
-            TextColor="Black"  
-             Margin="40, 5"/>
+        <Grid
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <StackLayout
+                Orientation="Vertical"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Margin="40, 1">
                 <ActivityIndicator 
-      x:Name="Indicator1" 
-   IsVisible="False" 
-   IsRunning="False" />
-
-                    <Image x:Name="Image1" HeightRequest="240">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer
-                Tapped="OnTapGestureRecognizerTapped"
-                NumberOfTapsRequired="2" />
-                    </Image.GestureRecognizers>
-                </Image>
-            
-                <StackLayout  Orientation="Horizontal" x:Name="GettedLanguage"  HorizontalOptions="CenterAndExpand">
-                    <Label Font="17" Text="Detected Language: "/>
-                    <Label Font="17"  TextColor="Black" Text="{Binding Language}"/>
-</StackLayout>
+                    x:Name="Indicator1"
+                    IsVisible="False"
+                    IsRunning="False">
+                </ActivityIndicator>
+                <ffimageloading:CachedImage 
+                    Margin="0, 15, 0, 0"
+                    x:Name="originImage"
+                    HeightRequest="240"
+                    DownsampleToViewSize="true">
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer 
+                        Tapped="OnImageTapped"
+                        NumberOfTapsRequired="2">
+                        </TapGestureRecognizer>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+                <StackLayout  
+                    Orientation="Horizontal"
+                    x:Name="GettedLanguage"
+                    HorizontalOptions="CenterAndExpand">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Tapped="SourceLanguageTapped" 
+                            NumberOfTapsRequired="1"
+                        />
+                    </StackLayout.GestureRecognizers>
+                    <Label 
+                        Font="17"
+                        Text="Detected Language: ">
+                    </Label>
+                    <Label
+                        Font="17"
+                        TextColor="Black" 
+                        Text="{Binding Language}">
+                    </Label>
+                </StackLayout>
                 <StackLayout>
-                    <Picker x:Name="DestinationLangPicker" Title="Destination language"
-               SelectedIndexChanged="picker_language_choose" Unfocused="UnfocusedPicker"
-               
-                HorizontalOptions="CenterAndExpand">
-                        <Picker.Items  >
-                            <x:String >English</x:String>
-                            <x:String >Ukrainian</x:String>
-                            <x:String >German</x:String>
-                            <x:String >French</x:String>
-                            <x:String >Polish</x:String>
-                            <x:String >Spanish</x:String>
-                            <x:String>Italian</x:String>
-                            <x:String>Latvian</x:String>
-                            <x:String>Chinese</x:String>
-                            <x:String>Japanese</x:String>
-                            <x:String>Korean</x:String>
-                            <x:String>Portuguese</x:String>
-                            <x:String>Arabic</x:String>
-                            <x:String>Hindi</x:String>
-                            <x:String>Hebrew</x:String>
-                            <x:String >Swedish</x:String>
-                            <x:String >Danish</x:String>
-                            <x:String >Norwegian</x:String>
-                            <x:String >Finnish</x:String>
-                            <x:String >Georgian</x:String>
-                            <x:String >Turkish</x:String>
-                            <x:String >Russian</x:String>
-                            <x:String >Czech</x:String>
-                            <x:String >Greek</x:String>
-                            
-                        </Picker.Items>
-                    </Picker>
                     <ScrollView>
-                        <StackLayout Orientation="Horizontal"
-                       HorizontalOptions="CenterAndExpand"
-                        Margin="20,10">
+                        <StackLayout 
+                            Orientation="Horizontal"
+                            HorizontalOptions="CenterAndExpand"
+                            Margin="20,10">
                             <ScrollView 
-            
-            WidthRequest="300">
-
-        <Label x:Name="TranslatedText"
-           HorizontalOptions="CenterAndExpand">
-              <Label.GestureRecognizers>
-                <TapGestureRecognizer
-                    Tapped="ClipboardFunc" 
-                    NumberOfTapsRequired="2" />
-               </Label.GestureRecognizers>
-          </Label>
+                                    WidthRequest="300">
+                                <StackLayout 
+                                    x:Name="TranslatedText"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Margin="0, 0, 0, 65"
+                                    >
+                                </StackLayout>
                             </ScrollView>
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-
             </StackLayout>
-
-    
-               
-         
         </Grid>
-
-
+        <Image 
+            x:Name="croppedImage"
+            Margin="0, 15, 0, 0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                            Tapped="OnImageTapped"
+                            NumberOfTapsRequired="2">
+                </TapGestureRecognizer>
+            </Image.GestureRecognizers>
+        </Image>
+        <RelativeLayout
+            x:Name="BoxesLayout">
+        </RelativeLayout>
+        <StackLayout
+                RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"  
+                RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor= 1, Constant=-50}">
+            <views:NavigationBar
+                x:Name="navBar"
+                uploadPictureButton_Clicked="UploadPictureButton_Clicked"
+                pickerLanguage_Clicked="PickerLanguage_Clicked"
+                pickerSettings_Clicked="PickerSettings_Clicked">
+            </views:NavigationBar>
+        </StackLayout>
     </RelativeLayout>
-
 </ContentPage>

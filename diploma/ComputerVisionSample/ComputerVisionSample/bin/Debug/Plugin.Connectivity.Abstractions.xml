@@ -48,9 +48,20 @@
             </summary>
             <param name="e"></param>
         </member>
+        <member name="M:Plugin.Connectivity.Abstractions.BaseConnectivity.OnConnectivityTypeChanged(Plugin.Connectivity.Abstractions.ConnectivityTypeChangedEventArgs)">
+            <summary>
+            When connectivity type changes
+            </summary>
+            <param name="e"></param>
+        </member>
         <member name="E:Plugin.Connectivity.Abstractions.BaseConnectivity.ConnectivityChanged">
             <summary>
             Connectivity event
+            </summary>
+        </member>
+        <member name="E:Plugin.Connectivity.Abstractions.BaseConnectivity.ConnectivityTypeChanged">
+            <summary>
+            Connectivity type changed event
             </summary>
         </member>
         <member name="M:Plugin.Connectivity.Abstractions.BaseConnectivity.Dispose">
@@ -99,6 +110,11 @@
             Other type of connection
             </summary>
         </member>
+        <member name="F:Plugin.Connectivity.Abstractions.ConnectionType.Bluetooth">
+            <summary>
+            Bluetooth connection
+            </summary>
+        </member>
         <member name="T:Plugin.Connectivity.Abstractions.IConnectivity">
             <summary>
             Interface for Connectivity
@@ -142,6 +158,11 @@
             Event handler when connection changes
             </summary>
         </member>
+        <member name="E:Plugin.Connectivity.Abstractions.IConnectivity.ConnectivityTypeChanged">
+            <summary>
+            Event handler when connection type changes
+            </summary>
+        </member>
         <member name="T:Plugin.Connectivity.Abstractions.ConnectivityChangedEventArgs">
             <summary>
             Arguments to pass to event handlers
@@ -152,9 +173,31 @@
             Gets if there is an active internet connection
             </summary>
         </member>
+        <member name="T:Plugin.Connectivity.Abstractions.ConnectivityTypeChangedEventArgs">
+            <summary>
+            Arguments to pass to connectivity type changed event handlers
+            </summary>
+        </member>
+        <member name="P:Plugin.Connectivity.Abstractions.ConnectivityTypeChangedEventArgs.IsConnected">
+            <summary>
+            Gets if there is an active internet connection
+            </summary>
+        </member>
+        <member name="P:Plugin.Connectivity.Abstractions.ConnectivityTypeChangedEventArgs.ConnectionTypes">
+            <summary>
+            Gets the list of all active connection types.
+            </summary>
+        </member>
         <member name="T:Plugin.Connectivity.Abstractions.ConnectivityChangedEventHandler">
             <summary>
             Connectivity changed event handlers
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Plugin.Connectivity.Abstractions.ConnectivityTypeChangedEventHandler">
+            <summary>
+            Connectivity type changed event handlers
             </summary>
             <param name="sender"></param>
             <param name="e"></param>

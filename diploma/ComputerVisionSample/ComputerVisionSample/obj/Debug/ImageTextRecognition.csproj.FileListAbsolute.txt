@@ -1,372 +1,59 @@
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Mac.dll
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.xml
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-D:\Study\диплом\WORK\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Mac.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Desktop\ComputerVisionSample\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Mac.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.pdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Mac.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\GitHub\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Desktop\backupa\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Mac.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-D:\Study\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Mono.Android.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.pdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.pdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.pdb
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-C:\Study\Семестр №8\диплом\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2015\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\2_TASK1 IMAGE\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.Abstractions.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.App.xaml.g.cs
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.OcrRecognitionPage.xaml.g.cs
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojResolveAssemblyReference.cache
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll.mdb
-C:\Users\Dima\Documents\Visual Studio 2017\Projects\3_TASK3 Image\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll.config
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.pdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Forms.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Platform.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Svg.Forms.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Svg.Platform.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Transformations.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Microsoft.ProjectOxford.Vision.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Permissions.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\SkiaSharp.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Platform.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.pdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Forms.pdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Forms.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Platform.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Svg.Forms.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Svg.Platform.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\FFImageLoading.Transformations.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.pdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.pdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Connectivity.Abstractions.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Media.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Plugin.Permissions.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\SkiaSharp.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\WindowsBase.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.pdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Core.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.pdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Xamarin.Forms.Xaml.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Xaml.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\Accessibility.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\System.Security.xml
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csprojAssemblyReference.cache
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\obj\Debug\App.xaml.g.cs
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\OcrRecognitionPage.xaml.g.cs
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\NavigationBar.xaml.g.cs
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csproj.CoreCompileInputs.cache
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.AssemblyMetadataInputs.cache
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.AssemblyMetadata.cs
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\XamlC.stamp
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ImageTextRecognition.csproj.CopyComplete
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.dll
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\obj\Debug\ComputerVisionSample.pdb

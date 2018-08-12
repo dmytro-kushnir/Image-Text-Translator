@@ -2,6 +2,15 @@
 Thumbs.db
 ehthumbs.db
 
+diploma/packages
+diploma/.vs
+diploma/ComputerVisionSample/ComputerVisionSample.iOS/bin
+diploma/ComputerVisionSample/ComputerVisionSample.iOS/obj
+diploma/ComputerVisionSample/ComputerVisionSample.Droid/bin
+diploma/ComputerVisionSample/ComputerVisionSample.Droid/obj
+diploma/ComputerVisionSample/ComputerVisionSample/bin
+diploma/ComputerVisionSample/ComputerVisionSample/obj
+
 # Folder config file
 Desktop.ini
 

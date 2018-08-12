@@ -1,17 +1,15 @@
-﻿using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
-using Plugin.Connectivity;
+﻿using Microsoft.ProjectOxford.Vision.Contract;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using ComputerVisionSample.Translator;
 using ComputerVisionSample.ClipBoard;
+using ComputerVisionSample.services;
+using ComputerVisionSample.helpers;
+using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace ComputerVisionSample
 {
@@ -23,479 +21,385 @@ namespace ComputerVisionSample
             private set;
         }
         // Початкове налаштування
-        private int count = 0;
-        private readonly VisionServiceClient visionClient;
-        string sourceLanguage = "en"; // english by default
-        string sourceText = "";
-        string destinationLanguage = "";
-        string bufferSourceText1 = "";
-        string bufferSourceText2 = "";
-        string bufferSourceText3 = "";
-        string bufferSourceText4 = "";
-        string bufferSourceText5 = "";
-        string bufferSourceText6 = "";
-        // визначимо координати лінії тексту
-        int g_Top = 0;
-        int g_Left = 0;
-        int g_Width = 0;
-        int g_Height = 0;
-        //
-        double g_screen_width = 0.0;
-        double g_screen_height = 0.0;
+        CognitiveService computerVision;
 
-        //
-        string transaltedText = "";
-        bool flag = false; // прапорець для делегування зміною стану кнопок Камери та Галереї
-        bool imageInverseFlag = false; // прапорець для делегування зумування зображенням
+        string g_sourceLanguage = "";
+        string g_sourceText = "";
+        string g_transaltedText = "";
+
+        List<IDictionary<string, string>> g_lines = new List<IDictionary<string, string>>();
+
+        double g_OriginWidth = 0.0;
+        double g_OriginHeight = 0.0;
+
+        double CROP_KOEF_W = 0.0;
+        double CROP_KOEF_H = 0.0;
         public OcrRecognitionPage()
         {
             this.Error = null;
             InitializeComponent();
-            Random rand = new Random();
-
-            if (rand.Next(0, 2) == 0)
-                this.visionClient = new VisionServiceClient("cf3b45431cc14c799696821dd9668990");
-            else
-                this.visionClient = new VisionServiceClient("315528c6723843db8b09351422e87f19");
-
-            DestinationLangPicker.IsVisible = false;
+            computerVision = new CognitiveService(Utils.GenerateRandomKey(Data.computerVisionKeys));
+            Debug.WriteLine("VisionServiceClient is created");
             GettedLanguage.IsVisible = false;
-            BackButton.IsVisible = false;
-            BackButton.Text = "<- Back";   
-            UploadPictureButton.IsVisible = false;
-            TakePictureButton.IsVisible = false;
         }
-
-        private async Task<OcrResults> AnalyzePictureAsync(Stream inputFile)
-        {
-            if (!CrossConnectivity.Current.IsConnected)
-            {
-                await DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
-                return null;
-            }
-
-            OcrResults ocrResult = await visionClient.RecognizeTextAsync(inputFile);
-            return ocrResult;
-        }
-
-        private async void TakePictureButton_Clicked(object sender, EventArgs e)
+        private async void UploadPictureButton_Clicked(object sender, EventArgs e)
         {
             try
             {
-               
-                await CrossMedia.Current.Initialize();
-
-                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                Image img = (Image)sender;
+                var file = (dynamic)null;
+                string imageName = "";
+                if (img.Source is FileImageSource)
                 {
-                    await DisplayAlert("No Camera", "No camera available.", "OK");
-                    return;
+                    FileImageSource objFileImageSource = (FileImageSource)img.Source;
+                    imageName = objFileImageSource.File;
                 }
-                var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                ClearView();
+                if (imageName == "camera.png")
                 {
-                    SaveToAlbum = false,
-                    Name = "test.jpg",
-                    CompressionQuality = 75,
-                    AllowCropping = true
-                });
-
-                flag = true;
-                UploadPictureButton.IsVisible = false;
-                TakePictureButton.IsVisible = false;
-                BackButton.IsVisible = true;
-                Image1.IsVisible = true;
+                    await CrossMedia.Current.Initialize();
+                    if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                    {
+                        Debug.WriteLine("No camera available");
+                        await DisplayAlert("No Camera", "No camera available.", "OK");
+                        return;
+                    }
+                    file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                    {
+                        SaveToAlbum = false,
+                        Name = "test.jpg",
+                        CompressionQuality = 75,
+                        PhotoSize = PhotoSize.Full,
+                        AllowCropping = true
+                    });
+                }
+                else if (imageName == "gallery.png")
+                {
+                    if (!CrossMedia.Current.IsPickPhotoSupported)
+                    {
+                        Debug.WriteLine("Picking a photo is not supported");
+                        await DisplayAlert("No upload", "Picking a photo is not supported.", "OK");
+                        return;
+                    }
+                    file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                    {
+                        PhotoSize = PhotoSize.Full
+                    });
+                }
                 if (file == null)
-                    return;
-                if (backgroundImage.Opacity != 0)
                 {
-                    backgroundImage.Opacity = 0;
+                    return;
                 }
+                originImage.IsVisible = true;
+                croppedImage.IsVisible = false;
+                backgroundImage.IsVisible = false;
+
                 this.Indicator1.IsVisible = true;
                 this.Indicator1.IsRunning = true;
 
+                ImageSource photoStream = null;
+                photoStream = ImageSource.FromStream(() => file.GetStream());
 
-                Image1.Source = ImageSource.FromStream(() => file.GetStream());
+                originImage.Source = croppedImage.Source = photoStream;
 
+                g_OriginWidth = originImage.Bounds.Size.Width != 0 ? originImage.Bounds.Size.Width : 240; // default size
+                g_OriginHeight = originImage.Bounds.Size.Height != 0 ? originImage.Bounds.Size.Height : 340; // default size
 
-                var ocrResult = await AnalyzePictureAsync(file.GetStream());
-               
-                this.BindingContext = null;
-                this.BindingContext = ocrResult;
-                sourceLanguage = ocrResult.Language;
+                CROP_KOEF_W = (g_OriginWidth / 2);
+                CROP_KOEF_H = (g_OriginHeight / 2);
 
-                PopulateUIWithRegions(ocrResult);
-                TranslatedText.IsVisible = true;
-                Image1.IsVisible = true;
-                this.Indicator1.IsRunning = false;
-                this.Indicator1.IsVisible = false;
-                //  DestinationLangPicker.SelectedIndex = 0;
-                //  DestinationLangPicker.Title = "Destination language";
-               
-                Image1.IsVisible = true;
-               // this.TranslatedText.Children.Clear();
-                DestinationLangPicker.IsVisible = true;
-                GettedLanguage.IsVisible = true;
+                if (g_OriginWidth * 1.5 > croppedImage.WidthRequest)
+                {
+                    croppedImage.WidthRequest = g_OriginWidth;
+                }
 
-               
+                // INFO - for future modifications
+                //if (Data.hardwrittenLanguageSupports.Any(s => navBar.checkHandwrittenMode().Contains(s)))
+                if (navBar.CheckHandwrittenMode() == Data.Settings_handwrittenMode)
+                {
+                    HandwritingRecognitionOperationResult hwResult;
+                    hwResult = await computerVision.RecognizeUrl(file.GetStream());
+                    if (hwResult == null)
+                    {
+                        ClearView();
+                        return;
+                    }
+                    g_sourceLanguage = "en";
+                    PopulateUIWithHardwirttenLines(hwResult);
+                }
+                else
+                {
+                    var ocrResult = await computerVision.AnalyzePictureAsync(file.GetStream());
+                    if (ocrResult == null)
+                    {
+                        ClearView();
+                        return;
+                    }
+                    this.BindingContext = null;
+                    this.BindingContext = ocrResult;
+                    g_sourceLanguage = ocrResult.Language;
+                    GettedLanguage.IsVisible = true;
+                    PopulateUIWithRegions(ocrResult);
+                }
+                // добавити хендлер на копіювання тексту після обпрацювання зображення
+                var tgr = new TapGestureRecognizer();
+                tgr.Tapped += (s, ev) => ClipboardFunc(s, ev);
+                tgr.NumberOfTapsRequired = 2;
+                TranslatedText.GestureRecognizers.Add(tgr);
             }
             catch (Exception ex)
             {
                 this.Error = ex;
+                await DisplayAlert("Camera/Gallery Error", this.Error.Message, "Got It");
+                ClearView();
+                return;
             }
+            BoxesLayout.IsVisible = false;
+            TranslatedText.IsVisible = true;
+            this.Indicator1.IsRunning = false;
+            this.Indicator1.IsVisible = false;
         }
-
         private void PopulateUIWithRegions(OcrResults ocrResult)
         {
-          destinationLanguage = 
-                DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
-                TranslatedText.Text = "";
-       
-                //Ітерація по регіонах
-                foreach (var region in ocrResult.Regions)
-                {
+            TranslatedText.Children.Clear();
+            //Ітерація по регіонах
+            foreach (var region in ocrResult.Regions)
+            {
                 //Ітерація по лініях в регіоні
                 foreach (var line in region.Lines)
                 {
-                    //   Для кожної лінії згенерувати горизонтальну панель
-                    var lineStack = new StackLayout
-                    { Orientation = StackOrientation.Horizontal };
-
+                    string wordsInLine = "";
                     //Ітерація по словах в лінії
                     foreach (var word in line.Words)
                     {
-                        var textLabel = new Label
-                        {
-                            TextColor = Xamarin.Forms.Color.Black,
-                            Text = word.Text,  
-                        };
-                        sourceText += textLabel.Text + " ";
-
-                       
-                        if(bufferSourceText1.Length < 400)
-                        {
-                            bufferSourceText1 += textLabel.Text + " ";
-                        }
-                        else if(bufferSourceText2.Length < 400)
-                        {
-                            bufferSourceText2 += textLabel.Text + " ";
-                        }
-                        else if (bufferSourceText3.Length < 400)
-                        {
-                            bufferSourceText3 += textLabel.Text + " ";
-                        }
-                        else if (bufferSourceText4.Length < 400)
-                        {
-                            bufferSourceText4 += textLabel.Text + " ";
-                        }
-                        else if (bufferSourceText5.Length < 400)
-                        {
-                            bufferSourceText5 += textLabel.Text + " ";
-                        }
-                        else
-                        {
-                            bufferSourceText6 += textLabel.Text + " ";
-                        }
-                        lineStack.Children.Add(textLabel);
+                        // конкатенація слів в лінію
+                        wordsInLine += word.Text + " ";
                     }
-
-                    g_Height = line.Rectangle.Height;
-                    g_Width = line.Rectangle.Width;
-                    g_Left = line.Rectangle.Left;
-                    g_Top = line.Rectangle.Top;
-            
-                   //Xamarin.Forms.Rectangle rec = new Xamarin.Forms.Rectangle(Top, Left, width, height);
-                    // Відправка обробленого тексту на переклад
-                    Translate_Txt(sourceText, destinationLanguage);
-                    sourceText = "";
+                    // генерація словника, з якого формуємо список ліній з координатами та текстом кожної з них
+                    IDictionary<string, string> coordinates = new Dictionary<string, string>
+                    {
+                        ["height"] = line.Rectangle.Height.ToString(),
+                        ["width"] = line.Rectangle.Width.ToString(),
+                        ["left"] = line.Rectangle.Left.ToString(),
+                        ["top"] = line.Rectangle.Top.ToString(),
+                        ["words"] = wordsInLine
+                    };
+                    g_lines.Add(coordinates);
                 }
-                 
             }
+            // Відправка обробленого тексту на переклад
+            Translate_Txt(Utils.LanguageEnumToIdentifier(navBar.GetDestinationLanguage()), g_lines);
         }
-        private void generateFlag(string destLng)
+        private void PopulateUIWithHardwirttenLines(HandwritingRecognitionOperationResult ocrResult)
         {
-            switch (destLng)
+            TranslatedText.Children.Clear();
+
+                //Ітерація по лініях в регіоні
+                foreach (var line in ocrResult.RecognitionResult.Lines)
+                {
+                    string wordsInLine = "";
+                    //Ітерація по словах в лінії
+                    foreach (var word in line.Words)
+                    {
+                        wordsInLine += word.Text + " ";
+                    }
+                // TODO - handwritten returns 8 positions instead of 4
+                // [height, width, xy, xy, xy, xy, xy, xy]
+
+                // генерація словника, з якого формуємо список ліній з координатами та текстом кожної з них
+                IDictionary<string, string> coordinates = new Dictionary<string, string>
+                {
+                    ["height"] = "0",
+                    ["width"] = "0",
+                    ["left"] = "0",
+                    ["top"] = "0",
+                    ["words"] = wordsInLine
+                };
+                g_lines.Add(coordinates);
+            }
+            // Відправка обробленого тексту на переклад
+            Translate_Txt(Utils.LanguageEnumToIdentifier(navBar.GetDestinationLanguage()), g_lines);
+        }
+        void Translate_Txt(string destLang, List<IDictionary<string, string>> lines)
+        {
+            if (g_sourceLanguage != "unk")
             {
-                case "French": countryFlag.Source = "fr.png"; break;
-                case "English": countryFlag.Source = "gb.png"; break;
-                case "Russian": countryFlag.Source = "ru.png"; break;
-                case "Ukrainian": countryFlag.Source = "ua.png"; break;
-                case "Latvian": countryFlag.Source = "lv.png"; break;
-                case "German": countryFlag.Source = "gr.png"; break;
-                case "Polish": countryFlag.Source = "pl.png"; break;
-                case "Spanish": countryFlag.Source = "sp.png"; break;
-                case "Italian": countryFlag.Source = "it.png"; break;
-                case "Chinese": countryFlag.Source = "china.png"; break;
-                case "Korean": countryFlag.Source = "korea.png"; break;
-                case "Japanese": countryFlag.Source = "ja.png"; break;
-                case "Portuguese": countryFlag.Source = "po.png"; break;
-                case "Arabic": countryFlag.Source = "arabic.png"; break;
-                case "Hindi": countryFlag.Source = "india.png"; break;
-                case "Hebrew": countryFlag.Source = "isr.png"; break;
-                case "Swedish": countryFlag.Source = "sw.png"; break;
-                case "Norwegian": countryFlag.Source = "norway.png"; break;
-                case "Danish": countryFlag.Source = "denmark.png"; break;
-                case "Finnish": countryFlag.Source = "finland.png"; break;
-                case "Georgian": countryFlag.Source = "ge.png"; break;
-                case "Greek": countryFlag.Source = "gre.png"; break;
-                case "Turkish": countryFlag.Source = "turkey.png"; break;
-                case "Czech": countryFlag.Source = "cz.png"; break;
-                default: countryFlag.Source = "gb.png"; break;
+                if(g_transaltedText.Length > 0)
+                {
+                    g_transaltedText = string.Empty;
+                }
+                foreach (var line in lines)
+                {
+                    int h = Int32.Parse(line["height"]);
+                    int w = Int32.Parse(line["width"]);
+                    int t = Int32.Parse(line["left"]);
+                    int l = Int32.Parse(line["top"]);
+                    string words = line["words"];
+
+                    string translatedwords = DependencyService.Get<PCL_Translator>().Translate(
+                        words,
+                        g_sourceLanguage,
+                        destLang,
+                        Utils.GenerateRandomKey(Data.translationKeys))
+                        + " ";
+
+                    if (translatedwords == null || translatedwords == " ")
+                    {
+                        DisplayAlert("Translation error", "We can't translate your text", "Try again");
+                        ClearView();
+                        return;
+                    }
+                    var textLabel = new Label
+                    {
+                        TextColor = Xamarin.Forms.Color.Black,
+                        Text = translatedwords
+                    };
+                    TranslatedText.Children.Add(textLabel);
+                    g_transaltedText += translatedwords;
+                    GenerateBoxes(h, w, t, l, translatedwords, CROP_KOEF_W, CROP_KOEF_H);
+                }
             }
+            else
+            {
+                DisplayAlert("Language don't recognized", "We can't recognize your language", "Try again");
+                ClearView();
+            }
+            var tgr = new TapGestureRecognizer();
+            tgr.Tapped += (s, ev) => OnImageTapped(s, ev);
+            tgr.NumberOfTapsRequired = 2;
+            BoxesLayout.GestureRecognizers.Add(tgr);
         }
-        void countryFlag_Clicked(object sender, EventArgs args)
+        private void GenerateBoxes(int height, int width, int left, int top, string text, double koefW, double koefH)
         {
-            DestinationLangPicker.Focus();
-        }
-            private void generateBoxes(int height, int width, int left, int top, string text)
-        {
-            Label label = new Label { BackgroundColor = Xamarin.Forms.Color.Gray, WidthRequest = width, HeightRequest = height};
-            label.FontSize = 10;
-            container.Children.Add(label,
+            Label label = new Label { BackgroundColor = Xamarin.Forms.Color.DarkGray, WidthRequest = width, HeightRequest = height };
+
+            label.FontSize = Utils.FontSizeGenerator(height * koefH);
+
+            BoxesLayout.Children.Add(label,
                 Constraint.RelativeToParent((parent) =>
                 {
-                    return left;  // встановлення координати X
+                    return left * koefW;  // встановлення координати X
                 }),
                 Constraint.RelativeToParent((parent) =>
                 {
-                    return top; // встановлення координати Y
+                    return top * koefH; // встановлення координати Y
                 }),
-                Constraint.Constant(width), // встановлення ширини
-                Constraint.Constant(height)  // встановлення высоти
-                
+                Constraint.Constant(width * koefW), // встановлення ширини
+                Constraint.Constant(height * koefH)  // встановлення висоти
             );
+
+            var boxTgr = new TapGestureRecognizer();
+            boxTgr.Tapped += (s, e) => OnImageTapped(s, e);
+            boxTgr.NumberOfTapsRequired = 2;
+            label.GestureRecognizers.Add(boxTgr);
+
             label.Text = text;
             Content = container;
         }
-        private async void UploadPictureButton_Clicked(object sender, EventArgs e)
-        {         
-            try
-            {
-                if (!CrossMedia.Current.IsPickPhotoSupported)
-                {
-                    await DisplayAlert("No upload", "Picking a photo is not supported.", "OK");
-                    return;
-                }
-                var file = await CrossMedia.Current.PickPhotoAsync();
-                if (file == null)
-                    return;
-                if (backgroundImage.Opacity !=0)
-                {
-                    backgroundImage.Opacity = 0;
-                }
-                flag = true;
-                UploadPictureButton.IsVisible = false;
-                TakePictureButton.IsVisible = false;
-                Image1.IsVisible = true;
-                this.Indicator1.IsVisible = true;
-                this.Indicator1.IsRunning = true;
-                Image1.Source = ImageSource.FromStream(() => file.GetStream());
-
-                var ocrResult = await AnalyzePictureAsync(file.GetStream());
-
-                this.BindingContext = ocrResult;
-                sourceLanguage = ocrResult.Language;
-                
-                PopulateUIWithRegions(ocrResult);
-                TranslatedText.IsVisible = true;
-
-             
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex;
-            }
-            BackButton.IsVisible = true;
-            this.Indicator1.IsRunning = false;
-            this.Indicator1.IsVisible = false;
-         
-            Image1.IsVisible = true;
-            DestinationLangPicker.IsVisible = true;
-            GettedLanguage.IsVisible = true;
-        }
-
-        protected override void OnSizeAllocated(double width, double height)
+        protected override void OnSizeAllocated(double deviceW, double deviceH)
         {
-            if (count == 0)
+            base.OnSizeAllocated(deviceW, deviceH);
+            int bottomOffset = 65;
+
+            croppedImage.WidthRequest = deviceW;
+            croppedImage.HeightRequest = deviceH - bottomOffset;
+
+            // (deviceW / originW) * api_returns_scale 
+            CROP_KOEF_W = (croppedImage.Width / (240 * 2));
+            // ((deviceH - bottomOffset) / originH) * api_returns_scale
+            CROP_KOEF_H = (croppedImage.Height / (340 * 2));
+
+            if (DeviceInfo.IsOrientationPortrait() && deviceW < deviceH || !DeviceInfo.IsOrientationPortrait() && deviceW > deviceH)
             {
-                DestinationLangPicker.Focus();
-                count++;
-                if (Device.OS == TargetPlatform.iOS) // 
-                {
-                    DestinationLangPicker.Items.Clear();
-                    DestinationLangPicker.Items.Add("Destination language");  
-               
-                DestinationLangPicker.Items.Add("English");
-                DestinationLangPicker.Items.Add("Ukrainian");
-                DestinationLangPicker.Items.Add("French");
-                DestinationLangPicker.Items.Add("Polish");
-                DestinationLangPicker.Items.Add("Spanish");
-                DestinationLangPicker.Items.Add("German");
-                DestinationLangPicker.Items.Add("Italian");
-                DestinationLangPicker.Items.Add("Latvian");
-                DestinationLangPicker.Items.Add("Chinese");
-                DestinationLangPicker.Items.Add("Japanese");
-                DestinationLangPicker.Items.Add("Portuguese");
-                DestinationLangPicker.Items.Add("Arabic");
-                DestinationLangPicker.Items.Add("Hindi");
-                DestinationLangPicker.Items.Add("Hebrew");
-                DestinationLangPicker.Items.Add("Swedish");
-                DestinationLangPicker.Items.Add("Danish");
-                DestinationLangPicker.Items.Add("Norwegian");
-                DestinationLangPicker.Items.Add("Finnish");
-                DestinationLangPicker.Items.Add("Georgian");
-                DestinationLangPicker.Items.Add("Turkish");
-                DestinationLangPicker.Items.Add("Russian");
-                DestinationLangPicker.Items.Add("Czech");
-
-                    DestinationLangPicker.SelectedIndexChanged += (sender, e) =>
-                {
-                    if (DestinationLangPicker.SelectedIndex == 0)
-                        DestinationLangPicker.SelectedIndex = 1;
-                };
-               }
-            }
-            base.OnSizeAllocated(width, height);
-            g_screen_height = height;
-            g_screen_width = width;
-
-
-            if (DeviceInfo.IsOrientationPortrait() && width < height || !DeviceInfo.IsOrientationPortrait() && width > height)
-            {
-                //Image1.IsVisible = false;
+                // Horizontal
             }
             else
             {
-              // Image1.IsVisible = true;
+                // Vertical
             }
-        }
-
-        void BackButton_Clicked(object sender, EventArgs e)
-        {
-            if (imageInverseFlag == false) // якщо кнопка використовується для виходу в голове меню
+            if (Application.Current.Properties.ContainsKey("FirstUse"))
             {
-                TakePictureButton.IsVisible = true;
-                UploadPictureButton.IsVisible = true;
-                BackButton.IsVisible = false;
-                Image1.IsVisible = false;
-                TranslatedText.IsVisible = false;
-                GettedLanguage.IsVisible = false;
-                DestinationLangPicker.IsVisible = false;
-                TranslatedText.IsVisible = false;
-                // ImageBackButton.IsVisible = false;
-                backgroundImage.Opacity = 0.4;
-                bufferSourceText1 = "";
-                bufferSourceText2 = "";
-                bufferSourceText3 = "";
-                bufferSourceText4 = "";
-                bufferSourceText5 = "";
-                bufferSourceText6 = "";
-                UploadPictureButton.IsVisible = false;
-                TakePictureButton.IsVisible = false;
-                backgroundImage.IsVisible = true;
-                flag = false;
-                DestinationLangPicker.Focus();
-                picker_func();
-            }
-            else // інакше, для виходу з режиму збільшеного зображення
-            {
-                TapGesture(true);
-            }
-        }
-            /// //////////////// TRANSLATION///////////////////////
-            void Translate_Txt(string sourceTxt, string destLang)
-        {
-            if (sourceLanguage != "unk")
-            {
-                string buffer = DependencyService.Get<PCL_Translator>().
-                            Translate(sourceTxt, sourceLanguage, destLang) + " ";
-                this.TranslatedText.Text += buffer;
-                
-                transaltedText = TranslatedText.Text;
-
-              //  generateBoxes(g_Height, g_Width, g_Left, g_Top, buffer);
+                //Do things when it's NOT the first use...
             }
             else
             {
-                var Error = "unknown language! Please try again";
-                this.TranslatedText.Text = Error;
-            } 
+                Application.Current.Properties["FirstUse"] = false;
+                DisplayAlert(Data.Settings_info_Title, Data.Settings_info_Data, "Got it");
+            }
         }
-        /// //////////////// TRANSLATION END///////////////////////
         public void ClipboardFunc(object sender, EventArgs e)
         {
-            DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(transaltedText);
-            DisplayAlert("", "Successfully copied to the clipboard", "OK");
-            // clipboardText = TranslatedText.Text;
+            DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(g_transaltedText);
+            DisplayAlert("Clipboard", "Successfully copied to the clipboard", "OK");
         }
-        void TapGesture(bool move_to_default)
+        void OnImageTapped(object sender, EventArgs args)
         {
-            if (move_to_default == true)
+            if (originImage.IsVisible) // збільшений режим
             {
-                BackButton.Text = " < -Back";
-                TranslatedText.IsVisible = true;
-                GettedLanguage.IsVisible = true;
-                DestinationLangPicker.IsVisible = true;
-                Image1.HeightRequest = 240;
-                Image1.WidthRequest = 240;
-                imageInverseFlag = false;
-            }
-            else
-            {
-                BackButton.Text = "Resize";
-                TakePictureButton.IsVisible = false;
-                UploadPictureButton.IsVisible = false;
-                Image1.HeightRequest = g_screen_height - 100;
-                Image1.WidthRequest = g_screen_width - 50;
+                originImage.IsVisible = false;
                 TranslatedText.IsVisible = false;
                 GettedLanguage.IsVisible = false;
-                DestinationLangPicker.IsVisible = false;
-                imageInverseFlag = true;
-                
+                croppedImage.IsVisible = true;
+                BoxesLayout.IsVisible = true;
             }
-            
-        }
-        void OnTapGestureRecognizerTapped(object sender, EventArgs args) {
-            if (imageInverseFlag == false)
-                TapGesture(false);
-            else
-                TapGesture(true);
-        }
-    
-        void UnfocusedPicker(object sender, EventArgs e)
-        {
-            if(DestinationLangPicker.SelectedIndex < 0)
-            DestinationLangPicker.SelectedIndex = 0;
-        }
-        void picker_language_choose(object sender, EventArgs e)
-        {
-            picker_func();
-        }
-        void picker_func()
-        {
-            DestinationLangPicker.Title = DestinationLangPicker.Items[DestinationLangPicker.SelectedIndex];
-            if (Device.OS == TargetPlatform.Android) // 
+            else // звичайний режим
             {
-                DestinationLangPicker.WidthRequest = DestinationLangPicker.Title.Length * 13;
+                originImage.IsVisible = true;
+                TranslatedText.IsVisible = true;
+                GettedLanguage.IsVisible = true;
+                croppedImage.IsVisible = false;
+                BoxesLayout.IsVisible = false;
             }
-            TranslatedText.Text = "";
-            if (bufferSourceText1.Length > 1)
-                Translate_Txt(bufferSourceText1, DestinationLangPicker.Title);
-            if (bufferSourceText2.Length > 1)
-                Translate_Txt(bufferSourceText2, DestinationLangPicker.Title);
-            if (bufferSourceText3.Length > 1)
-                Translate_Txt(bufferSourceText3, DestinationLangPicker.Title);
-            if (bufferSourceText4.Length > 1)
-                Translate_Txt(bufferSourceText4, DestinationLangPicker.Title);
-            if (bufferSourceText5.Length > 1)
-                Translate_Txt(bufferSourceText5, DestinationLangPicker.Title);
-            if (bufferSourceText6.Length > 1)
-                Translate_Txt(bufferSourceText6, DestinationLangPicker.Title);
+        }
 
-            generateFlag(DestinationLangPicker.Title);
-
-            if (flag == false)
+        void SourceLanguageTapped(object sender, EventArgs args)
+        {
+            navBar.SourceLanguageTapped();
+        }
+        void PickerLanguage_Clicked(object sender, EventArgs e)
+        {
+            Picker picker = (Picker)sender;
+            TranslatedText.Children.Clear();
+            if (g_lines.Any())
             {
-                UploadPictureButton.IsVisible = true;
-                TakePictureButton.IsVisible = true;
+                BoxesLayout.Children.Clear();
+                Translate_Txt(Utils.LanguageEnumToIdentifier((string)picker.SelectedItem), g_lines);
+            }
+        }
+        void PickerSettings_Clicked(object sender, EventArgs e)
+        {
+            Picker picker = (Picker)sender;
+            switch ((string)picker.SelectedItem)
+            {
+                case Data.Settings_defaultMode:
+                    break;
+                case Data.Settings_info:
+                    DisplayAlert(Data.Settings_info_Title, Data.Settings_info_Data, "Got it");
+                    break;
+                case Data.Settings_clrAll:
+                    ClearView();
+                    navBar.SetPickersToDefault();
+                    break;
+                case Data.Settings_handwrittenMode:
+                    break;
+                default:
+                    break;
+            }
+        }
+        void ClearView()
+        {
+            if (backgroundImage.IsVisible == false)
+            {
+                backgroundImage.IsVisible = true;
+                GettedLanguage.IsVisible = false;
+                TranslatedText.Children.Clear();
+                originImage.Source = null;
+                croppedImage.Source = null;
+                Indicator1.IsRunning = false;
+                Indicator1.IsVisible = false;
+                g_sourceText = g_sourceText.Length > 0 ? "" : g_sourceText;
+                BoxesLayout.Children.Clear();
+                g_lines.Clear();
             }
         }
     }
