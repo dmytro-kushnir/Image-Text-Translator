@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="internalOnly" package="com.dima.traslator" android:versionCode="7" android:versionName="7.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="internalOnly" package="com.dima.traslator" android:versionCode="8" android:versionName="8.0">
   <!--suppress UsesMinSdkAttributes-->
-  <uses-sdk android:minSdkVersion="24" />
+  <uses-sdk android:minSdkVersion="25" />
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.CAMERA" />

@@ -223,8 +223,6 @@ C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\Computer
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\croatia.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\res\drawable\estonia.png
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\Image Text  Translator.dll
-C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample\bin\Debug\ComputerVisionSample.dll
-C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\bin\Debug\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\linksrc\Image Text  Translator.dll.mdb
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\linksrc\ComputerVisionSample.dll.mdb
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.Droid\obj\Debug\linksrc\FormsViewGroup.dll.mdb

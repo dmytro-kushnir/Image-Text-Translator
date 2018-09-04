@@ -150,3 +150,6 @@ C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\Computer
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.iOS\obj\iPhone\Debug\ocr.exe
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.iOS\obj\iPhone\Debug\ocr.pdb
 C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.iOS\bin\iPhone\Debug\ComputerVisionSample.dll.mdb
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.iOS\obj\iPhone\Debug\optimized\bulgaria.png
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.iOS\obj\iPhone\Debug\optimized\croatia.png
+C:\Users\Dima\Documents\Dynamic_ocr\Dyplom\diploma\ComputerVisionSample\ComputerVisionSample.iOS\obj\iPhone\Debug\optimized\estonia.png
