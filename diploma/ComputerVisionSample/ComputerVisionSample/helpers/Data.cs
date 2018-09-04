@@ -136,14 +136,14 @@ namespace ComputerVisionSample.helpers
         };
         static public string[] computerVisionKeys = new String[] 
         {
-            "cf3b45431cc14c799696821dd9668990",
-            "81e68751a466446c80076b8f82fd1adc"
+            Env_variables.COMPUTER_VISION_KEY_1,
+            Env_variables.COMPUTER_VISION_KEY_2
         }; // 7c45fc48ba8f42e993a1cd173e1b59a7
 
         static public string[] translationKeys = new String[]
         {
-            "7f2a4a04e05144ad8e6816b3651851e6",
-            "110acd383b4c418fab59731f02fbbf81"
+            Env_variables.TRANSLATION_KEY_1,
+            Env_variables.TRANSLATION_KEY_2
         };
     }
 }
