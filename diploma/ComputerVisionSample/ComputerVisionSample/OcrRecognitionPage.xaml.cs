@@ -24,8 +24,8 @@ namespace ComputerVisionSample
         CognitiveService computerVision;
 
         string g_sourceLanguage = "";
-        string g_sourceText = "";
-        string g_transaltedText = "";
+        //string g_sourceText = "";
+        string g_translatedText = "";
 
         List<IDictionary<string, string>> g_lines = new List<IDictionary<string, string>>();
 
@@ -224,9 +224,9 @@ namespace ComputerVisionSample
         {
             if (g_sourceLanguage != "unk")
             {
-                if(g_transaltedText.Length > 0)
+                if(g_translatedText.Length > 0)
                 {
-                    g_transaltedText = string.Empty;
+                    g_translatedText = string.Empty;
                 }
                 foreach (var line in lines)
                 {
@@ -255,7 +255,7 @@ namespace ComputerVisionSample
                         Text = translatedwords
                     };
                     TranslatedText.Children.Add(textLabel);
-                    g_transaltedText += translatedwords;
+                    g_translatedText += translatedwords;
                     GenerateBoxes(h, w, t, l, translatedwords, 1, 1);
                 }
             }
@@ -337,7 +337,7 @@ namespace ComputerVisionSample
         }
         public void ClipboardFunc(object sender, EventArgs e)
         {
-            DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(g_transaltedText);
+            DependencyService.Get<PCL_ClipBoard>().GetTextFromClipBoard(g_translatedText);
             DisplayAlert("Clipboard", "Successfully copied to the clipboard", "OK");
         }
         void OnImageTapped(object sender, EventArgs args)
@@ -404,7 +404,7 @@ namespace ComputerVisionSample
                 croppedImage.Source = null;
                 Indicator1.IsRunning = false;
                 Indicator1.IsVisible = false;
-                g_sourceText = g_sourceText.Length > 0 ? "" : g_sourceText;
+                //g_sourceText = g_sourceText.Length > 0 ? "" : g_sourceText;
                 BoxesLayout.Children.Clear();
                 g_lines.Clear();
             }

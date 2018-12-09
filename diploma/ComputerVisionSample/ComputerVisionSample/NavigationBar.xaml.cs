@@ -54,24 +54,14 @@ namespace ComputerVisionSample
             SettingsPicker.SelectedIndex = 0;
             DestinationLangPicker.SelectedIndex = 0;
         }
-        public void SourceLanguageTapped()
-        {
-            DestinationLangPicker.Focus();
-        }
-        void UploadPictureButton_Clicked(object sender, EventArgs e)
-        {
-            uploadPictureButton_Clicked?.Invoke(sender, e);
-        }
+        public void SourceLanguageTapped() => DestinationLangPicker.Focus();
 
-        void OpenLanguagePicker_Clicked(object sender, EventArgs e)
-        {
-            DestinationLangPicker.Focus();
-        }
+        void UploadPictureButton_Clicked(object sender, EventArgs e) => uploadPictureButton_Clicked?.Invoke(sender, e);
 
-        void OpenSettingsPicker_Clicked(object sender, EventArgs e)
-        {
-            SettingsPicker.Focus();
-        }
+        void OpenLanguagePicker_Clicked(object sender, EventArgs e) => DestinationLangPicker.Focus();
+
+        void OpenSettingsPicker_Clicked(object sender, EventArgs e) => SettingsPicker.Focus();
+
         void Picker_Clicked(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
